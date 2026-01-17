@@ -1,0 +1,25 @@
+---
+// Mobile Header component
+interface Props {
+  class?: string;
+}
+const { class: className = '' } = Astro.props;
+---
+
+<header class={`bg-white flex h-16 items-center justify-between px-10 py-0 shadow-[0px_2px_8px_0px_rgba(0,0,0,0.08)] ${className}`}>
+  <div class="flex items-start">
+    <div class="h-[29px] relative w-[120px]">
+      <img 
+        alt="サイトタイトル" 
+        class="absolute inset-0 object-contain pointer-events-none size-full" 
+        src="/images/site-title-sp.png" 
+      />
+    </div>
+  </div>
+  <button class="flex items-center justify-center size-6" aria-label="メニューを開く">
+    <svg class="size-6" viewBox="0 0 24 24" fill="none">
+      <path d="M3 12H21M3 6H21M3 18H21" stroke="#1B1B1B" stroke-width="2" stroke-linecap="round"/>
+    </svg>
+  </button>
+</header>
+

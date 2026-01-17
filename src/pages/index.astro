@@ -1,16 +1,379 @@
 ---
-
+import Header from '../components/Header.astro';
+import HeaderSp from '../components/HeaderSp.astro';
+import Footer from '../components/Footer.astro';
+import Contact from '../components/Contact.astro';
+import '../styles/globals.css';
 ---
 
-<html lang="en">
+<html lang="ja">
 	<head>
 		<meta charset="utf-8" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
+		<title>進晃 - 水は止める、変化は止めない。</title>
 	</head>
-	<body>
-		<h1>Astro</h1>
+	<body class="bg-white">
+		<!-- Desktop Header -->
+		<Header class="hidden lg:flex" />
+		
+		<!-- Mobile Header -->
+		<HeaderSp class="lg:hidden" />
+
+		<main class="relative w-full overflow-x-hidden">
+			<!-- Background Elements -->
+			<div class="absolute bg-white h-[6404px] left-0 top-0 w-full max-w-[1440px]" />
+			<div class="absolute left-[-363px] size-[1001px] top-[-559px] hidden lg:block">
+				<img alt="" class="block size-full" src="/images/ellipse-5.svg" />
+			</div>
+			<div class="absolute bottom-0 h-[6358.96px] left-[1009px] pointer-events-none top-[184px] hidden lg:block">
+				<div class="pointer-events-auto size-[766px] sticky top-0">
+					<img alt="" class="block size-full" src="/images/ellipse-2.svg" />
+				</div>
+			</div>
+
+			<!-- MV Section -->
+			<section class="flex flex-col gap-2 items-start pb-0 pt-[600px] px-0 relative">
+				<div class="absolute h-[1750px] left-[-1148px] top-[-625px] w-[2849px] hidden lg:block" />
+				<div class="h-[693px] overflow-clip relative w-full max-w-[1440px]">
+					<div class="absolute h-[693px] left-0 top-0 w-full">
+						<img alt="" class="block size-full" height="693" src="/images/vector-1.png" width="1440" />
+					</div>
+					<div class="absolute left-[-401px] size-[801px] top-[293px] hidden lg:block">
+						<img alt="" class="block size-full" src="/images/ellipse-3.svg" />
+					</div>
+				</div>
+				<div class="absolute font-bold h-[255px] left-[120px] top-[250px] w-[928px] hidden lg:block">
+					<p class="absolute font-noto-sans font-bold leading-6 left-0 text-[32px] top-[207px] tracking-[9.6px]">
+						水は止める、変化は止めない。
+					</p>
+					<div class="absolute font-roboto leading-0 left-0 text-[0px] top-0 tracking-[5.76px]" style="font-variation-settings: 'wdth' 100">
+						<p class="font-roboto font-medium leading-none mb-0 text-[96px]">
+							<span style="font-variation-settings: 'wdth' 100">Stop </span>
+							<span class="bg-clip-text bg-gradient-to-r from-[#3625ef] from-[12.019%] to-[#35a1ff] to-[46.635%]" style="-webkit-text-fill-color: transparent; font-variation-settings: 'wdth' 100">
+								water.
+							</span>
+						</p>
+						<p class="font-roboto font-medium leading-none text-[96px]">
+							<span style="font-variation-settings: 'wdth' 100">Never stop </span>
+							<span class="bg-clip-text bg-gradient-to-r from-[#fb6938] from-[68.269%] to-[#ffbf1c]" style="-webkit-text-fill-color: transparent; font-variation-settings: 'wdth' 100">
+								change.
+							</span>
+						</p>
+					</div>
+				</div>
+				<!-- Mobile MV Text -->
+				<div class="absolute font-bold leading-0 left-1/2 text-[0px] text-center top-[137px] -translate-x-1/2 lg:hidden">
+					<p class="font-roboto font-medium leading-none mb-0 text-[40px]">
+						<span style="font-variation-settings: 'wdth' 100">Stop </span>
+						<span class="bg-clip-text bg-gradient-to-r from-[#3625ef] from-[12.019%] to-[#35a1ff] to-[46.635%]" style="-webkit-text-fill-color: transparent; font-variation-settings: 'wdth' 100">
+							water.
+						</span>
+					</p>
+					<p class="font-roboto font-medium leading-none text-[40px]">
+						<span style="font-variation-settings: 'wdth' 100">Never stop </span>
+						<span class="bg-clip-text bg-gradient-to-r from-[#fb6938] from-[68.269%] to-[#ffbf1c]" style="-webkit-text-fill-color: transparent; font-variation-settings: 'wdth' 100">
+							change.
+						</span>
+					</p>
+				</div>
+				<p class="absolute font-bold left-1/2 text-lg text-center top-[229px] -translate-x-1/2 lg:hidden">
+					水は止める、変化は止めない。
+				</p>
+			</section>
+
+			<!-- Introduction Section -->
+			<section class="flex flex-col gap-32 items-start px-0 py-32 relative w-full">
+				<div class="flex items-start justify-between w-full flex-col lg:flex-row gap-10 lg:gap-0">
+					<div class="h-[461px] overflow-clip relative w-full lg:w-[447px]">
+						<div class="absolute h-[641px] left-0 top-[-93px] w-full lg:w-[622px]">
+							<img alt="" class="absolute inset-0 object-cover pointer-events-none size-full" src="/images/rectangle-3.png" />
+						</div>
+						<div class="absolute left-[-219px] size-[437px] top-[243px] hidden lg:block">
+							<img alt="" class="block size-full" src="/images/ellipse-4.svg" />
+						</div>
+					</div>
+					<div class="flex flex-col gap-[28.8px] items-start pb-0 pt-32 px-0 relative w-full lg:w-[534px] px-10 lg:px-0">
+						<div class="font-bold leading-6 relative text-[40px] tracking-[4px]">
+							<p class="mb-0">見えない水まで、</p>
+							<p class="text-main-orange">確かに止める。</p>
+						</div>
+						<div class="flex flex-col justify-center leading-0 min-w-full relative tracking-[3.2px]">
+							<p class="leading-[2]">漏水は"始まり"です。</p>
+						</div>
+						<div class="flex flex-col justify-center leading-[2] min-w-full relative tracking-[3.2px]">
+							<p class="mb-0">見えない水の浸入は、時間とともに、</p>
+							<p>建物を蝕み、耐久性を奪う。</p>
+						</div>
+						<div class="flex flex-col justify-center leading-[2] min-w-full relative tracking-[3.2px]">
+							<p class="mb-0">進晃はその「始まり」を見逃さず、</p>
+							<p class="mb-0">建物の状態に合わせた高度な技術で、</p>
+							<p class="mb-0">丁寧に作業を行います。</p>
+							<p>ひびやすき間の小さな原因も見逃しません。</p>
+						</div>
+						<div class="flex flex-col justify-center leading-[2] min-w-full relative tracking-[3.2px]">
+							<p class="mb-0">はじめの調査から最後の仕上げまで、</p>
+							<p>当社で一貫して対応します。</p>
+						</div>
+						<div class="flex flex-col gap-2 lg:flex-row lg:gap-8 items-start relative">
+							<a href="#business" class="flex gap-4 items-center">
+								<div class="flex items-center justify-center px-0 py-3 rounded">
+									<div class="flex flex-col font-medium justify-center leading-0 relative">
+										<p class="leading-6">事業内容</p>
+									</div>
+								</div>
+								<div class="bg-main-orange flex items-center justify-center relative rounded-full size-8">
+									<div class="h-[10px] relative w-1.5">
+										<img alt="" class="block size-full" src="/images/arrow-right.svg" />
+									</div>
+								</div>
+							</a>
+							<a href="#reason" class="flex gap-4 items-center">
+								<div class="flex items-center justify-center px-0 py-3 rounded">
+									<div class="flex flex-col font-medium justify-center leading-0 relative">
+										<p class="leading-6">進晃が選ばれる理由</p>
+									</div>
+								</div>
+								<div class="bg-main-orange flex items-center justify-center relative rounded-full size-8">
+									<div class="h-[10px] relative w-1.5">
+										<img alt="" class="block size-full" src="/images/arrow-right.svg" />
+									</div>
+								</div>
+							</a>
+						</div>
+					</div>
+					<div class="flex flex-col items-end justify-end overflow-clip pb-0 pt-80 px-0 relative self-stretch shrink-0 w-full lg:w-[230px] hidden lg:flex">
+						<div class="h-[350px] relative w-full lg:w-[230px]">
+							<img alt="" class="absolute inset-0 object-cover pointer-events-none size-full" src="/images/rectangle-4.png" />
+						</div>
+						<div class="absolute left-[-116px] size-[231px] top-[570px]">
+							<img alt="" class="block size-full" src="/images/ellipse-6.svg" />
+						</div>
+					</div>
+				</div>
+				<div class="flex items-start justify-between px-[120px] py-0 relative w-full flex-col lg:flex-row gap-10 lg:gap-0">
+					<div class="flex flex-col items-start overflow-clip relative self-stretch w-full lg:w-[700.48px]">
+						<div class="h-[350.23px] max-w-[700.48px] relative w-full">
+							<img alt="" class="absolute inset-0 object-cover pointer-events-none size-full" src="/images/about03.avif" />
+						</div>
+						<div class="absolute left-[-180.54px] size-[361px] top-[169px] hidden lg:block">
+							<img alt="" class="block size-full" src="/images/ellipse-7.svg" />
+						</div>
+					</div>
+					<div class="flex flex-col items-end justify-end overflow-clip relative self-stretch w-full lg:w-[242.45px]">
+						<div class="h-[252.72px] max-w-[242.45px] relative w-full">
+							<img alt="" class="absolute inset-0 object-cover pointer-events-none size-full" src="/images/about04.avif" />
+						</div>
+						<div class="absolute left-[-138.01px] size-[275px] top-[212px] hidden lg:block">
+							<img alt="" class="block size-full" src="/images/ellipse-8.svg" />
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- Our Tech Section -->
+			<section class="flex flex-col items-start relative w-full" id="tech">
+				<div class="bg-gradient-to-r from-[#fca385] from-[11.538%] to-[#ebca6b] flex flex-col items-start px-[120px] py-32 relative rounded-bl-[96px] rounded-br-[96px] w-full px-10 lg:px-[120px] py-14 lg:py-32 rounded-bl-[40px] lg:rounded-bl-[96px] rounded-br-[40px] lg:rounded-br-[96px]">
+					<div class="flex isolate items-start justify-between pb-16 pt-0 px-0 relative w-full flex-col lg:flex-row gap-8 lg:gap-0">
+						<div class="flex flex-col gap-6 items-start relative z-[2] w-full lg:w-auto">
+							<div class="flex flex-col items-start">
+								<div class="flex flex-col items-start">
+									<div class="flex gap-2.5 items-center w-full lg:w-[416px]">
+										<div class="relative size-2.5">
+											<img alt="" class="block size-full" src="/images/ellipse-1.svg" />
+										</div>
+										<div class="flex flex-col font-medium justify-center leading-0 relative text-white">
+											<p class="leading-6">進晃の止水技術</p>
+										</div>
+									</div>
+								</div>
+								<div class="flex flex-col font-roboto font-normal justify-center leading-0 relative text-[96px] text-white w-full lg:w-[460px] text-[64px] lg:text-[96px]" style="font-variation-settings: 'wdth' 100">
+									<p class="leading-[1.5]">OUR TECH</p>
+								</div>
+							</div>
+							<div class="flex flex-col font-normal justify-center leading-0 min-w-full relative text-white tracking-[1.6px]">
+								<p class="leading-6">我々の主力技術は、高圧注入による ピングラウト工法 と TAPグラウト工法。さらに、既存の技法では届かない箇所には、オリジナル技術を組み合わせて柔軟に対応。現場環境・水圧・材料性状を読み解き、最適解を設計・施工します。</p>
+							</div>
+						</div>
+						<div class="flex gap-12 items-start p-2 relative z-[1] w-full lg:w-auto">
+							<div class="h-[352px] overflow-clip relative shadow-[0px_25px_50px_0px_rgba(0,0,0,0.25)] w-full lg:w-[275px] h-[200px] lg:h-[352px]">
+								<div class="absolute h-[382.72px] left-0 top-0 w-full lg:w-[299px]">
+									<div class="absolute inset-0 overflow-hidden pointer-events-none">
+										<img alt="" class="absolute h-full left-[-40.09%] max-w-none top-0 w-[227.75%]" src="/images/rectangle-5.png" />
+									</div>
+								</div>
+							</div>
+							<div class="flex flex-col h-[446.72px] items-end justify-end overflow-clip pb-0 pt-16 px-0 relative shadow-[0px_25px_50px_0px_rgba(0,0,0,0.25)] w-full lg:w-[275px] h-[200px] lg:h-[446.72px]">
+								<div class="h-[352px] relative shadow-[0px_25px_50px_-12px_rgba(0,0,0,0.25)] w-full">
+									<img alt="" class="absolute inset-0 object-cover pointer-events-none size-full" src="/images/rectangle-6.png" />
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="flex flex-col gap-4 items-start relative w-full">
+						<div class="border-t border-[rgba(255,255,255,0.4)] flex flex-col items-start pb-0 pt-px px-0 relative w-full">
+							<a href="#pingrout" class="flex items-center justify-between px-0 py-6 relative w-full">
+								<div class="basis-0 flex flex-col gap-1 grow items-start min-h-px min-w-px relative">
+									<div class="flex flex-col items-start opacity-80 relative w-full">
+										<div class="flex flex-col font-roboto font-normal justify-center leading-0 relative text-sm text-white w-full" style="font-variation-settings: 'wdth' 100">
+											<p class="leading-6">Technology</p>
+										</div>
+									</div>
+									<div class="flex flex-col items-start relative w-full">
+										<div class="flex flex-col font-noto-sans font-medium justify-center leading-0 relative text-2xl text-white w-full">
+											<p class="leading-6">ピングラウト工法について</p>
+										</div>
+									</div>
+								</div>
+								<div class="bg-white flex items-center justify-center relative rounded-full size-[50px] size-[30px] lg:size-[50px]">
+									<div class="h-4 relative w-2.5">
+										<img alt="" class="block size-full" src="/images/arrow-right-white.svg" />
+									</div>
+								</div>
+							</a>
+						</div>
+						<div class="border-t border-[rgba(255,255,255,0.4)] flex flex-col items-start pb-0 pt-px px-0 relative w-full">
+							<a href="#tapgrout" class="flex items-center justify-between px-0 py-6 relative w-full">
+								<div class="basis-0 flex flex-col gap-1 grow items-start min-h-px min-w-px relative">
+									<div class="flex flex-col items-start opacity-80 relative w-full">
+										<div class="flex flex-col font-roboto font-normal justify-center leading-0 relative text-sm text-white w-full" style="font-variation-settings: 'wdth' 100">
+											<p class="leading-6">Technology</p>
+										</div>
+									</div>
+									<div class="flex flex-col items-start relative w-full">
+										<div class="flex flex-col font-noto-sans font-medium justify-center leading-0 relative text-2xl text-white w-full">
+											<p class="leading-6">TAPグラウト工法について</p>
+										</div>
+									</div>
+								</div>
+								<div class="bg-white flex items-center justify-center relative rounded-full size-[50px] size-[30px] lg:size-[50px]">
+									<div class="h-4 relative w-2.5">
+										<img alt="" class="block size-full" src="/images/arrow-right-white.svg" />
+									</div>
+								</div>
+							</a>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- Projects Section -->
+			<section class="flex flex-col gap-[50px] items-center overflow-clip px-0 py-32 relative w-full" id="projects">
+				<div class="flex items-end justify-between max-w-[1920px] px-[120px] py-0 relative w-full flex-col lg:flex-row gap-10 lg:gap-0 px-10 lg:px-[120px]">
+					<div class="flex flex-col gap-10 items-start relative w-full lg:w-auto">
+						<div class="flex flex-col gap-4 items-start">
+							<div class="flex gap-2.5 items-center w-full lg:w-[416px]">
+								<div class="relative size-2.5">
+									<img alt="" class="block size-full" src="/images/ellipse-9.svg" />
+								</div>
+								<div class="flex flex-col font-medium justify-center leading-0 relative">
+									<p class="leading-6">施工事例</p>
+								</div>
+							</div>
+							<div class="flex flex-col font-roboto font-normal justify-center leading-0 max-h-[75.01px] overflow-ellipsis overflow-hidden relative text-[96px] text-[64px] lg:text-[96px]" style="font-variation-settings: 'wdth' 100">
+								<p class="leading-[1.5] overflow-ellipsis overflow-hidden">PROJECTS</p>
+							</div>
+						</div>
+						<div class="flex flex-col items-center relative w-full">
+							<div class="flex flex-col justify-center relative tracking-[1.6px] w-full">
+								<p class="mb-0">進晃がこれまで手がけた止水・防水工事をご紹介します。</p>
+								<p>その一つひとつが、進晃の技術力と信頼の証です。</p>
+							</div>
+						</div>
+					</div>
+					<a href="#projects-detail" class="flex gap-4 items-center">
+						<div class="flex items-center justify-center px-0 py-3 rounded">
+							<div class="flex flex-col font-medium justify-center leading-0 relative">
+								<p class="leading-6">施工事例を見る</p>
+							</div>
+						</div>
+						<div class="bg-main-orange flex items-center justify-center relative rounded-full size-8">
+							<div class="h-[10px] relative w-1.5">
+								<img alt="" class="block size-full" src="/images/arrow-right.svg" />
+							</div>
+						</div>
+					</a>
+				</div>
+				<div class="flex gap-2 items-start justify-center relative w-full max-w-[1929px]">
+					<div class="flex flex-col items-start overflow-clip relative w-full lg:w-[776px]">
+						<div class="h-[381px] relative w-full">
+							<div class="absolute inset-0 overflow-hidden pointer-events-none">
+								<img alt="" class="absolute h-[114.86%] left-[-0.21%] max-w-none top-[-0.41%] w-[100.35%]" src="/images/rectangle-1.png" />
+							</div>
+						</div>
+						<div class="absolute left-[-122px] size-[361px] top-[200.05px] hidden lg:block">
+							<img alt="" class="block size-full" src="/images/ellipse-7.svg" />
+						</div>
+					</div>
+					<div class="flex items-center overflow-clip relative w-full lg:w-[776px]">
+						<div class="h-[381px] relative w-full">
+							<img alt="" class="absolute inset-0 object-cover pointer-events-none size-full" src="/images/rectangle-2.png" />
+						</div>
+						<div class="absolute left-[-181px] size-[361px] top-[200.05px] hidden lg:block">
+							<img alt="" class="block size-full" src="/images/ellipse-7.svg" />
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- Recruitment Section -->
+			<section class="flex flex-col items-start pb-32 pt-[240px] px-0 relative w-full max-w-[1440px]" id="recruit">
+				<div class="flex flex-col items-start max-w-[1920px] relative w-full">
+					<div class="flex flex-col items-start pl-0 pr-[120px] py-0 relative w-full px-10 lg:px-[120px]">
+						<div class="bg-main-orange flex flex-col gap-[51px] items-start pl-[120px] pr-0 py-16 relative w-full px-10 lg:pl-[120px] lg:pr-0 py-14 lg:py-16 gap-6 lg:gap-[51px]">
+							<div class="absolute h-[703px] left-[560px] overflow-clip top-[-218.03px] w-[880px] hidden lg:block">
+								<div class="absolute h-[703px] left-0 top-0 w-[880px]">
+									<div class="absolute inset-0 overflow-hidden pointer-events-none">
+										<img alt="" class="absolute h-[222.73%] left-0 max-w-none top-[-67.02%] w-full" src="/images/recruit_2025.jpg" />
+									</div>
+								</div>
+								<div class="absolute left-[-376px] size-[751px] top-[327.08px]">
+									<img alt="" class="block size-full" src="/images/ellipse-10.svg" />
+								</div>
+							</div>
+							<div class="flex flex-col font-bold justify-center leading-[2.4] relative text-white tracking-[3.2px]">
+								<p class="mb-0">"止める技術"を、次の現場へ。</p>
+								<p class="mb-0">技術と誇りを胸に、</p>
+								<p class="mb-0">未来の建築を守る。</p>
+								<p>共に挑もう、進晃で。</p>
+							</div>
+							<div class="flex flex-col font-bold justify-center leading-[1.3] relative text-[128px] text-white tracking-[12.8px] w-full lg:w-[1184px] text-[48px] lg:text-[128px]">
+								<p class="mb-0">成長を止めない</p>
+								<p>若者求む。</p>
+							</div>
+							<div class="h-[256px] overflow-clip relative w-full lg:hidden">
+								<div class="absolute h-[256px] left-0 top-0 w-[320px]">
+									<div class="absolute inset-0 overflow-hidden pointer-events-none">
+										<img alt="" class="absolute h-[222.73%] left-0 max-w-none top-[-67.02%] w-full" src="/images/recruit_2025.jpg" />
+									</div>
+								</div>
+								<div class="absolute left-[-141px] size-[281px] top-[115px]">
+									<img alt="" class="block size-full" src="/images/ellipse-12.svg" />
+								</div>
+							</div>
+							<a href="#recruit-detail" class="flex gap-4 items-center">
+								<div class="flex items-center justify-center px-0 py-3 rounded">
+									<div class="flex flex-col font-medium justify-center leading-0 relative text-white tracking-[0.32px]">
+										<p class="leading-[20.8px]">採用情報について</p>
+									</div>
+								</div>
+								<div class="bg-white flex items-center justify-center relative rounded-full size-8">
+									<div class="h-[10px] relative w-1.5">
+										<img alt="" class="block size-full" src="/images/arrow-right-orange.svg" />
+									</div>
+								</div>
+							</a>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- Contact Section -->
+			<Contact />
+
+			<!-- Footer -->
+			<Footer />
+		</main>
 	</body>
 </html>
