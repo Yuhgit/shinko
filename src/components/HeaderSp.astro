@@ -6,7 +6,7 @@ interface Props {
 const { class: className = '' } = Astro.props;
 ---
 
-<header class={`bg-white flex h-16 items-center justify-between px-10 py-0 shadow-[0px_2px_8px_0px_rgba(0,0,0,0.08)] ${className}`}>
+<header class={`fixed top-0 left-0 right-0 bg-white flex h-16 items-center justify-between px-10 py-0 shadow-[0px_2px_8px_0px_rgba(0,0,0,0.08)] z-50 ${className}`}>
   <div class="flex items-start">
     <div class="h-[29px] relative w-[120px]">
       <img 

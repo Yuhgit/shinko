@@ -23,44 +23,45 @@ import '../styles/globals.css';
 
 		<main class="relative w-full overflow-x-hidden">
 			<!-- Background Elements -->
-			<div class="absolute bg-white h-[6404px] left-0 top-0 w-full max-w-[1440px]" />
+			<div class="fixed inset-0 bg-gray-50 -z-10" />
 			<div class="absolute left-[-363px] size-[1001px] top-[-559px] hidden lg:block">
 				<img alt="" class="block size-full" src="/images/ellipse-5.svg" />
 			</div>
-			<div class="absolute bottom-0 h-[6358.96px] left-[1009px] pointer-events-none top-[184px] hidden lg:block">
+			<div class="fixed bottom-0 h-auto left-[1009px] pointer-events-none top-[184px] hidden lg:block">
 				<div class="pointer-events-auto size-[766px] sticky top-0">
 					<img alt="" class="block size-full" src="/images/ellipse-2.svg" />
 				</div>
 			</div>
 
 			<!-- MV Section -->
-			<section class="flex flex-col gap-2 items-start pb-0 pt-[600px] px-0 relative">
-				<div class="absolute h-[1750px] left-[-1148px] top-[-625px] w-[2849px] hidden lg:block" />
-				<div class="h-[693px] overflow-clip relative w-full max-w-[1440px]">
-					<div class="absolute h-[693px] left-0 top-0 w-full">
-						<img alt="" class="block size-full" height="693" src="/images/vector-1.png" width="1440" />
+			<section class="flex flex-col gap-2 items-start pb-0 pt-[600px] px-0 relative w-full">
+				<div class="h-[75vh] overflow-clip relative w-full">
+					<div class="absolute h-[75vh] left-0 top-0 w-full overflow-hidden">
+						<img alt="" class="block size-full object-cover w-full" height="693" src="/images/FV.jpg" width="1440" style="clip-path: polygon(0 12%, 5% 10%, 10% 8%, 15% 6%, 20% 4%, 25% 2.5%, 30% 1.5%, 35% 0.8%, 40% 0.3%, 45% 0.1%, 50% 0, 55% 0.1%, 60% 0.3%, 65% 0.8%, 70% 1.5%, 75% 2.5%, 80% 4%, 85% 6%, 90% 8%, 95% 10%, 100% 12%, 100% 100%, 0 100%);" />
 					</div>
 					<div class="absolute left-[-401px] size-[801px] top-[293px] hidden lg:block">
 						<img alt="" class="block size-full" src="/images/ellipse-3.svg" />
 					</div>
 				</div>
-				<div class="absolute font-bold h-[255px] left-[120px] top-[250px] w-[928px] hidden lg:block">
+				<div class="absolute font-bold h-[255px] top-[250px] w-full px-5 lg:px-0 hidden lg:block mv-text-container">
+					<div class="max-w-[928px] relative">
 					<p class="absolute font-noto-sans font-bold leading-6 left-0 text-[32px] top-[207px] tracking-[9.6px]">
 						水は止める、変化は止めない。
 					</p>
 					<div class="absolute font-roboto leading-0 left-0 text-[0px] top-0 tracking-[5.76px]" style="font-variation-settings: 'wdth' 100">
 						<p class="font-roboto font-medium leading-none mb-0 text-[96px]">
 							<span style="font-variation-settings: 'wdth' 100">Stop </span>
-							<span class="bg-clip-text bg-gradient-to-r from-[#3625ef] from-[12.019%] to-[#35a1ff] to-[46.635%]" style="-webkit-text-fill-color: transparent; font-variation-settings: 'wdth' 100">
+							<span class="bg-clip-text bg-gradient-to-r from-[#3625ef] via-[#35a1ff] to-[#3625ef] animate-gradient-shimmer" style="-webkit-text-fill-color: transparent; font-variation-settings: 'wdth' 100; background-size: 200% 200%;">
 								water.
 							</span>
 						</p>
-						<p class="font-roboto font-medium leading-none text-[96px]">
-							<span style="font-variation-settings: 'wdth' 100">Never stop </span>
-							<span class="bg-clip-text bg-gradient-to-r from-[#fb6938] from-[68.269%] to-[#ffbf1c]" style="-webkit-text-fill-color: transparent; font-variation-settings: 'wdth' 100">
-								change.
-							</span>
-						</p>
+					<p class="font-roboto font-medium leading-none text-[96px] whitespace-nowrap">
+						<span style="font-variation-settings: 'wdth' 100">Never stop </span>
+						<span class="bg-clip-text bg-gradient-to-r from-[#fb6938] via-[#ffbf1c] to-[#fb6938] animate-gradient-shimmer" style="-webkit-text-fill-color: transparent; font-variation-settings: 'wdth' 100; background-size: 200% 200%;">
+							change.
+						</span>
+					</p>
+					</div>
 					</div>
 				</div>
 				<!-- Mobile MV Text -->
@@ -95,10 +96,10 @@ import '../styles/globals.css';
 						</div>
 					</div>
 					<div class="flex flex-col gap-[28.8px] items-start pb-0 pt-32 px-0 relative w-full lg:w-[534px] px-10 lg:px-0">
-						<div class="font-bold leading-6 relative text-[40px] tracking-[4px]">
-							<p class="mb-0">見えない水まで、</p>
-							<p class="text-main-orange">確かに止める。</p>
-						</div>
+					<div class="font-bold leading-[1.5] relative text-[40px] tracking-[4px]">
+						<p>見えない水まで、</p>
+						<p class="text-main-orange">確かに止める。</p>
+					</div>
 						<div class="flex flex-col justify-center leading-0 min-w-full relative tracking-[3.2px]">
 							<p class="leading-[2]">漏水は"始まり"です。</p>
 						</div>
@@ -117,28 +118,24 @@ import '../styles/globals.css';
 							<p>当社で一貫して対応します。</p>
 						</div>
 						<div class="flex flex-col gap-2 lg:flex-row lg:gap-8 items-start relative">
-							<a href="#business" class="flex gap-4 items-center">
+							<a href="#business" class="flex gap-4 items-center arrow-link-orange">
 								<div class="flex items-center justify-center px-0 py-3 rounded">
 									<div class="flex flex-col font-medium justify-center leading-0 relative">
 										<p class="leading-6">事業内容</p>
 									</div>
 								</div>
-								<div class="bg-main-orange flex items-center justify-center relative rounded-full size-8">
-									<div class="h-[10px] relative w-1.5">
-										<img alt="" class="block size-full" src="/images/arrow-right.svg" />
-									</div>
+								<div class="bg-main-orange flex items-center justify-center relative rounded-full size-8 arrow-button-orange">
+									<div class="arrow-icon-white"></div>
 								</div>
 							</a>
-							<a href="#reason" class="flex gap-4 items-center">
+							<a href="#reason" class="flex gap-4 items-center arrow-link-orange">
 								<div class="flex items-center justify-center px-0 py-3 rounded">
 									<div class="flex flex-col font-medium justify-center leading-0 relative">
 										<p class="leading-6">進晃が選ばれる理由</p>
 									</div>
 								</div>
-								<div class="bg-main-orange flex items-center justify-center relative rounded-full size-8">
-									<div class="h-[10px] relative w-1.5">
-										<img alt="" class="block size-full" src="/images/arrow-right.svg" />
-									</div>
+								<div class="bg-main-orange flex items-center justify-center relative rounded-full size-8 arrow-button-orange">
+									<div class="arrow-icon-white"></div>
 								</div>
 							</a>
 						</div>
@@ -152,7 +149,7 @@ import '../styles/globals.css';
 						</div>
 					</div>
 				</div>
-				<div class="flex items-start justify-between px-[120px] py-0 relative w-full flex-col lg:flex-row gap-10 lg:gap-0">
+				<div class="flex items-start justify-between py-0 relative w-full max-w-[1200px] mx-auto flex-col lg:flex-row gap-10 lg:gap-0">
 					<div class="flex flex-col items-start overflow-clip relative self-stretch w-full lg:w-[700.48px]">
 						<div class="h-[350.23px] max-w-[700.48px] relative w-full">
 							<img alt="" class="absolute inset-0 object-cover pointer-events-none size-full" src="/images/about03.avif" />
@@ -175,11 +172,11 @@ import '../styles/globals.css';
 			<!-- Our Tech Section -->
 			<section class="flex flex-col items-start relative w-full" id="tech">
 				<div class="bg-gradient-to-r from-[#fca385] from-[11.538%] to-[#ebca6b] flex flex-col items-start px-[120px] py-32 relative rounded-bl-[96px] rounded-br-[96px] w-full px-10 lg:px-[120px] py-14 lg:py-32 rounded-bl-[40px] lg:rounded-bl-[96px] rounded-br-[40px] lg:rounded-br-[96px]">
-					<div class="flex isolate items-start justify-between pb-16 pt-0 px-0 relative w-full flex-col lg:flex-row gap-8 lg:gap-0">
+					<div class="flex isolate items-start justify-between pb-16 pt-0 px-0 relative w-full max-w-[1200px] mx-auto flex-col lg:flex-row gap-8 lg:gap-0">
 						<div class="flex flex-col gap-6 items-start relative z-[2] w-full lg:w-auto">
 							<div class="flex flex-col items-start">
 								<div class="flex flex-col items-start">
-									<div class="flex gap-2.5 items-center w-full lg:w-[416px]">
+									<div class="flex gap-2.5 items-center w-full lg:w-[460px]">
 										<div class="relative size-2.5">
 											<img alt="" class="block size-full" src="/images/ellipse-1.svg" />
 										</div>
@@ -188,11 +185,11 @@ import '../styles/globals.css';
 										</div>
 									</div>
 								</div>
-								<div class="flex flex-col font-roboto font-normal justify-center leading-0 relative text-[96px] text-white w-full lg:w-[460px] text-[64px] lg:text-[96px]" style="font-variation-settings: 'wdth' 100">
+								<div class="flex flex-col font-roboto justify-center leading-0 relative text-[96px] text-white w-full lg:w-[460px] text-[64px] lg:text-[96px]" style="font-variation-settings: 'wdth' 100">
 									<p class="leading-[1.5]">OUR TECH</p>
 								</div>
 							</div>
-							<div class="flex flex-col font-normal justify-center leading-0 min-w-full relative text-white tracking-[1.6px]">
+							<div class="flex flex-col justify-center leading-0 min-w-full relative text-white tracking-[1.6px] lg:w-[460px]">
 								<p class="leading-6">我々の主力技術は、高圧注入による ピングラウト工法 と TAPグラウト工法。さらに、既存の技法では届かない箇所には、オリジナル技術を組み合わせて柔軟に対応。現場環境・水圧・材料性状を読み解き、最適解を設計・施工します。</p>
 							</div>
 						</div>
@@ -204,16 +201,16 @@ import '../styles/globals.css';
 									</div>
 								</div>
 							</div>
-							<div class="flex flex-col h-[446.72px] items-end justify-end overflow-clip pb-0 pt-16 px-0 relative shadow-[0px_25px_50px_0px_rgba(0,0,0,0.25)] w-full lg:w-[275px] h-[200px] lg:h-[446.72px]">
-								<div class="h-[352px] relative shadow-[0px_25px_50px_-12px_rgba(0,0,0,0.25)] w-full">
-									<img alt="" class="absolute inset-0 object-cover pointer-events-none size-full" src="/images/rectangle-6.png" />
+							<div class="flex flex-col h-[446.72px] items-end justify-end pb-0 pt-16 px-0 relative w-full lg:w-[275px] h-[200px] lg:h-[446.72px]">
+								<div class="h-[352px] relative w-full shadow-[0px_25px_50px_0px_rgba(0,0,0,0.25)]">
+									<img alt="" class="block object-cover pointer-events-none size-full" src="/images/rectangle-6.png" />
 								</div>
 							</div>
 						</div>
 					</div>
-					<div class="flex flex-col gap-4 items-start relative w-full">
+					<div class="flex flex-col gap-4 items-start relative w-full max-w-[1200px] mx-auto">
 						<div class="border-t border-[rgba(255,255,255,0.4)] flex flex-col items-start pb-0 pt-px px-0 relative w-full">
-							<a href="#pingrout" class="flex items-center justify-between px-0 py-6 relative w-full">
+							<a href="#pingrout" class="flex items-center justify-between px-0 py-6 relative w-full arrow-link">
 								<div class="basis-0 flex flex-col gap-1 grow items-start min-h-px min-w-px relative">
 									<div class="flex flex-col items-start opacity-80 relative w-full">
 										<div class="flex flex-col font-roboto font-normal justify-center leading-0 relative text-sm text-white w-full" style="font-variation-settings: 'wdth' 100">
@@ -226,15 +223,13 @@ import '../styles/globals.css';
 										</div>
 									</div>
 								</div>
-								<div class="bg-white flex items-center justify-center relative rounded-full size-[50px] size-[30px] lg:size-[50px]">
-									<div class="h-4 relative w-2.5">
-										<img alt="" class="block size-full" src="/images/arrow-right-white.svg" />
-									</div>
+								<div class="bg-white flex items-center justify-center relative rounded-full size-[50px] size-[30px] lg:size-[50px] arrow-button">
+									<div class="arrow-icon"></div>
 								</div>
 							</a>
 						</div>
 						<div class="border-t border-[rgba(255,255,255,0.4)] flex flex-col items-start pb-0 pt-px px-0 relative w-full">
-							<a href="#tapgrout" class="flex items-center justify-between px-0 py-6 relative w-full">
+							<a href="#tapgrout" class="flex items-center justify-between px-0 py-6 relative w-full arrow-link">
 								<div class="basis-0 flex flex-col gap-1 grow items-start min-h-px min-w-px relative">
 									<div class="flex flex-col items-start opacity-80 relative w-full">
 										<div class="flex flex-col font-roboto font-normal justify-center leading-0 relative text-sm text-white w-full" style="font-variation-settings: 'wdth' 100">
@@ -247,10 +242,8 @@ import '../styles/globals.css';
 										</div>
 									</div>
 								</div>
-								<div class="bg-white flex items-center justify-center relative rounded-full size-[50px] size-[30px] lg:size-[50px]">
-									<div class="h-4 relative w-2.5">
-										<img alt="" class="block size-full" src="/images/arrow-right-white.svg" />
-									</div>
+								<div class="bg-white flex items-center justify-center relative rounded-full size-[50px] size-[30px] lg:size-[50px] arrow-button">
+									<div class="arrow-icon"></div>
 								</div>
 							</a>
 						</div>
@@ -260,7 +253,7 @@ import '../styles/globals.css';
 
 			<!-- Projects Section -->
 			<section class="flex flex-col gap-[50px] items-center overflow-clip px-0 py-32 relative w-full" id="projects">
-				<div class="flex items-end justify-between max-w-[1920px] px-[120px] py-0 relative w-full flex-col lg:flex-row gap-10 lg:gap-0 px-10 lg:px-[120px]">
+				<div class="flex items-end justify-between max-w-[1200px] py-0 relative w-full mx-auto flex-col lg:flex-row gap-10 lg:gap-0">
 					<div class="flex flex-col gap-10 items-start relative w-full lg:w-auto">
 						<div class="flex flex-col gap-4 items-start">
 							<div class="flex gap-2.5 items-center w-full lg:w-[416px]">
@@ -271,8 +264,8 @@ import '../styles/globals.css';
 									<p class="leading-6">施工事例</p>
 								</div>
 							</div>
-							<div class="flex flex-col font-roboto font-normal justify-center leading-0 max-h-[75.01px] overflow-ellipsis overflow-hidden relative text-[96px] text-[64px] lg:text-[96px]" style="font-variation-settings: 'wdth' 100">
-								<p class="leading-[1.5] overflow-ellipsis overflow-hidden">PROJECTS</p>
+							<div class="flex flex-col font-roboto font-normal justify-center leading-0 relative text-[96px] text-[64px] lg:text-[96px]" style="font-variation-settings: 'wdth' 100">
+								<p class="leading-[1.5]">PROJECTS</p>
 							</div>
 						</div>
 						<div class="flex flex-col items-center relative w-full">
@@ -282,47 +275,54 @@ import '../styles/globals.css';
 							</div>
 						</div>
 					</div>
-					<a href="#projects-detail" class="flex gap-4 items-center">
+					<a href="#projects-detail" class="flex gap-4 items-center arrow-link-orange">
 						<div class="flex items-center justify-center px-0 py-3 rounded">
 							<div class="flex flex-col font-medium justify-center leading-0 relative">
 								<p class="leading-6">施工事例を見る</p>
 							</div>
 						</div>
-						<div class="bg-main-orange flex items-center justify-center relative rounded-full size-8">
-							<div class="h-[10px] relative w-1.5">
-								<img alt="" class="block size-full" src="/images/arrow-right.svg" />
-							</div>
+						<div class="bg-main-orange flex items-center justify-center relative rounded-full size-8 arrow-button-orange">
+							<div class="arrow-icon-white"></div>
 						</div>
 					</a>
 				</div>
-				<div class="flex gap-2 items-start justify-center relative w-full max-w-[1929px]">
-					<div class="flex flex-col items-start overflow-clip relative w-full lg:w-[776px]">
-						<div class="h-[381px] relative w-full">
-							<div class="absolute inset-0 overflow-hidden pointer-events-none">
-								<img alt="" class="absolute h-[114.86%] left-[-0.21%] max-w-none top-[-0.41%] w-[100.35%]" src="/images/rectangle-1.png" />
-							</div>
+				<div class="relative w-full overflow-hidden">
+					<div class="flex gap-2 items-center animate-slider">
+						<div class="flex-shrink-0 w-full lg:w-[776px] h-[381px] relative">
+							<img alt="" class="absolute inset-0 object-cover w-full h-full" src="/images/works-slider1.png" />
 						</div>
-						<div class="absolute left-[-122px] size-[361px] top-[200.05px] hidden lg:block">
-							<img alt="" class="block size-full" src="/images/ellipse-7.svg" />
+						<div class="flex-shrink-0 w-full lg:w-[776px] h-[381px] relative">
+							<img alt="" class="absolute inset-0 object-cover w-full h-full" src="/images/works-slider2.jpg" />
 						</div>
-					</div>
-					<div class="flex items-center overflow-clip relative w-full lg:w-[776px]">
-						<div class="h-[381px] relative w-full">
-							<img alt="" class="absolute inset-0 object-cover pointer-events-none size-full" src="/images/rectangle-2.png" />
+						<div class="flex-shrink-0 w-full lg:w-[776px] h-[381px] relative">
+							<img alt="" class="absolute inset-0 object-cover w-full h-full" src="/images/works-slider3.png" />
 						</div>
-						<div class="absolute left-[-181px] size-[361px] top-[200.05px] hidden lg:block">
-							<img alt="" class="block size-full" src="/images/ellipse-7.svg" />
+						<div class="flex-shrink-0 w-full lg:w-[776px] h-[381px] relative">
+							<img alt="" class="absolute inset-0 object-cover w-full h-full" src="/images/works-slider4.jpg" />
+						</div>
+						<!-- 無限ループ用の複製 -->
+						<div class="flex-shrink-0 w-full lg:w-[776px] h-[381px] relative">
+							<img alt="" class="absolute inset-0 object-cover w-full h-full" src="/images/works-slider1.png" />
+						</div>
+						<div class="flex-shrink-0 w-full lg:w-[776px] h-[381px] relative">
+							<img alt="" class="absolute inset-0 object-cover w-full h-full" src="/images/works-slider2.jpg" />
+						</div>
+						<div class="flex-shrink-0 w-full lg:w-[776px] h-[381px] relative">
+							<img alt="" class="absolute inset-0 object-cover w-full h-full" src="/images/works-slider3.png" />
+						</div>
+						<div class="flex-shrink-0 w-full lg:w-[776px] h-[381px] relative">
+							<img alt="" class="absolute inset-0 object-cover w-full h-full" src="/images/works-slider4.jpg" />
 						</div>
 					</div>
 				</div>
 			</section>
 
 			<!-- Recruitment Section -->
-			<section class="flex flex-col items-start pb-32 pt-[240px] px-0 relative w-full max-w-[1440px]" id="recruit">
-				<div class="flex flex-col items-start max-w-[1920px] relative w-full">
-					<div class="flex flex-col items-start pl-0 pr-[120px] py-0 relative w-full px-10 lg:px-[120px]">
+			<section class="flex flex-col items-start pb-32 pt-[240px] px-0 relative w-full" id="recruit">
+				<div class="flex flex-col items-start relative w-full">
+					<div class="flex flex-col items-start pl-0 pr-[7vw] py-0 relative w-full px-10">
 						<div class="bg-main-orange flex flex-col gap-[51px] items-start pl-[120px] pr-0 py-16 relative w-full px-10 lg:pl-[120px] lg:pr-0 py-14 lg:py-16 gap-6 lg:gap-[51px]">
-							<div class="absolute h-[703px] left-[560px] overflow-clip top-[-218.03px] w-[880px] hidden lg:block">
+							<div class="absolute h-[703px] overflow-clip top-[-218.03px] w-[880px] right-[-7vw] hidden lg:block">
 								<div class="absolute h-[703px] left-0 top-0 w-[880px]">
 									<div class="absolute inset-0 overflow-hidden pointer-events-none">
 										<img alt="" class="absolute h-[222.73%] left-0 max-w-none top-[-67.02%] w-full" src="/images/recruit_2025.jpg" />
@@ -332,15 +332,27 @@ import '../styles/globals.css';
 									<img alt="" class="block size-full" src="/images/ellipse-10.svg" />
 								</div>
 							</div>
-							<div class="flex flex-col font-bold justify-center leading-[2.4] relative text-white tracking-[3.2px]">
-								<p class="mb-0">"止める技術"を、次の現場へ。</p>
-								<p class="mb-0">技術と誇りを胸に、</p>
-								<p class="mb-0">未来の建築を守る。</p>
-								<p>共に挑もう、進晃で。</p>
-							</div>
-							<div class="flex flex-col font-bold justify-center leading-[1.3] relative text-[128px] text-white tracking-[12.8px] w-full lg:w-[1184px] text-[48px] lg:text-[128px]">
-								<p class="mb-0">成長を止めない</p>
-								<p>若者求む。</p>
+							<div class="max-w-[1200px] mx-auto">
+								<div class="flex flex-col font-bold justify-center leading-[2.4] relative text-white tracking-[3.2px]">
+									<p class="mb-0">"止める技術"を、次の現場へ。</p>
+									<p class="mb-0">技術と誇りを胸に、</p>
+									<p class="mb-0">未来の建築を守る。</p>
+									<p>共に挑もう、進晃で。</p>
+								</div>
+								<div class="mb-10 flex flex-col font-bold justify-center leading-[1.3] relative text-[128px] text-white tracking-[12.8px] w-full lg:w-[1184px] text-[48px] lg:text-[128px]">
+									<p class="mb-0">成長を止めない</p>
+									<p>若者求む。</p>
+								</div>
+								<a href="#recruit-detail" class="inline-flex gap-4 items-center arrow-link">
+									<div class="flex items-center justify-center px-0 py-3 rounded">
+										<div class="flex flex-col font-medium justify-center leading-0 relative text-white tracking-[0.32px]">
+											<p class="leading-[20.8px]">採用情報について</p>
+										</div>
+									</div>
+									<div class="bg-white flex items-center justify-center relative rounded-full size-8 arrow-button">
+										<div class="arrow-icon-orange"></div>
+									</div>
+								</a>
 							</div>
 							<div class="h-[256px] overflow-clip relative w-full lg:hidden">
 								<div class="absolute h-[256px] left-0 top-0 w-[320px]">
@@ -351,19 +363,17 @@ import '../styles/globals.css';
 								<div class="absolute left-[-141px] size-[281px] top-[115px]">
 									<img alt="" class="block size-full" src="/images/ellipse-12.svg" />
 								</div>
-							</div>
-							<a href="#recruit-detail" class="flex gap-4 items-center">
+								<a href="#recruit-detail" class="flex gap-4 items-center arrow-link">
 								<div class="flex items-center justify-center px-0 py-3 rounded">
 									<div class="flex flex-col font-medium justify-center leading-0 relative text-white tracking-[0.32px]">
 										<p class="leading-[20.8px]">採用情報について</p>
 									</div>
 								</div>
-								<div class="bg-white flex items-center justify-center relative rounded-full size-8">
-									<div class="h-[10px] relative w-1.5">
-										<img alt="" class="block size-full" src="/images/arrow-right-orange.svg" />
-									</div>
+								<div class="bg-white flex items-center justify-center relative rounded-full size-8 arrow-button">
+									<div class="arrow-icon-orange"></div>
 								</div>
 							</a>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -377,3 +387,162 @@ import '../styles/globals.css';
 		</main>
 	</body>
 </html>
+
+<style>
+	.arrow-link {
+		transition: all 0.3s ease;
+	}
+
+	.arrow-button {
+		transition: all 0.3s ease;
+	}
+
+	.arrow-icon {
+		transition: transform 0.3s ease;
+		position: relative;
+		display: inline-block;
+		width: 10px;
+		height: 16px;
+	}
+
+	.arrow-icon::before,
+	.arrow-icon::after {
+		content: "";
+		position: absolute;
+		top: calc(50% - 1.5px);
+		right: 0;
+		width: 10px;
+		height: 3px;
+		border-radius: 9999px;
+		background-color: var(--color-main-orange);
+		transform-origin: calc(100% - 1.5px) 50%;
+		transition: background-color 0.3s ease;
+	}
+
+	.arrow-icon::before {
+		transform: rotate(45deg);
+	}
+
+	.arrow-icon::after {
+		transform: rotate(-45deg);
+	}
+
+	.arrow-link:hover .arrow-button {
+		transform: scale(1.1);
+		box-shadow: 0px 4px 12px 0px rgba(0,0,0,0.2);
+		background-color: var(--color-main-orange);
+	}
+
+	.arrow-link:hover .arrow-icon::before,
+	.arrow-link:hover .arrow-icon::after {
+		background-color: white;
+	}
+
+	.arrow-icon-orange {
+		transition: transform 0.3s ease;
+		position: relative;
+		display: inline-block;
+		width: 6px;
+		height: 10px;
+	}
+
+	.arrow-icon-orange::before,
+	.arrow-icon-orange::after {
+		content: "";
+		position: absolute;
+		top: calc(50% - 1px);
+		right: 0;
+		width: 6px;
+		height: 2px;
+		border-radius: 9999px;
+		background-color: var(--color-main-orange);
+		transform-origin: calc(100% - 1px) 50%;
+		transition: all 0.3s ease;
+	}
+
+	.arrow-icon-orange::before {
+		transform: rotate(45deg);
+	}
+
+	.arrow-icon-orange::after {
+		transform: rotate(-45deg);
+	}
+
+	.mv-text-container {
+		left: 7vw;
+	}
+
+	.arrow-icon-white {
+		position: relative;
+		display: inline-block;
+		width: 6px;
+		height: 10px;
+		transition: transform 0.3s ease;
+	}
+
+	.arrow-icon-white::before,
+	.arrow-icon-white::after {
+		content: "";
+		position: absolute;
+		top: calc(50% - 1px);
+		right: 0;
+		width: 6px;
+		height: 2px;
+		border-radius: 9999px;
+		background-color: white;
+		transform-origin: calc(100% - 1px) 50%;
+	}
+
+	.arrow-icon-white::before {
+		transform: rotate(45deg);
+	}
+
+	.arrow-icon-white::after {
+		transform: rotate(-45deg);
+	}
+
+	.arrow-link-orange {
+		transition: all 0.3s ease;
+	}
+
+	.arrow-button-orange {
+		transition: all 0.3s ease;
+	}
+
+	.arrow-link-orange:hover .arrow-button-orange {
+		transform: scale(1.1);
+		box-shadow: 0px 4px 12px 0px rgba(0,0,0,0.2);
+		background-color: #fff;
+	}
+
+	.arrow-link-orange:hover .arrow-icon-white::before,
+	.arrow-link-orange:hover .arrow-icon-white::after {
+		background-color: var(--color-main-orange);
+	}
+
+	.arrow-link:hover .arrow-icon-orange::before,
+	.arrow-link:hover .arrow-icon-orange::after {
+		background-color: #fff;
+	}
+
+	@keyframes slider {
+		0% {
+			transform: translateX(0);
+		}
+		100% {
+			transform: translateX(calc(-50% - 0.5rem));
+		}
+	}
+
+	.animate-slider {
+		animation: slider 24s linear infinite;
+		display: flex;
+		width: calc(200% + 1rem);
+	}
+
+	@media (min-width: 1024px) {
+		.animate-slider {
+			width: calc(200% + 0.5rem);
+		}
+	}
+</style>

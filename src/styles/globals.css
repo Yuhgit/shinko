@@ -5,11 +5,40 @@
 @tailwind utilities;
 
 @layer base {
+  :root {
+    --color-main-orange: #ea5903;
+  }
+
   html {
     @apply font-noto-sans text-base;
   }
 
   body {
     @apply font-noto-sans text-base font-normal text-text-black leading-6;
+  }
+}
+
+@layer utilities {
+  @keyframes gradient-shimmer {
+    0% {
+      background-position: 0% 50%;
+    }
+    25% {
+      background-position: 50% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    75% {
+      background-position: 50% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  .animate-gradient-shimmer {
+    background-size: 300% 300%;
+    animation: gradient-shimmer 4s ease-in-out infinite;
   }
 }

@@ -2,32 +2,68 @@
 // Contact section component
 ---
 
-<section class="relative flex flex-col lg:flex-row items-start lg:items-center justify-between px-10 lg:px-32 py-14 lg:py-[104px] gap-6 lg:gap-0 w-full">
+<a href="#contact-form" class="relative flex flex-col lg:flex-row items-start lg:items-center justify-between lg:px-32 py-14 lg:py-[140px] gap-6 lg:gap-0 w-full contact-section block">
   <div aria-hidden="true" class="absolute inset-0 pointer-events-none">
     <img 
       alt="" 
-      class="absolute object-cover size-full" 
+      class="absolute object-cover size-full contact-bg-image" 
       src="/images/contact-bg.png" 
     />
-    <div class="absolute bg-[rgba(40,40,40,0.92)] inset-0" />
+    <div class="absolute bg-[rgba(40,40,40,0.92)] inset-0 contact-overlay" />
   </div>
-  <div class="flex flex-col gap-8 items-start relative text-white z-10 w-full lg:w-auto">
-    <div class="flex flex-col items-start">
-      <p class="font-roboto relative text-[64px] lg:text-[96px] leading-[64px] lg:leading-[96px]" style="font-variation-settings: 'wdth' 100">
-        CONTACT
-      </p>
-      <p class="font-bold lg:font-medium relative text-lg lg:text-2xl">
-        お問い合わせ
+  <div class="flex justify-between items-center relative text-white z-10 max-w-[1200px] mx-auto w-full">
+    <div class="flex flex-col gap-8 items-start relative text-white z-10 w-full lg:w-auto">
+      <div class="flex flex-col items-start">
+        <p class="font-roboto relative text-[64px] lg:text-[96px] leading-[64px] lg:leading-[96px]" style="font-variation-settings: 'wdth' 100">
+          CONTACT
+        </p>
+        <p class="font-bold lg:font-medium relative text-lg lg:text-2xl">
+          お問い合わせ
+        </p>
+      </div>
+      <p class="relative tracking-[1.6px]">
+        ご相談からお気軽にご連絡ください。
       </p>
     </div>
-    <p class="relative tracking-[1.6px]">
-      ご相談からお気軽にご連絡ください。
-    </p>
+    <div class="bg-white flex items-center justify-center opacity-80 relative rounded-full size-20 lg:size-[136px] z-10 contact-button self-center lg:self-auto">
+      <svg class="w-10 h-10 lg:w-16 lg:h-16 text-main-orange" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/>
+      </svg>
+    </div>
   </div>
-  <a href="#contact-form" class="bg-white flex items-center justify-center opacity-80 relative rounded-full size-20 lg:size-[136px] z-10 hover:opacity-100 transition-opacity self-center lg:self-auto">
-    <svg class="w-10 h-10 lg:w-16 lg:h-16 text-main-orange" fill="currentColor" viewBox="0 0 24 24">
-      <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/>
-    </svg>
-  </a>
-</section>
+</a>
+
+<style>
+  .contact-section {
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+
+  .contact-bg-image {
+    transition: filter 0.3s ease;
+    filter: grayscale(100%) brightness(0.5);
+  }
+
+  .contact-overlay {
+    transition: background-color 0.3s ease;
+  }
+
+  .contact-section:hover .contact-bg-image {
+    filter: grayscale(0%) brightness(1);
+  }
+
+  .contact-section:hover .contact-overlay {
+    background-color: rgba(40, 40, 40, 0.7);
+  }
+
+  .contact-button {
+    transition: all 0.3s ease;
+  }
+
+  .contact-section:hover .contact-button {
+    transform: scale(1.15);
+    opacity: 1;
+    box-shadow: 0px 8px 24px 0px rgba(0,0,0,0.3);
+  }
+</style>
 
