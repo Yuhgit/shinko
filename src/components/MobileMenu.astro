@@ -1,0 +1,187 @@
+---
+import { Image } from 'astro:assets';
+import { navLinks, navButtons } from '../config/navigation';
+---
+
+<!-- Mobile Menu Overlay -->
+<div id="mobile-menu" class="fixed inset-0 bg-white z-40 transform translate-x-full transition-transform duration-300 ease-in-out h-screen lg:hidden">
+  <div class="bg-white flex flex-col h-full w-full shadow-[0px_2px_8px_0px_rgba(0,0,0,0.08)]">
+    <!-- Menu Header -->
+    <div class="flex h-16 items-center justify-between px-10 py-0 relative w-full shrink-0">
+      <div class="flex items-start relative">
+        <a href="/" class="h-[29px] relative w-[120px] block">
+          <Image 
+            src="/images/site-title.png"
+            alt="サイトタイトル" 
+            class="absolute inset-0 object-contain pointer-events-none size-full" 
+            width={120}
+            height={29}
+          />
+        </a>
+      </div>
+      <button id="menu-close" class="flex items-center justify-center size-6" aria-label="メニューを閉じる">
+        <svg class="size-6" viewBox="0 0 24 24" fill="none">
+          <path d="M18 6L6 18M6 6L18 18" stroke="#1B1B1B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+    </div>
+    
+    <!-- Menu Content -->
+    <div class="flex flex-col items-center flex-1 relative w-full overflow-y-auto">
+      <div class="bg-white flex flex-col items-center justify-center relative w-full">
+        <div class="flex flex-col gap-4 items-start px-10 py-20 relative w-full">
+          <!-- Menu Links -->
+          <div class="flex flex-col items-center overflow-clip relative w-full">
+            {navLinks.map((link) => (
+              <a 
+                href={link.href} 
+                class="flex items-center justify-center px-0 py-4 relative w-full mobile-menu-link"
+              >
+                <span class="font-normal leading-[1.5] text-[#1b1b1b] text-base text-center tracking-[1.6px]">
+                  {link.label}
+                </span>
+              </a>
+            ))}
+          </div>
+          
+          <!-- Buttons -->
+          <div class="flex flex-col gap-6 items-center justify-center relative w-full">
+            {navButtons.map((button) => (
+              <a 
+                href={button.href} 
+                class={`flex items-center justify-center px-5 py-2 relative rounded-[50px] w-full ${
+                  button.variant === 'primary' 
+                    ? 'mobile-menu-button-primary' 
+                    : 'mobile-menu-button'
+                }`}
+              >
+                <span class={`font-medium leading-[1.5] text-base whitespace-nowrap ${
+                  button.variant === 'primary' ? 'text-white' : 'text-[#1b1b1b]'
+                }`}>
+                  {button.label}
+                </span>
+              </a>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Menu management script
+  (function initMobileMenu() {
+    const menuToggle = document.getElementById('menu-toggle');
+    const menuClose = document.getElementById('menu-close');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const menuIcon = document.getElementById('menu-icon');
+    const closeIcon = document.getElementById('close-icon');
+    const body = document.body;
+
+    if (!menuToggle || !menuClose || !mobileMenu || !menuIcon || !closeIcon) {
+      return;
+    }
+
+    function openMenu() {
+      if (window.innerWidth >= 1024) return; // PC時は何もしない
+      mobileMenu.classList.remove('translate-x-full');
+      menuIcon.classList.add('opacity-0');
+      closeIcon.classList.remove('opacity-0');
+      menuToggle.setAttribute('aria-expanded', 'true');
+      body.style.overflow = 'hidden';
+    }
+
+    function closeMenu() {
+      mobileMenu.classList.add('translate-x-full');
+      menuIcon.classList.remove('opacity-0');
+      closeIcon.classList.add('opacity-0');
+      menuToggle.setAttribute('aria-expanded', 'false');
+      body.style.overflow = '';
+    }
+
+    // 初期状態を確実に閉じた状態にする
+    if (window.innerWidth < 1024) {
+      closeMenu();
+    }
+
+    menuToggle.addEventListener('click', () => {
+      const isOpen = menuToggle.getAttribute('aria-expanded') === 'true';
+      if (isOpen) {
+        closeMenu();
+      } else {
+        openMenu();
+      }
+    });
+
+    menuClose.addEventListener('click', closeMenu);
+
+    // Close menu when clicking on a link
+    const menuLinks = document.querySelectorAll('.mobile-menu-link, .mobile-menu-button, .mobile-menu-button-primary');
+    menuLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        setTimeout(closeMenu, 100);
+      });
+    });
+
+    // Close menu on escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && menuToggle.getAttribute('aria-expanded') === 'true') {
+        closeMenu();
+      }
+    });
+  })();
+</script>
+
+<style>
+  #mobile-menu {
+    height: 100vh;
+    height: 100dvh; /* Dynamic viewport height for mobile browsers */
+  }
+
+  @media (min-width: 1024px) {
+    #mobile-menu {
+      display: none !important; /* PC時は完全に非表示 */
+    }
+  }
+
+  .mobile-menu-link {
+    transition: color 0.2s ease;
+  }
+
+  .mobile-menu-link:hover {
+    color: var(--color-main-orange);
+  }
+
+  .mobile-menu-button {
+    border: 1px solid var(--color-main-orange);
+    transition: all 0.3s ease;
+  }
+
+  .mobile-menu-button:hover {
+    box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.3);
+    background-color: var(--color-main-orange);
+    border-color: var(--color-main-orange);
+  }
+
+  .mobile-menu-button:hover span {
+    color: #fff;
+  }
+
+  .mobile-menu-button-primary {
+    background-color: var(--color-main-orange);
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
+  }
+
+  .mobile-menu-button-primary:hover {
+    box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.3);
+    background-color: #fff;
+    border-color: var(--color-main-orange);
+  }
+
+  .mobile-menu-button-primary:hover span {
+    color: var(--color-main-orange);
+  }
+</style>
+

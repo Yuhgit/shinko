@@ -1,4 +1,7 @@
 ---
+import { Image } from 'astro:assets';
+import MobileMenu from './MobileMenu.astro';
+
 // Mobile Header component
 interface Props {
   class?: string;
@@ -6,20 +9,74 @@ interface Props {
 const { class: className = '' } = Astro.props;
 ---
 
-<header class={`fixed top-0 left-0 right-0 bg-white flex h-16 items-center justify-between px-10 py-0 shadow-[0px_2px_8px_0px_rgba(0,0,0,0.08)] z-50 ${className}`}>
-  <div class="flex items-start">
-    <div class="h-[29px] relative w-[120px]">
-      <img 
+<header class={`mobile-header ${className}`}>
+  <div class="mobile-header-logo">
+    <a href="/" class="h-[34px] relative w-[140px] block">
+      <Image 
+        src="/images/site-logo.png"
         alt="サイトタイトル" 
         class="absolute inset-0 object-contain pointer-events-none size-full" 
-        src="/images/site-title-sp.png" 
+        width={140}
+        height={34}
       />
-    </div>
+    </a>
   </div>
-  <button class="flex items-center justify-center size-6" aria-label="メニューを開く">
-    <svg class="size-6" viewBox="0 0 24 24" fill="none">
+  <button id="menu-toggle" class="mobile-header-toggle" aria-label="メニューを開く" aria-expanded="false">
+    <svg id="menu-icon" class="mobile-header-icon" viewBox="0 0 24 24" fill="none">
       <path d="M3 12H21M3 6H21M3 18H21" stroke="#1B1B1B" stroke-width="2" stroke-linecap="round"/>
+    </svg>
+    <svg id="close-icon" class="mobile-header-icon mobile-header-icon-close" viewBox="0 0 24 24" fill="none">
+      <path d="M18 6L6 18M6 6L18 18" stroke="#1B1B1B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
     </svg>
   </button>
 </header>
+
+<MobileMenu />
+
+<style>
+  .mobile-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: white;
+    display: flex;
+    height: 4rem;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2.5rem;
+    box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.08);
+    z-index: 50;
+    @media (min-width: 1024px) {
+        display: none;
+    }
+  }
+
+  .mobile-header-logo {
+    display: flex;
+    align-items: flex-start;
+    position: relative;
+    right: 0.5rem;
+  }
+
+  .mobile-header-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.5rem;
+    height: 1.5rem;
+    position: relative;
+  }
+
+  .mobile-header-icon {
+    width: 1.5rem;
+    height: 1.5rem;
+    transition: opacity 0.3s ease;
+  }
+
+  .mobile-header-icon-close {
+    position: absolute;
+    opacity: 0;
+  }
+</style>
 

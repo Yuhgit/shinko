@@ -1,57 +1,208 @@
 ---
-// Footer component
+import { Image } from 'astro:assets';
+import { footerNavLinks } from '../config/navigation';
 ---
 
-<footer class="flex flex-col gap-6 items-center justify-center py-16 w-full max-w-[1200px] mx-auto">
-  <div class="flex items-center justify-between w-full">
-    <div class="flex flex-col gap-4 items-start w-[457.5px]">
-      <div class="h-[34px] relative w-[195px]">
-        <img 
+<footer class="footer">
+  <div class="footer-main">
+    <div class="footer-info">
+      <div class="footer-logo">
+        <Image 
+          src="/images/site-title.png"
           alt="サイトタイトル" 
           class="absolute inset-0 object-cover pointer-events-none size-full" 
-          src="/images/site-title.png" 
+          width={195}
+          height={34}
         />
       </div>
-      <div class="tracking-[1.6px]">
+      <div class="footer-address">
         <p class="mb-0">〒210-0012</p>
         <p>神奈川県川崎市川崎区宮前町1-7</p>
       </div>
     </div>
-    <div class="flex gap-20 items-start">
-      <div class="flex flex-col gap-2 items-start justify-center text-sm">
-        <p class="relative">会社概要</p>
-        <p class="relative">ピングラウト工法</p>
-        <p class="relative">ＴＡＰグラウト工法</p>
-        <p class="relative">施工事例</p>
+    <nav class="footer-nav" aria-label="フッターナビゲーション">
+      <div class="footer-nav-column">
+        {footerNavLinks.left.map((link) => (
+          <a href={link.href} class="footer-nav-link">
+            {link.label}
+          </a>
+        ))}
       </div>
-      <div class="flex flex-col gap-2 items-start justify-center text-sm">
-        <p class="relative">採用情報</p>
-        <p class="relative">お問い合わせ</p>
-        <p class="relative">プライバシーポリシー</p>
+      <div class="footer-nav-column">
+        {footerNavLinks.right.map((link) => (
+          <a href={link.href} class="footer-nav-link">
+            {link.label}
+          </a>
+        ))}
       </div>
-    </div>
+    </nav>
   </div>
-  <div class="border-t border-[#aeaeae] flex items-center justify-between pb-0 pt-6 px-0 w-full">
-    <div class="flex gap-4 items-center w-[457.5px]">
-      <div class="relative size-[18px]">
-        <a href="">
-          <img alt="" class="block size-full" src="/images/group.svg" />
+  <div class="footer-bottom">
+    <div class="footer-social">
+      <div class="footer-social-icon">
+        <a href="#" aria-label="SNSアカウント" class="footer-social-link">
+          <img alt="SNSアカウント" class="block size-full" src="/images/group.svg" />
         </a>
       </div>
-      <div class="relative size-6">
-        <a href="">
-          <img alt="" class="block size-full" src="/images/tiktok.svg" />
+      <div class="footer-social-icon">
+        <a href="#" aria-label="TikTokアカウント" class="footer-social-link">
+          <img alt="TikTokアカウント" class="block size-full" src="/images/tiktok.svg" />
         </a>
       </div>
-      <div class="relative size-6">
-        <a href="">
-          <img alt="" class="block size-full" src="/images/youtube.svg" />
+      <div class="footer-social-icon">
+        <a href="#" aria-label="YouTubeチャンネル" class="footer-social-link">
+          <img alt="YouTubeチャンネル" class="block size-full" src="/images/youtube.svg" />
         </a>
       </div>
     </div>
-    <p class="font-light text-xs">
-      © 2026 Shinko.inc. All rights reserved.
+    <p class="footer-copyright">
+      © 2026 Shinko.inc.
     </p>
   </div>
 </footer>
+
+<style>
+  .footer {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: center;
+    justify-content: center;
+    padding: 3.5rem 2.5rem;
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  @media (min-width: 1024px) {
+    .footer {
+      gap: 1.5rem;
+      padding: 3.5rem 5rem;
+    }
+  }
+
+  .footer-main {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: flex-start;
+    width: 100%;
+        max-width: 1200px;
+  }
+
+  @media (min-width: 1024px) {
+    .footer-main {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+    }
+  }
+
+  .footer-info {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: flex-start;
+    width: 100%;
+  }
+
+  @media (min-width: 1024px) {
+    .footer-info {
+      width: 457.5px;
+    }
+  }
+
+  .footer-logo {
+    height: 34px;
+    position: relative;
+    width: 195px;
+  }
+
+  .footer-address {
+    font-size: 1rem;
+    line-height: 1.5;
+    letter-spacing: 1.6px;
+  }
+
+  .footer-nav {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  @media (min-width: 1024px) {
+    .footer-nav {
+      gap: 5rem;
+      width: auto;
+    }
+  }
+
+  .footer-nav-column {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: flex-start;
+    justify-content: center;
+    font-size: 0.875rem;
+    line-height: 1.5;
+  }
+
+  .footer-nav-link {
+    position: relative;
+    transition: color 0.3s ease;
+  }
+
+  .footer-nav-link:hover {
+    color: var(--color-main-orange);
+  }
+
+  .footer-bottom {
+    border-top: 1px solid #aeaeae;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 1.5rem;
+    width: 100%;
+        max-width: 1200px;
+  }
+
+  .footer-social {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+  }
+
+  @media (min-width: 1024px) {
+    .footer-social {
+      width: 457.5px;
+    }
+  }
+
+  .footer-social-icon {
+    position: relative;
+    width: 1.125rem;
+    height: 1.125rem;
+  }
+
+  @media (min-width: 1024px) {
+    .footer-social-icon {
+      width: 1.5rem;
+      height: 1.5rem;
+    }
+  }
+
+  .footer-social-link {
+    transition: opacity 0.3s ease;
+  }
+
+  .footer-social-link:hover {
+    opacity: 0.7;
+  }
+
+  .footer-copyright {
+    font-weight: 300;
+    font-size: 0.75rem;
+    line-height: 1.5;
+  }
+</style>
 

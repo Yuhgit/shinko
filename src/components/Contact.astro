@@ -1,32 +1,35 @@
 ---
+import { Image } from 'astro:assets';
 // Contact section component
 ---
 
-<a href="#contact-form" class="relative flex flex-col lg:flex-row items-start lg:items-center justify-between lg:px-32 py-14 lg:py-[140px] gap-6 lg:gap-0 w-full contact-section block">
-  <div aria-hidden="true" class="absolute inset-0 pointer-events-none">
-    <img 
-      alt="" 
-      class="absolute object-cover size-full contact-bg-image" 
-      src="/images/contact-bg.png" 
+<a href="#contact-form" class="contact-section">
+  <div aria-hidden="true" class="contact-background">
+    <Image 
+      src="/images/contact-bg.png"
+      alt="お問い合わせセクションの背景画像" 
+      class="contact-bg-image" 
+      width={1920}
+      height={600}
     />
-    <div class="absolute bg-[rgba(40,40,40,0.92)] inset-0 contact-overlay" />
+    <div class="contact-overlay" />
   </div>
-  <div class="flex justify-between items-center relative text-white z-10 max-w-[1200px] mx-auto w-full">
-    <div class="flex flex-col gap-8 items-start relative text-white z-10 w-full lg:w-auto">
-      <div class="flex flex-col items-start">
-        <p class="font-roboto relative text-[64px] lg:text-[96px] leading-[64px] lg:leading-[96px]" style="font-variation-settings: 'wdth' 100">
+  <div class="contact-content">
+    <div class="contact-text">
+      <div class="contact-heading">
+        <p class="contact-title" style="font-variation-settings: 'wdth' 100">
           CONTACT
         </p>
-        <p class="font-bold lg:font-medium relative text-lg lg:text-2xl">
+        <p class="contact-subtitle">
           お問い合わせ
         </p>
       </div>
-      <p class="relative tracking-[1.6px]">
+      <p class="contact-description">
         ご相談からお気軽にご連絡ください。
       </p>
     </div>
-    <div class="bg-white flex items-center justify-center opacity-80 relative rounded-full size-20 lg:size-[136px] z-10 contact-button self-center lg:self-auto">
-      <svg class="w-10 h-10 lg:w-16 lg:h-16 text-main-orange" fill="currentColor" viewBox="0 0 24 24">
+    <div class="contact-button">
+      <svg class="contact-button-icon" fill="currentColor" viewBox="0 0 24 24">
         <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/>
       </svg>
     </div>
@@ -35,16 +38,46 @@
 
 <style>
   .contact-section {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 3.5rem 2.5rem;
+    gap: 1.5rem;
+    width: 100%;
     transition: all 0.3s ease;
     cursor: pointer;
   }
 
+  @media (min-width: 1024px) {
+    .contact-section {
+      flex-direction: row;
+      align-items: center;
+      padding: 8.75rem 5rem;
+      gap: 0;
+    }
+  }
+
+  .contact-background {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+
   .contact-bg-image {
+    position: absolute;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
     transition: filter 0.3s ease;
     filter: grayscale(100%) brightness(0.5);
   }
 
   .contact-overlay {
+    position: absolute;
+    background-color: rgba(40, 40, 40, 0.92);
+    inset: 0;
     transition: background-color 0.3s ease;
   }
 
@@ -56,14 +89,128 @@
     background-color: rgba(40, 40, 40, 0.7);
   }
 
+  .contact-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    color: white;
+    z-index: 10;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  @media (min-width: 1024px) {
+    .contact-content {
+      flex-direction: row;
+      padding: 0;
+    }
+  }
+
+  .contact-text {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: flex-start;
+    position: relative;
+    color: white;
+    z-index: 10;
+    width: 100%;
+  }
+
+  @media (min-width: 1024px) {
+    .contact-text {
+      width: auto;
+    }
+  }
+
+  .contact-heading {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .contact-title {
+    font-family: 'Roboto', sans-serif;
+    position: relative;
+    font-size: 3.5rem;
+    line-height: 4rem;
+  }
+
+  @media (min-width: 1024px) {
+    .contact-title {
+      font-size: 6rem;
+      line-height: 6rem;
+    }
+  }
+
+  .contact-subtitle {
+    font-weight: 700;
+    position: relative;
+    font-size: 1.125rem;
+  }
+
+  @media (min-width: 1024px) {
+    .contact-subtitle {
+      font-weight: 500;
+      font-size: 1.5rem;
+    }
+  }
+
+  .contact-description {
+    position: relative;
+    letter-spacing: 1.6px;
+    margin-bottom: 2.5rem;
+  }
+
+  @media (min-width: 1024px) {
+    .contact-description {
+      margin-bottom: 0;
+    }
+  }
+
   .contact-button {
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.8;
+    position: relative;
+    border-radius: 9999px;
+    width: 5rem;
+    height: 5rem;
+    z-index: 10;
+    align-self: flex-start;
     transition: all 0.3s ease;
+  }
+
+  @media (min-width: 1024px) {
+    .contact-button {
+      width: 8.5rem;
+      height: 8.5rem;
+      align-self: center;
+    }
+  }
+
+  .contact-button-icon {
+    width: 2.5rem;
+    height: 2.5rem;
+    color: var(--color-main-orange);
+  }
+
+  @media (min-width: 1024px) {
+    .contact-button-icon {
+      width: 4rem;
+      height: 4rem;
+    }
   }
 
   .contact-section:hover .contact-button {
     transform: scale(1.15);
     opacity: 1;
-    box-shadow: 0px 8px 24px 0px rgba(0,0,0,0.3);
+    box-shadow: 0px 8px 24px 0px rgba(0, 0, 0, 0.3);
   }
 </style>
 
