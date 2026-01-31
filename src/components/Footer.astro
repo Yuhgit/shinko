@@ -6,7 +6,7 @@ import { footerNavLinks } from '../config/navigation';
 <footer class="footer">
   <div class="footer-main">
     <div class="footer-info">
-      <div class="footer-logo">
+      <a href="/" class="footer-logo">
         <Image 
           src="/images/site-title.png"
           alt="サイトタイトル" 
@@ -14,7 +14,7 @@ import { footerNavLinks } from '../config/navigation';
           width={195}
           height={34}
         />
-      </div>
+      </a>
       <div class="footer-address">
         <p class="mb-0">〒210-0012</p>
         <p>神奈川県川崎市川崎区宮前町1-7</p>
@@ -73,7 +73,7 @@ import { footerNavLinks } from '../config/navigation';
     margin: 0 auto;
   }
 
-  @media (min-width: 1024px) {
+  @media (min-width: 768px) {
     .footer {
       gap: 1.5rem;
       padding: 3.5rem 5rem;
@@ -86,10 +86,10 @@ import { footerNavLinks } from '../config/navigation';
     gap: 2rem;
     align-items: flex-start;
     width: 100%;
-        max-width: 1200px;
+    max-width: 1200px;
   }
 
-  @media (min-width: 1024px) {
+  @media (min-width: 768px) {
     .footer-main {
       flex-direction: row;
       align-items: center;
@@ -105,9 +105,9 @@ import { footerNavLinks } from '../config/navigation';
     width: 100%;
   }
 
-  @media (min-width: 1024px) {
+  @media (min-width: 768px) {
     .footer-info {
-      width: 457.5px;
+      width: 260px;
     }
   }
 
@@ -130,9 +130,9 @@ import { footerNavLinks } from '../config/navigation';
     width: 100%;
   }
 
-  @media (min-width: 1024px) {
+  @media (min-width: 768px) {
     .footer-nav {
-      gap: 5rem;
+      gap: 3rem;
       width: auto;
     }
   }
@@ -163,7 +163,7 @@ import { footerNavLinks } from '../config/navigation';
     justify-content: space-between;
     padding-top: 1.5rem;
     width: 100%;
-        max-width: 1200px;
+    max-width: 1200px;
   }
 
   .footer-social {
@@ -172,7 +172,7 @@ import { footerNavLinks } from '../config/navigation';
     align-items: center;
   }
 
-  @media (min-width: 1024px) {
+  @media (min-width: 768px) {
     .footer-social {
       width: 457.5px;
     }
@@ -184,7 +184,7 @@ import { footerNavLinks } from '../config/navigation';
     height: 1.125rem;
   }
 
-  @media (min-width: 1024px) {
+  @media (min-width: 768px) {
     .footer-social-icon {
       width: 1.5rem;
       height: 1.5rem;

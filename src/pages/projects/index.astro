@@ -1,0 +1,422 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Contact from '../../components/Contact.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import { Image } from 'astro:assets';
+
+interface Project {
+	image: string;
+	location: string;
+	method: string;
+	/** 詳細ページがある場合の URL スラッグ。指定時は /projects/{detailSlug} にリンク（projectDetails と一致させる） */
+	detailSlug?: string;
+	/** detailSlug 未使用時のリンク先（従来用）。詳細ページは detailSlug で統一推奨 */
+	href?: string;
+}
+
+interface ProjectsData {
+	[key: string]: Project[];
+}
+
+// プロジェクトデータ
+const projectsData: ProjectsData = {
+	'止水工事': [
+		{ image: '/images/projects/shisui/shisui1a.png', location: '○○水再生センター', method: 'ピングラウト工法', detailSlug: 'shisui-1' },
+		{ image: '/images/projects/shisui/shisui2a.png', location: '都内某マンション新築計画', method: 'ピングラウト工法', detailSlug: 'shisui-2' },
+		{ image: '/images/projects/shisui/shisui3b.png', location: '○○水再生センター', method: 'ピングラウト工法', detailSlug: 'shisui-3'},
+		{ image: '/images/projects/shisui/shisui4a.jpeg', location: '○○水再生センター', method: 'ピングラウト工法', detailSlug: 'shisui-4'},
+		{ image: '/images/projects/shisui/shisui5a.jpeg', location: '都内某マンション新築計画', method: '弊社オリジナル', detailSlug: 'shisui-5' },
+		{ image: '/images/projects/shisui/shisui6a.jpeg', location: '都内某マンション新築計画', method: 'ＴＡＰグラウト工法', detailSlug: 'shisui-6' },
+		{ image: '/images/projects/shisui/shisui7a.jpeg', location: '都内某マンション新築計画', method: 'ＴＡＰグラウト工法', detailSlug: 'shisui-7' },
+		{ image: '/images/projects/shisui/shisui8a.jpeg', location: '都内某介護施設新築計画', method: '弊社オリジナル', detailSlug: 'shisui-8' },
+		{ image: '/images/projects/shisui/shisui9a.jpeg', location: '都内某マンション新築計画', method: 'ピングラウト工法', detailSlug: 'shisui-9' },
+		{ image: '/images/projects/shisui/shisui10a.jpeg', location: '○○水再生センター', method: 'ピングラウト工法', detailSlug: 'shisui-10' },
+		{ image: '/images/projects/shisui/shisui11a.jpeg', location: '都内某マンション新築計画', method: 'ＴＡＰグラウト工法', detailSlug: 'shisui-11' },
+		{ image: '/images/projects/shisui/shisui12a.jpeg', location: '都内某マンション新築計画', method: 'ＴＡＰグラウト工法', detailSlug: 'shisui-12' },
+		{ image: '/images/projects/shisui/shisui13a.jpeg', location: '某工場新築工事', method: 'ＴＡＰグラウト工法', detailSlug: 'shisui-13' },
+		{ image: '/images/projects/shisui/shisui14a.jpeg', location: '○○ポンプ場', method: 'ピングラウト工法', detailSlug: 'shisui-14' },
+		{ image: '/images/projects/shisui/shisui15a.jpeg', location: '○○ポンプ場', method: 'ピングラウト工法', detailSlug: 'shisui-15' },
+		{ image: '/images/projects/shisui/shisui16a.jpeg', location: '○○浄水場', method: 'ピングラウト工法', detailSlug: 'shisui-16' },
+		{ image: '/images/projects/shisui/shisui17a.jpeg', location: '○○浄水場', method: 'ピングラウト工法', detailSlug: 'shisui-17' },
+		{ image: '/images/projects/shisui/shisui18a.jpeg', location: '○○浄水場', method: 'ピングラウト工法', detailSlug: 'shisui-18' },
+		{ image: '/images/projects/shisui/shisui19a.jpeg', location: '都内某オフィスビル新築工事', method: 'ＴＡＰグラウト工法', detailSlug: 'shisui-19' },
+		{ image: '/images/projects/shisui/shisui20a.jpeg', location: '○○浄水場', method: '導水処理', detailSlug: 'shisui-20' },
+	],
+	'防水工事': [
+		{ image: '/images/projects/bosui/bosui1.jpg', location: 'シート防水工事', method: '' },
+		{ image: '/images/projects/bosui/bosui2.jpg', location: 'シート防水工事', method: '' },
+		{ image: '/images/projects/bosui/bosui3.jpg', location: 'シーリング工事', method: '' },
+		{ image: '/images/projects/bosui/bosui4.jpg', location: 'シーリング工事', method: '' },
+		{ image: '/images/projects/bosui/bosui5.jpg', location: '塗膜防水工事', method: '' },
+		{ image: '/images/projects/bosui/bosui6.jpg', location: '塗膜防水工事', method: '' },
+		{ image: '/images/projects/bosui/bosui7.jpg', location: '塗膜防水工事', method: '' },
+		{ image: '/images/projects/bosui/bosui8.jpg', location: '塗膜防水工事', method: '' },
+		{ image: '/images/projects/bosui/bosui9.jpg', location: '塗膜防水工事', method: '' },
+		{ image: '/images/projects/bosui/bosui10.jpg', location: '塗膜防水工事', method: '' },
+		{ image: '/images/projects/bosui/bosui11.jpg', location: '塗膜防水工事', method: '' },
+	],
+	'各種注入工事': [
+		{ image: '/images/projects/chunyu/chunyu1.jpg', location: 'エポキシ樹脂系', method: '' },
+		{ image: '/images/projects/chunyu/chunyu2.jpg', location: 'エポキシ樹脂系', method: '' },
+		{ image: '/images/projects/chunyu/chunyu3.jpg', location: 'エポキシ樹脂系', method: '' },
+		{ image: '/images/projects/chunyu/chunyu4.jpg', location: '無収縮モルタル系', method: '' },
+		{ image: '/images/projects/chunyu/chunyu5.jpg', location: '無収縮モルタル系', method: '' },
+		{ image: '/images/projects/chunyu/chunyu6.jpg', location: '無収縮モルタル系', method: '' },
+		{ image: '/images/projects/chunyu/chunyu7.jpg', location: '発泡ウレタン系', method: '' },
+		{ image: '/images/projects/chunyu/chunyu8.jpg', location: '発泡ウレタン系', method: '' },
+		{ image: '/images/projects/chunyu/chunyu9.jpg', location: '発泡ウレタン系', method: '' },
+		{ image: '/images/projects/chunyu/chunyu10.jpg', location: '発泡ウレタン系', method: '' },
+	],
+	'ビル・マンション修繕工事': [
+		{ image: '/images/projects/shuzen/shuzen1.JPG', location: '屋上防水修繕工事', method: '' },
+		{ image: '/images/projects/shuzen/shuzen2.JPG', location: '外壁修繕工事', method: '' },
+		{ image: '/images/projects/shuzen/shuzen3.JPG', location: '外壁修繕工事', method: '' },
+		{ image: '/images/projects/shuzen/shuzen4.JPG', location: '外壁修繕工事', method: '' },
+		{ image: '/images/projects/shuzen/shuzen5.JPG', location: '外壁修繕工事', method: '' },
+		{ image: '/images/projects/shuzen/shuzen6.JPG', location: '外壁修繕工事', method: '' },
+	],
+	'公共工事': [
+				{ image: '/images/projects/kokyo/kokyo1a.jpg', location: '学校プール防水改修工事', method: '', detailSlug: 'public-1' },
+				{ image: '/images/projects/kokyo/kokyo2a.JPG', location: '住宅住戸工事', method: '', detailSlug: 'public-2' },
+				{ image: '/images/projects/kokyo/kokyo3a.JPG', location: '歩道橋補修工事', method: '', detailSlug: 'public-3' },
+				{ image: '/images/projects/kokyo/kokyo4a.JPG', location: '配水所屋上防水改修工事', method: '', detailSlug: 'public-4' },
+	],
+};
+
+const tabs = ['止水工事', '防水工事', '各種注入工事', 'ビル・マンション修繕工事', '公共工事'];
+const defaultTab = '止水工事';
+---
+
+<Layout title="施工事例 | 進晃" description="進晃の施工事例ページ。止水工事・防水工事・各種注入工事・ビル・マンション修繕工事・公共工事の実績をご紹介します。">
+	<main class="overflow-x-hidden">
+		<!-- Page Header -->
+		<PageHeader
+			titleEn="PROJECTS"
+			titleJa="施工事例"
+			breadcrumbCurrent="施工事例"
+			backgroundSrc="/images/service-header.jpg"
+			backgroundAlt="施工事例ページヘッダー背景"
+		/>
+
+		<!-- Works Section (Figma: 10 designs = 5 desktop tabs + 5 mobile) -->
+		<section class="bg-[#f8f9fa] flex flex-col gap-[24px] items-center px-[16px] sm:px-[24px] md:px-[40px] lg:px-[120px] py-[40px] sm:py-[56px] lg:py-[80px] relative w-full">
+			<!-- Tabs -->
+			<div class="flex flex-wrap gap-[8px] items-center justify-center relative shrink-0 w-full">
+				{tabs.map((tab) => (
+					<button
+						class={`project-tab ${tab === defaultTab ? 'project-tab-active' : ''}`}
+						data-tab={tab}
+						type="button"
+					>
+						{tab}
+					</button>
+				))}
+			</div>
+
+			<!-- Projects Grid -->
+			<div class="projects-grid flex justify-center bg-white p-[20px] sm:p-[40px] lg:p-[80px] relative rounded-[8px] w-full max-w-[1200px] mx-auto">
+				{projectsData[defaultTab].map((project) => {
+					const projectHref = project.detailSlug ? `/projects/${project.detailSlug}` : project.href;
+					const cardClass = `bg-white flex flex-col items-start relative rounded-[8px] shadow-[0px_8px_40px_0px_rgba(234,89,3,0.1)] shrink-0 w-full max-w-[280px] project-card ${projectHref ? 'project-card-link' : ''}`;
+					return projectHref ? (
+						<a href={projectHref} class={cardClass}>
+							<div class="h-[200px] relative rounded-tl-[8px] rounded-tr-[8px] shrink-0 w-full aspect-[280/200] overflow-hidden">
+								<img
+									src={project.image}
+									alt={`${project.location}の施工事例`}
+									class="absolute inset-0 object-cover pointer-events-none rounded-tl-[8px] rounded-tr-[8px] size-full"
+									width="280"
+									height="200"
+									loading="lazy"
+								/>
+							</div>
+							<div class="flex flex-col items-start p-[24px] relative shrink-0 w-full">
+								<div class="flex flex-col gap-[8px] items-start relative shrink-0 w-full">
+									{project.location && project.method && (
+										<div class="flex gap-[8px] items-center relative shrink-0 w-full">
+											<div class="relative shrink-0 size-[16px]">
+												<Image src="/images/projects/map-pin.png" alt="Location Icon" class="block max-w-none size-full" width={16} height={16} loading="lazy" />
+											</div>
+											<p class="flex-1 font-noto-sans font-medium leading-[1.5] relative text-[#1b1b1b] text-[16px]">{project.location}</p>
+										</div>
+									)}
+									{project.method && (
+										<div class="flex gap-[8px] items-center relative shrink-0 w-full">
+											<div class="relative shrink-0 size-[16px]">
+												<Image src="/images/projects/settings.png" alt="technology Icon" class="block max-w-none size-full" width={16} height={16} loading="lazy" />
+											</div>
+											<p class="flex-1 font-noto-sans font-medium leading-[1.5] relative text-[#1b1b1b] text-[16px]">{project.method}</p>
+										</div>
+									)}
+									{!project.method && project.location && (
+										<div class="flex gap-[8px] items-center relative shrink-0 w-full">
+											<p class="flex-1 font-noto-sans font-medium leading-[1.5] relative text-[#1b1b1b] text-[16px]">{project.location}</p>
+										</div>
+									)}
+								</div>
+							</div>
+						</a>
+					) : (
+						<div class={cardClass}>
+							<div class="h-[200px] relative rounded-tl-[8px] rounded-tr-[8px] shrink-0 w-full aspect-[280/200] overflow-hidden">
+								<img
+									src={project.image}
+									alt={`${project.location}の施工事例`}
+									class="absolute inset-0 object-cover pointer-events-none rounded-tl-[8px] rounded-tr-[8px] size-full"
+									width="280"
+									height="200"
+									loading="lazy"
+								/>
+							</div>
+							<div class="flex flex-col items-start p-[24px] relative shrink-0 w-full">
+								<div class="flex flex-col gap-[8px] items-start relative shrink-0 w-full">
+									{project.location && project.method && (
+										<div class="flex gap-[8px] items-center relative shrink-0 w-full">
+											<div class="relative shrink-0 size-[16px]">
+												<Image src="/images/projects/map-pin.png" alt="Location Icon" class="block max-w-none size-full" width={16} height={16} loading="lazy" />
+											</div>
+											<p class="flex-1 font-noto-sans font-medium leading-[1.5] relative text-[#1b1b1b] text-[16px]">{project.location}</p>
+										</div>
+									)}
+									{project.method && (
+										<div class="flex gap-[8px] items-center relative shrink-0 w-full">
+											<div class="relative shrink-0 size-[16px]">
+												<Image src="/images/projects/settings.png" alt="technology Icon" class="block max-w-none size-full" width={16} height={16} loading="lazy" />
+											</div>
+											<p class="flex-1 font-noto-sans font-medium leading-[1.5] relative text-[#1b1b1b] text-[16px]">{project.method}</p>
+										</div>
+									)}
+									{!project.method && project.location && (
+										<div class="flex gap-[8px] items-center relative shrink-0 w-full">
+											<p class="flex-1 font-noto-sans font-medium leading-[1.5] relative text-[#1b1b1b] text-[16px]">{project.location}</p>
+										</div>
+									)}
+								</div>
+							</div>
+						</div>
+					);
+				})}
+			</div>
+		</section>
+
+		<!-- Contact Section -->
+		<Contact />
+	</main>
+</Layout>
+
+<script>
+	// タブ機能の実装
+	// @ts-nocheck
+	(function initProjectTabs() {
+		// サーバー側 projectsData と同一（止水工事・公共工事は href 付きでリンク化）
+		const projectData = {
+			'止水工事': [
+				{ image: '/images/projects/shisui/shisui1a.png', location: '○○水再生センター', method: 'ピングラウト工法', detailSlug: 'shisui-1' },
+				{ image: '/images/projects/shisui/shisui2a.png', location: '都内某マンション新築計画', method: 'ピングラウト工法', detailSlug: 'shisui-2' },
+				{ image: '/images/projects/shisui/shisui3b.png', location: '○○水再生センター', method: 'ピングラウト工法', detailSlug: 'shisui-3'},
+				{ image: '/images/projects/shisui/shisui4a.jpeg', location: '○○水再生センター', method: 'ピングラウト工法', detailSlug: 'shisui-4'},
+				{ image: '/images/projects/shisui/shisui5a.jpeg', location: '都内某マンション新築計画', method: '弊社オリジナル', detailSlug: 'shisui-5' },
+				{ image: '/images/projects/shisui/shisui6a.jpeg', location: '都内某マンション新築計画', method: 'ＴＡＰグラウト工法', detailSlug: 'shisui-6' },
+				{ image: '/images/projects/shisui/shisui7a.jpeg', location: '都内某マンション新築計画', method: 'ＴＡＰグラウト工法', detailSlug: 'shisui-7' },
+				{ image: '/images/projects/shisui/shisui8a.jpeg', location: '都内某介護施設新築計画', method: '弊社オリジナル', detailSlug: 'shisui-8' },
+				{ image: '/images/projects/shisui/shisui9a.jpeg', location: '都内某マンション新築計画', method: 'ピングラウト工法', detailSlug: 'shisui-9' },
+				{ image: '/images/projects/shisui/shisui10a.jpeg', location: '○○水再生センター', method: 'ピングラウト工法', detailSlug: 'shisui-10' },
+				{ image: '/images/projects/shisui/shisui11a.jpeg', location: '都内某マンション新築計画', method: 'ＴＡＰグラウト工法', detailSlug: 'shisui-11' },
+				{ image: '/images/projects/shisui/shisui12a.jpeg', location: '都内某マンション新築計画', method: 'ＴＡＰグラウト工法', detailSlug: 'shisui-12' },
+				{ image: '/images/projects/shisui/shisui13a.jpeg', location: '某工場新築工事', method: 'ＴＡＰグラウト工法', detailSlug: 'shisui-13' },
+				{ image: '/images/projects/shisui/shisui14a.jpeg', location: '○○ポンプ場', method: 'ピングラウト工法', detailSlug: 'shisui-14' },
+				{ image: '/images/projects/shisui/shisui15a.jpeg', location: '○○ポンプ場', method: 'ピングラウト工法', detailSlug: 'shisui-15' },
+				{ image: '/images/projects/shisui/shisui16a.jpeg', location: '○○浄水場', method: 'ピングラウト工法', detailSlug: 'shisui-16' },
+				{ image: '/images/projects/shisui/shisui17a.jpeg', location: '○○浄水場', method: 'ピングラウト工法', detailSlug: 'shisui-17' },
+				{ image: '/images/projects/shisui/shisui18a.jpeg', location: '○○浄水場', method: 'ピングラウト工法', detailSlug: 'shisui-18' },
+				{ image: '/images/projects/shisui/shisui19a.jpeg', location: '都内某オフィスビル新築工事', method: 'ＴＡＰグラウト工法', detailSlug: 'shisui-19' },
+				{ image: '/images/projects/shisui/shisui20a.jpeg', location: '○○浄水場', method: '導水処理', detailSlug: 'shisui-20' },
+			],
+			'防水工事': [
+				{ image: '/images/projects/bosui/bosui1.jpg', location: 'シート防水工事', method: '' },
+				{ image: '/images/projects/bosui/bosui2.jpg', location: 'シート防水工事', method: '' },
+				{ image: '/images/projects/bosui/bosui3.jpg', location: 'シーリング工事', method: '' },
+				{ image: '/images/projects/bosui/bosui4.jpg', location: 'シーリング工事', method: '' },
+				{ image: '/images/projects/bosui/bosui5.jpg', location: '塗膜防水工事', method: '' },
+				{ image: '/images/projects/bosui/bosui6.jpg', location: '塗膜防水工事', method: '' },
+				{ image: '/images/projects/bosui/bosui7.jpg', location: '塗膜防水工事', method: '' },
+				{ image: '/images/projects/bosui/bosui8.jpg', location: '塗膜防水工事', method: '' },
+				{ image: '/images/projects/bosui/bosui9.jpg', location: '塗膜防水工事', method: '' },
+				{ image: '/images/projects/bosui/bosui10.jpg', location: '塗膜防水工事', method: '' },
+				{ image: '/images/projects/bosui/bosui11.jpg', location: '塗膜防水工事', method: '' },
+			],
+			'各種注入工事': [
+				{ image: '/images/projects/chunyu/chunyu1.jpg', location: 'エポキシ樹脂系', method: '' },
+				{ image: '/images/projects/chunyu/chunyu2.jpg', location: 'エポキシ樹脂系', method: '' },
+				{ image: '/images/projects/chunyu/chunyu3.jpg', location: 'エポキシ樹脂系', method: '' },
+				{ image: '/images/projects/chunyu/chunyu4.jpg', location: '無収縮モルタル系', method: '' },
+				{ image: '/images/projects/chunyu/chunyu5.jpg', location: '無収縮モルタル系', method: '' },
+				{ image: '/images/projects/chunyu/chunyu6.jpg', location: '無収縮モルタル系', method: '' },
+				{ image: '/images/projects/chunyu/chunyu7.jpg', location: '発泡ウレタン系', method: '' },
+				{ image: '/images/projects/chunyu/chunyu8.jpg', location: '発泡ウレタン系', method: '' },
+				{ image: '/images/projects/chunyu/chunyu9.jpg', location: '発泡ウレタン系', method: '' },
+				{ image: '/images/projects/chunyu/chunyu10.jpg', location: '発泡ウレタン系', method: '' },
+			],
+			'ビル・マンション修繕工事': [
+				{ image: '/images/projects/shuzen/shuzen1.JPG', location: '屋上防水修繕工事', method: '' },
+				{ image: '/images/projects/shuzen/shuzen2.JPG', location: '外壁修繕工事', method: '' },
+				{ image: '/images/projects/shuzen/shuzen3.JPG', location: '外壁修繕工事', method: '' },
+				{ image: '/images/projects/shuzen/shuzen4.JPG', location: '外壁修繕工事', method: '' },
+				{ image: '/images/projects/shuzen/shuzen5.JPG', location: '外壁修繕工事', method: '' },
+				{ image: '/images/projects/shuzen/shuzen6.JPG', location: '外壁修繕工事', method: '' },
+			],
+			'公共工事': [
+				{ image: '/images/projects/kokyo/kokyo1a.jpg', location: '学校プール防水改修工事', method: '', detailSlug: 'public-1' },
+				{ image: '/images/projects/kokyo/kokyo2a.JPG', location: '住宅住戸工事', method: '', detailSlug: 'public-2' },
+				{ image: '/images/projects/kokyo/kokyo3a.JPG', location: '歩道橋補修工事', method: '', detailSlug: 'public-3' },
+				{ image: '/images/projects/kokyo/kokyo4a.JPG', location: '配水所屋上防水改修工事', method: '', detailSlug: 'public-4' },
+			],
+		};
+
+		const tabs = document.querySelectorAll('.project-tab');
+		const projectsGrid = document.querySelector('.projects-grid');
+		
+		if (!tabs.length || !projectsGrid) return;
+
+		function renderProjects(tabName) {
+			const projects = projectData[tabName] || [];
+			projectsGrid.innerHTML = projects.map((project) => {
+				const locationHtml = project.location && project.method ? `
+					<div class="flex gap-[8px] items-center relative shrink-0 w-full">
+						<div class="relative shrink-0 size-[16px]">
+							<img src="/images/projects/map-pin.png" alt="" class="block max-w-none size-full" width="16" height="16" loading="lazy" />
+						</div>
+						<p class="flex-1 font-noto-sans font-medium leading-[1.5] relative text-[#1b1b1b] text-[16px]">${project.location}</p>
+					</div>
+				` : '';
+				const methodHtml = project.method ? `
+					<div class="flex gap-[8px] items-center relative shrink-0 w-full">
+						<div class="relative shrink-0 size-[16px]">
+							<img src="/images/projects/settings.png" alt="" class="block max-w-none size-full" width="16" height="16" loading="lazy" />
+						</div>
+						<p class="flex-1 font-noto-sans font-medium leading-[1.5] relative text-[#1b1b1b] text-[16px]">${project.method}</p>
+					</div>
+				` : '';
+				const singleLocationHtml = !project.method && project.location ? `
+					<div class="flex gap-[8px] items-center relative shrink-0 w-full">
+						<p class="flex-1 font-noto-sans font-medium leading-[1.5] relative text-[#1b1b1b] text-[16px]">${project.location}</p>
+					</div>
+				` : '';
+				const projectHref = project.detailSlug ? '/projects/' + project.detailSlug : project.href;
+				const cardClass = 'bg-white flex flex-col items-start relative rounded-[8px] shadow-[0px_8px_40px_0px_rgba(234,89,3,0.1)] shrink-0 w-full max-w-[280px] project-card' + (projectHref ? ' project-card-link' : '');
+				const inner = `
+					<div class="h-[200px] relative rounded-tl-[8px] rounded-tr-[8px] shrink-0 w-full aspect-[280/200] overflow-hidden">
+						<img src="${project.image}" alt="${project.location}の施工事例" class="absolute inset-0 object-cover pointer-events-none rounded-tl-[8px] rounded-tr-[8px] size-full" width="280" height="200" loading="lazy" />
+					</div>
+					<div class="flex flex-col items-start p-[24px] relative shrink-0 w-full">
+						<div class="flex flex-col gap-[8px] items-start relative shrink-0 w-full">
+							${locationHtml}${methodHtml}${singleLocationHtml}
+						</div>
+					</div>
+				`;
+				if (projectHref) {
+					return `<a href="${projectHref}" class="${cardClass}">${inner}</a>`;
+				}
+				return `<div class="${cardClass}">${inner}</div>`;
+			}).join('');
+		}
+
+		function setActiveTab(activeTab) {
+			tabs.forEach(tab => {
+				const tabName = tab.getAttribute('data-tab');
+				if (tabName === activeTab) {
+					tab.classList.add('project-tab-active');
+				} else {
+					tab.classList.remove('project-tab-active');
+				}
+			});
+		}
+
+		tabs.forEach(tab => {
+			tab.addEventListener('click', () => {
+				const tabName = tab.getAttribute('data-tab');
+				setActiveTab(tabName);
+				renderProjects(tabName);
+				window.location.hash = tabName;
+			});
+		});
+
+		// URL ハッシュ（#止水工事 など）で開いた場合は該当タブを表示
+		const tabNames = ['止水工事', '防水工事', '各種注入工事', 'ビル・マンション修繕工事', '公共工事'];
+		const hash = window.location.hash ? decodeURIComponent(window.location.hash.slice(1)) : '';
+		if (hash && tabNames.includes(hash)) {
+			setActiveTab(hash);
+			renderProjects(hash);
+		}
+	})();
+</script>
+
+<style>
+	.project-tab {
+		background-color: white;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding: 12px 16px;
+		border-radius: 8px;
+		box-shadow: 0px 1px 3px 0px rgba(234, 89, 3, 0.12);
+		border: none;
+		cursor: pointer;
+		transition: all 0.3s ease;
+		font-family: 'Noto Sans JP', sans-serif;
+		font-weight: 500;
+		font-size: 14px;
+		line-height: 1.5;
+		color: #6b7280;
+		text-align: center;
+		@media (min-width: 640px){
+			padding: 16px 24px;
+			font-size: 16px;
+		}
+	}
+
+	.project-tab:hover {
+		background-color: #ffebe0;
+		color: #ea5903;
+	}
+
+	.project-tab-active {
+		background-color: #ffebe0;
+		font-weight: 700;
+		color: #ea5903;
+	}
+
+	/* カード共通（:global でタブ切替後の動的挿入カードにも適用） */
+	:global(.project-card) {
+		transition: transform 0.3s ease, box-shadow 0.3s ease;
+		text-decoration: none;
+		color: inherit;
+	}
+
+	/* 止水工事・公共工事のカードのみホバーエフェクト */
+	:global(.project-card-link:hover) {
+		transform: translateY(-4px);
+		box-shadow: 0px 12px 48px 0px rgba(234, 89, 3, 0.12);
+	}
+
+	/* Figma 10 designs: desktop 3col / mobile 1col */
+	.projects-grid {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 24px;
+		justify-items: center;
+	}
+	@media (min-width: 640px) {
+		.projects-grid {
+			grid-template-columns: repeat(2, minmax(0, 280px));
+			gap: 32px;
+		}
+	}
+	@media (min-width: 1024px) {
+		.projects-grid {
+			grid-template-columns: repeat(3, minmax(0, 280px));
+			gap: 40px;
+		}
+	}
+</style>
+

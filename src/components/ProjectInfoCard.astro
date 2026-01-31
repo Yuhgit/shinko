@@ -1,0 +1,103 @@
+---
+/**
+ * プロジェクト詳細ページ用の情報カード。
+ * 「プロジェクト概要」「技術仕様」など、タイトル＋キー・バリュー行を表示。
+ */
+interface InfoItem {
+  label: string;
+  value: string;
+}
+
+interface Props {
+  title: string;
+  items: InfoItem[];
+}
+
+const { title, items } = Astro.props;
+---
+
+<div class="project-info-card">
+  <h3 class="project-info-card__title">{title}</h3>
+  <dl class="project-info-card__list">
+    {items.map((item) => (
+      <div class="project-info-card__row">
+        <dt class="project-info-card__label">{item.label}</dt>
+        <dd class="project-info-card__value">{item.value}</dd>
+      </div>
+    ))}
+  </dl>
+</div>
+
+<style>
+  .project-info-card {
+    background: white;
+    border: 0.5px solid #dadada;
+    border-radius: 8px;
+    overflow: hidden;
+    width: 100%;
+  }
+
+  .project-info-card__title {
+    font-family: 'Noto Sans JP', sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 1.5;
+    color: #1b1b1b;
+    padding: 24px 24px 16px;
+    border-bottom: 0.8px solid #e5e7eb;
+    margin: 0;
+  }
+
+  .project-info-card__list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .project-info-card__row {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 20px 24px;
+    border-bottom: 0.8px solid #e5e7eb;
+  }
+
+  .project-info-card__row:last-child {
+    border-bottom: none;
+  }
+
+  @media (min-width: 1024px) {
+    .project-info-card__row {
+      flex-direction: row;
+      align-items: center;
+    }
+  }
+
+  .project-info-card__label {
+    font-family: 'Noto Sans JP', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 1.5;
+    color: var(--color-main-orange);
+    margin: 0;
+    flex-shrink: 0;
+    width: 100%;
+  }
+
+  @media (min-width: 1024px) {
+    .project-info-card__label {
+      width: 120px;
+    }
+  }
+
+  .project-info-card__value {
+    font-family: 'Noto Sans JP', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #1b1b1b;
+    letter-spacing: 0.05em;
+    margin: 0;
+    white-space: pre-line;
+  }
+</style>

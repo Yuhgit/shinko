@@ -1,0 +1,153 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import ContactCta from '../components/Contact.astro';
+---
+
+<Layout title="お問い合わせ | 進晃" description="株式会社進晃へのお問い合わせはこちら。電話・フォームからご連絡いただけます。">
+	<main class="overflow-x-hidden">
+		<!-- Page Header -->
+		<PageHeader
+			titleEn="CONTACT"
+			titleJa="お問い合わせ"
+			breadcrumbCurrent="お問い合わせ"
+			backgroundSrc="/images/about-header.jpg"
+			backgroundAlt="お問い合わせページヘッダー背景"
+		/>
+
+		<!-- Contact Content: 電話案内 + フォーム -->
+		<section id="contact-form" class="bg-gray-50 px-4 sm:px-[120px] py-12 lg:py-16 relative w-full">
+			<div class="max-w-[1200px] mx-auto">
+				<div class="flex flex-col lg:flex-row gap-10 lg:gap-16 items-start">
+					<!-- 左: 電話での問い合わせ -->
+					<div class="w-full lg:w-[380px] shrink-0 flex flex-col gap-6">
+						<h2 class="font-noto-sans font-bold text-main-orange text-[18px] lg:text-[20px] tracking-[0.02em]">
+							電話での問い合わせはこちら
+						</h2>
+						<a
+							href="tel:044-276-7057"
+							class="contact-tel-button inline-flex items-center justify-center gap-3 w-full py-4 px-6 rounded-lg bg-main-orange text-white font-noto-sans font-bold text-[20px] lg:text-[24px] tracking-[0.02em] hover:opacity-90 transition-opacity"
+						>
+							<svg class="w-6 h-6 shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+								<path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+							</svg>
+							<span>044-276-7057</span>
+						</a>
+						<dl class="font-noto-sans text-[16px] leading-[1.8] text-[#1b1b1b] tracking-[0.02em] space-y-2">
+							<div class="flex gap-2">
+								<dt class="font-bold text-[#1b1b1b] shrink-0 w-[5em]">受付時間</dt>
+								<dd>8:00-18:00</dd>
+							</div>
+							<div class="flex gap-2">
+								<dt class="font-bold text-[#1b1b1b] shrink-0 w-[5em]">定休日</dt>
+								<dd>土曜日・日曜日・祝日</dd>
+							</div>
+							<div class="flex gap-2">
+								<dt class="font-bold text-[#1b1b1b] shrink-0 w-[5em]">担当</dt>
+								<dd>伊藤、小野</dd>
+							</div>
+						</dl>
+					</div>
+
+					<!-- 右: お問い合わせフォーム（縦並び時は横幅いっぱい） -->
+					<div class="w-full lg:flex-1 min-w-0">
+						<div class="bg-white rounded-lg border border-gray-200 shadow-sm p-6 lg:p-10 w-full">
+							<form
+								class="contact-form flex flex-col gap-6"
+								action="https://ssgform.com/s/LrUNfhiAKXxK"
+								method="post"
+								aria-label="お問い合わせフォーム"
+							>
+								<div class="flex flex-col gap-2">
+									<label for="company" class="font-noto-sans font-medium text-[16px] text-[#1b1b1b]">
+										会社名
+									</label>
+									<input
+										id="company"
+										name="company"
+										type="text"
+										autocomplete="organization"
+										class="contact-input w-full px-4 py-3 border border-gray-300 rounded-lg font-noto-sans text-[16px] text-[#1b1b1b] placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-main-orange focus:border-main-orange"
+										placeholder="株式会社〇〇"
+									/>
+								</div>
+								<div class="flex flex-col gap-2">
+									<label for="name" class="font-noto-sans font-medium text-[16px] text-[#1b1b1b]">
+										お名前 <span class="text-main-orange">*</span>
+									</label>
+									<input
+										id="name"
+										name="name"
+										type="text"
+										autocomplete="name"
+										required
+										class="contact-input w-full px-4 py-3 border border-gray-300 rounded-lg font-noto-sans text-[16px] text-[#1b1b1b] placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-main-orange focus:border-main-orange"
+										placeholder="進晃 太郎"
+									/>
+								</div>
+								<div class="flex flex-col gap-2">
+									<label for="email" class="font-noto-sans font-medium text-[16px] text-[#1b1b1b]">
+										メールアドレス <span class="text-main-orange">*</span>
+									</label>
+									<input
+										id="email"
+										name="email"
+										type="email"
+										autocomplete="email"
+										required
+										class="contact-input w-full px-4 py-3 border border-gray-300 rounded-lg font-noto-sans text-[16px] text-[#1b1b1b] placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-main-orange focus:border-main-orange"
+										placeholder="sample@example.com"
+									/>
+								</div>
+								<div class="flex flex-col gap-2">
+									<label for="message" class="font-noto-sans font-medium text-[16px] text-[#1b1b1b]">
+										お問い合わせ内容 <span class="text-main-orange">*</span>
+									</label>
+									<textarea
+										id="message"
+										name="message"
+										rows={6}
+										required
+										class="contact-input w-full px-4 py-3 border border-gray-300 rounded-lg font-noto-sans text-[16px] text-[#1b1b1b] placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-main-orange focus:border-main-orange resize-y min-h-[160px]"
+										placeholder="お問い合わせ内容をご記入ください"
+									></textarea>
+								</div>
+								<div class="flex items-start gap-3">
+									<input
+										id="privacy"
+										name="privacy"
+										type="checkbox"
+										required
+										class="mt-1 w-4 h-4 rounded border-gray-300 text-main-orange focus:ring-main-orange"
+										aria-describedby="privacy-desc"
+									/>
+									<label id="privacy-desc" for="privacy" class="font-noto-sans text-[14px] lg:text-[16px] text-[#1b1b1b] leading-[1.6]">
+										<a href="/privacy" class="text-main-orange underline hover:no-underline">プライバシーポリシー</a>に同意する
+									</label>
+								</div>
+								<div class="pt-2">
+									<button
+										type="submit"
+										class="w-full lg:w-auto min-w-[200px] py-4 px-8 rounded-lg bg-main-orange text-white font-noto-sans font-bold text-[16px] tracking-[0.02em] hover:opacity-90 transition-opacity focus:outline-none focus:ring-2 focus:ring-main-orange focus:ring-offset-2"
+									>
+										送信する
+									</button>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Contact CTA Section -->
+		<ContactCta />
+	</main>
+</Layout>
+
+<style>
+	.contact-tel-button:focus {
+		outline: 2px solid var(--color-main-orange);
+		outline-offset: 2px;
+	}
+</style>

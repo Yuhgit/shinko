@@ -1,0 +1,91 @@
+---
+import { Image } from 'astro:assets';
+
+interface SliderImage {
+  src: string;
+  alt: string;
+  width?: number;
+  height?: number;
+}
+
+interface Props {
+  images: SliderImage[];
+  decorationSrc?: string;
+}
+
+const { images, decorationSrc = '/images/ellipse-7.svg' } = Astro.props;
+---
+
+<div class="relative w-full overflow-hidden">
+  <div class="flex gap-2 items-center animate-slider">
+    <!-- 元の画像セット -->
+    {images.map((image) => (
+      <div class="flex-shrink-0 w-[300px] h-[200px] lg:w-[776px] lg:h-[450px] relative overflow-clip">
+        <Image
+          src={image.src}
+          alt={image.alt}
+          class="absolute inset-0 object-cover w-full h-full"
+          width={image.width || 776}
+          height={image.height || 381}
+        />
+        <div class="absolute left-[-30%] size-[500px] top-[50%]">
+          <img
+            alt="装飾用の円形グラフィック"
+            class="block size-full"
+            src={decorationSrc}
+            loading="lazy"
+            width="500"
+            height="500"
+          />
+        </div>
+      </div>
+    ))}
+    <!-- 無限ループ用の複製 -->
+    {images.map((image) => (
+      <div class="flex-shrink-0 w-[300px] h-[200px] lg:w-[776px] lg:h-[450px] relative overflow-clip">
+        <Image
+          src={image.src}
+          alt={image.alt}
+          class="absolute inset-0 object-cover w-full h-full"
+          width={image.width || 776}
+          height={image.height || 381}
+        />
+        <div class="absolute left-[-30%] size-[500px] top-[50%]">
+          <img
+            alt="装飾用の円形グラフィック"
+            class="block size-full"
+            src={decorationSrc}
+            loading="lazy"
+            width="500"
+            height="500"
+          />
+        </div>
+      </div>
+    ))}
+  </div>
+</div>
+
+<style>
+  @keyframes slider {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(calc(-50% - 0.5rem));
+    }
+  }
+
+  .animate-slider {
+    animation: slider 8s linear infinite;
+    display: flex;
+    width: calc(200% + 1rem);
+  }
+
+  @media (min-width: 768px) {
+    .animate-slider {
+      animation: slider 24s linear infinite;
+      width: calc(200% + 0.5rem);
+    }
+  }
+</style>
+

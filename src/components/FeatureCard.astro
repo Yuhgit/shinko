@@ -1,0 +1,69 @@
+---
+import { Image } from 'astro:assets';
+
+interface Props {
+	featureNumber: string;
+	titleLine1: string;
+	titleLine2: string;
+	descriptionLine1: string;
+	descriptionLine2: string;
+	imageSrc: string;
+	imageAlt: string;
+	imageWidth: number;
+	imageHeight: number;
+}
+
+const { 
+	featureNumber, 
+	titleLine1, 
+	titleLine2, 
+	descriptionLine1, 
+	descriptionLine2, 
+	imageSrc, 
+	imageAlt, 
+	imageWidth, 
+	imageHeight 
+} = Astro.props;
+---
+
+<!-- モバイル: 画像上・テキスト下の白カード（Figma 320-7145）。PC(lg〜): 黒バー・テキスト・画像の横並びは変更なし -->
+<div class="bg-white flex flex-col lg:flex-row gap-0 lg:gap-[32px] items-stretch relative rounded-[8px] shadow-[0px_0px_100px_0px_rgba(255,179,85,0.6)] w-full overflow-hidden">
+	<!-- 黒バー: PCのみ表示 -->
+	<div class="hidden lg:block bg-black rounded-bl-[8px] rounded-tl-[8px] rounded-br-0 rounded-tr-0 w-[8px] h-auto shrink-0" aria-hidden="true" />
+	<!-- テキストブロック: モバイルでは2番目（画像の下）、PCでは中央 -->
+	<div class="flex flex-col gap-[8px] lg:gap-[16px] items-start px-5 lg:px-[40px] py-6 lg:py-[80px] relative shrink-0 w-full lg:flex-1 order-2 lg:order-2 rounded-b-[8px] lg:rounded-none">
+		<p class="font-roboto font-bold leading-[22.4px] text-[#fca385] text-[20px] w-full" style="font-variation-settings: 'wdth' 100">
+			{featureNumber}
+		</p>
+		<div class="font-noto-sans font-bold leading-[1.5] text-[#1b1b1b] text-[20px] lg:text-[32px] tracking-[3.2px] w-full">
+			<p class="mb-0">{titleLine1}</p>
+			<p>{titleLine2}</p>
+		</div>
+		<div class="font-noto-sans font-normal leading-[1.5] text-[#1b1b1b] text-[16px] lg:text-[14px] tracking-[1.6px] w-full">
+			<p class="mb-0">{descriptionLine1}<br class="hidden lg:inline" />{descriptionLine2}</p>
+		</div>
+	</div>
+	<!-- 画像: モバイルでは1番目（カード上部）、PCでは右 -->
+	<div class="relative rounded-t-[8px] lg:rounded-t-none lg:rounded-br-[8px] lg:rounded-tr-[8px] lg:rounded-bl-0 lg:rounded-tl-0 w-full lg:w-[47%] aspect-[16/9] lg:aspect-auto lg:min-h-0 h-auto order-1 lg:order-3 feature-image-container">
+		<style>
+			.feature-image-container {
+				--image-height: ${imageHeight}px;
+			}
+			@media (min-width: 1024px) {
+				.feature-image-container {
+					min-height: var(--image-height);
+				}
+			}
+		</style>
+		<div class="absolute inset-0 overflow-hidden pointer-events-none rounded-t-[8px] lg:rounded-br-[8px] lg:rounded-tr-[8px]">
+			<Image
+				src={imageSrc}
+				alt={imageAlt} 
+				class="absolute inset-0 w-full h-full object-cover" 
+				width={imageWidth}
+				height={imageHeight}
+			/>
+		</div>
+	</div>
+</div>
+

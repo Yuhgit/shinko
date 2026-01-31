@@ -1,6 +1,6 @@
 ---
 import { Image } from 'astro:assets';
-import { navLinks, navButtons } from '../config/navigation';
+import { navLinks, navButtons, isNavLinkWithChildren } from '../config/navigation';
 
 // Header component
 interface Props {
@@ -21,11 +21,25 @@ const { class: className = '' } = Astro.props;
       />
     </a>
     <nav class="desktop-header-nav">
-      {navLinks.map((link) => (
-        <a href={link.href} class="font-medium nav-link">
-          {link.label}
-        </a>
-      ))}
+      {navLinks.map((item) => {
+        if (isNavLinkWithChildren(item)) {
+          return (
+            <div class="nav-dropdown" aria-haspopup="true" aria-expanded="false">
+              <span class="font-medium nav-link nav-dropdown-trigger">{item.label}</span>
+              <div class="nav-dropdown-panel">
+                {item.children.map((child) => (
+                  <a href={child.href} class="nav-dropdown-link">{child.label}</a>
+                ))}
+              </div>
+            </div>
+          );
+        }
+        return (
+          <a href={item.href} class="font-medium nav-link">
+            {item.label}
+          </a>
+        );
+      })}
       <div class="desktop-header-buttons">
         {navButtons.map((button) => (
           <a 
@@ -112,6 +126,66 @@ const { class: className = '' } = Astro.props;
 
   .nav-link:hover::after {
     width: 100%;
+  }
+
+  /* 技術紹介ドロップダウン */
+  .nav-dropdown {
+    position: relative;
+  }
+
+  .nav-dropdown-trigger {
+    cursor: default;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+  }
+
+  /* 技術紹介：矢印・下線ともに表示しない */
+  .nav-dropdown-trigger::after {
+    display: none;
+  }
+
+  .nav-dropdown-panel {
+    position: absolute;
+    /* トリガー直下に密着（隙間があるとホバーが切れてリンクを選べない） */
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%) scaleY(0);
+    transform-origin: top center;
+    min-width: 180px;
+    padding: 0.5rem 0;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.2s ease, visibility 0.2s ease, transform 0.2s ease;
+    z-index: 60;
+  }
+
+  .nav-dropdown:hover .nav-dropdown-panel {
+    transform: translateX(-50%) scaleY(1);
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+
+  .nav-dropdown:hover .nav-dropdown-trigger {
+    color: var(--color-main-orange);
+  }
+
+  .nav-dropdown-link {
+    display: block;
+    padding: 0.5rem 1rem;
+    font-size: 0.9375rem;
+    color: #1b1b1b;
+    transition: color 0.2s ease, background-color 0.2s ease;
+  }
+
+  .nav-dropdown-link:hover {
+    color: var(--color-main-orange);
+    background-color: rgba(234, 89, 3, 0.08);
   }
 
   .nav-button {

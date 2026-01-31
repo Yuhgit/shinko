@@ -1,0 +1,182 @@
+---
+/**
+ * 施工事例詳細のテンプレート。
+ * - projectDetails に追加した分 → 施工前/施工後のタブレイアウトで /projects/{slug} を自動生成
+ * - projectPhaseDetails に追加した分 → 施工前/施工中/施工後の3フェーズレイアウトで /projects/{slug} を自動生成
+ * URL は /projects/{slug} で指定（例: /projects/shisui-1, /projects/school-pool）
+ */
+import Layout from '../../layouts/Layout.astro';
+import Contact from '../../components/Contact.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import BeforeAfterTabs from '../../components/BeforeAfterTabs.astro';
+import ProjectPhaseSection from '../../components/ProjectPhaseSection.astro';
+import ProjectInfoCard from '../../components/ProjectInfoCard.astro';
+import {
+  projectDetails,
+  projectPhaseDetails,
+  PROJECT_DETAIL_FIXED,
+  PROJECT_PHASE_FIXED,
+  type ProjectDetail,
+  type ProjectPhaseDetail,
+} from '../../data/projectDetails';
+
+export function getStaticPaths() {
+  const beforeAfterPaths = projectDetails.map((project) => ({
+    params: { slug: project.slug },
+    props: { project, layoutType: 'before-after' as const },
+  }));
+  const phasePaths = projectPhaseDetails.map((project) => ({
+    params: { slug: project.slug },
+    props: { project, layoutType: 'phase' as const },
+  }));
+  return [...beforeAfterPaths, ...phasePaths];
+}
+
+interface Props {
+  project: ProjectDetail | ProjectPhaseDetail;
+  layoutType: 'before-after' | 'phase';
+}
+
+const { project, layoutType } = Astro.props;
+
+const isPhaseLayout = layoutType === 'phase';
+const phaseProject = isPhaseLayout ? (project as ProjectPhaseDetail) : null;
+const beforeAfterProject = !isPhaseLayout ? (project as ProjectDetail) : null;
+
+const description =
+  beforeAfterProject?.metaDescription ??
+  `${project.titleJa}の施工事例。プロジェクト概要・技術仕様をご紹介します。`;
+
+const categoryTag = isPhaseLayout
+  ? (phaseProject!.categoryTag ?? PROJECT_PHASE_FIXED.categoryTag)
+  : PROJECT_DETAIL_FIXED.categoryTag;
+const breadcrumbParent = isPhaseLayout
+  ? (phaseProject!.breadcrumbParent ?? PROJECT_PHASE_FIXED.breadcrumbParent)
+  : PROJECT_DETAIL_FIXED.breadcrumbParent;
+const breadcrumbParentHref = isPhaseLayout
+  ? (phaseProject!.breadcrumbParentHref ?? PROJECT_PHASE_FIXED.breadcrumbParentHref)
+  : PROJECT_DETAIL_FIXED.breadcrumbParentHref;
+const headerImageAlt = isPhaseLayout
+  ? PROJECT_PHASE_FIXED.headerImageAlt
+  : PROJECT_DETAIL_FIXED.headerImageAlt;
+
+// 全実績を並べたリスト（projectDetails → projectPhaseDetails の順）で前後を算出
+const allProjects = [
+  ...projectDetails.map((p) => ({ slug: p.slug, titleJa: p.titleJa })),
+  ...projectPhaseDetails.map((p) => ({ slug: p.slug, titleJa: p.titleJa })),
+];
+const currentIndex = allProjects.findIndex((p) => p.slug === project.slug);
+const prevProject = currentIndex > 0 ? allProjects[currentIndex - 1] : null;
+const nextProject = currentIndex >= 0 && currentIndex < allProjects.length - 1 ? allProjects[currentIndex + 1] : null;
+---
+
+<Layout
+  title={`${project.titleJa} | 施工事例 | 進晃`}
+  description={description}
+>
+  <main class="overflow-x-hidden">
+    <PageHeader
+      titleJa={project.titleJa}
+      breadcrumbCurrent={project.titleJa}
+      breadcrumbParent={breadcrumbParent}
+      breadcrumbParentHref={breadcrumbParentHref}
+      categoryTag={categoryTag}
+      backgroundSrc={project.headerImage}
+      backgroundAlt={headerImageAlt}
+      breadcrumbTopClass="top-[270px] md:top-[320px] lg:top-[461px]"
+    />
+
+    {isPhaseLayout && phaseProject ? (
+      <>
+        <!-- 施工前・施工中・施工後（3フェーズレイアウト） -->
+        <section
+          class="flex flex-col gap-[24px] lg:gap-[40px] items-center px-[16px] sm:px-[24px] md:px-[40px] lg:px-[120px] py-[40px] sm:py-[56px] lg:py-[80px] relative w-full"
+        >
+          <div class="flex flex-col gap-[48px] lg:gap-[64px] w-full max-w-[1200px]">
+            <ProjectPhaseSection title="施工前" images={phaseProject.beforeImages} />
+            <ProjectPhaseSection title="施工中" images={phaseProject.duringImages} />
+            <ProjectPhaseSection title="施工後" images={phaseProject.afterImages} />
+          </div>
+        </section>
+      </>
+    ) : (
+      <>
+        <!-- 施工実績写真（施工前/施工後タブレイアウト） -->
+        <section class="flex flex-col gap-[24px] lg:gap-[40px] items-center px-[16px] sm:px-[24px] md:px-[40px] lg:px-[120px] py-[40px] sm:py-[56px] lg:py-[80px] relative w-full bg-[#f8f9fa]">
+          <div class="flex flex-col gap-[12px] items-center w-full max-w-[1200px]">
+            <h2 class="font-noto-sans font-bold leading-[1.5] text-[#1b1b1b] text-[24px] lg:text-[32px] tracking-[3.2px] w-full text-center mb-[40px]">
+              施工実績写真
+            </h2>
+            <div class="flex flex-col gap-[32px] w-full max-w-[900px] mx-auto">
+              {beforeAfterProject!.beforeAfterPairs[0] && (
+                <BeforeAfterTabs
+                  beforeImage={beforeAfterProject!.beforeAfterPairs[0].before}
+                  afterImage={beforeAfterProject!.beforeAfterPairs[0].after}
+                  idSuffix="0"
+                />
+              )}
+            </div>
+          </div>
+        </section>
+
+        <section class="flex flex-col gap-[24px] lg:gap-[40px] items-center px-[16px] sm:px-[24px] md:px-[40px] lg:px-[120px] pb-[40px] sm:pb-[56px] lg:pb-[80px] relative w-full">
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-[24px] lg:gap-[40px] w-full max-w-[1200px]">
+            <ProjectInfoCard title="プロジェクト概要" items={beforeAfterProject!.overviewItems} />
+            <ProjectInfoCard title="技術仕様" items={beforeAfterProject!.specItems} />
+          </div>
+        </section>
+      </>
+    )}
+
+    <!-- 前後の実績リンク -->
+    <nav class="flex flex-wrap items-center justify-between gap-4 px-[16px] sm:px-[24px] md:px-[40px] lg:px-[120px] py-8 lg:py-12 relative w-full max-w-[1200px] mx-auto border-t border-gray-200" aria-label="前後の施工事例">
+      <div class="min-w-0 flex-1">
+        {prevProject ? (
+          <a href={`/projects/${prevProject.slug}`} class="group flex items-center gap-3 md:gap-6 text-[#1b1b1b] hover:text-main-orange transition-colors">
+            <span class="shrink-0 flex items-center justify-center size-10 rounded-full border border-gray-300 group-hover:border-main-orange group-hover:bg-main-orange/5 transition-colors" aria-hidden="true">
+              <svg class="size-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+              </svg>
+            </span>
+            <span class="min-w-0">
+              <span class="block font-noto-sans text-[12px] text-gray-500 group-hover:text-main-orange">前の実績</span>
+              <span class="hidden md:block font-noto-sans font-medium text-[14px] lg:text-[16px] truncate">{prevProject.titleJa}</span>
+            </span>
+          </a>
+        ) : (
+          <span class="flex items-center gap-3 md:gap-6 text-gray-300 cursor-default" aria-hidden="true">
+            <span class="shrink-0 flex items-center justify-center size-10 rounded-full border border-gray-200">
+              <svg class="size-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" /></svg>
+            </span>
+            <span class="font-noto-sans text-[12px]">前の実績はありません</span>
+          </span>
+        )}
+      </div>
+      <a href="/projects" class="shrink-0 font-noto-sans text-[14px] text-[#1b1b1b] hover:text-main-orange transition-colors px-4 py-2">一覧へ戻る</a>
+      <div class="min-w-0 flex-1 flex justify-end">
+        {nextProject ? (
+          <a href={`/projects/${nextProject.slug}`} class="group flex items-center gap-3 md:gap-6 text-[#1b1b1b] hover:text-main-orange transition-colors text-right max-w-full ml-auto">
+            <span class="min-w-0">
+              <span class="block font-noto-sans text-[12px] text-gray-500 group-hover:text-main-orange">次の実績</span>
+              <span class="hidden md:block font-noto-sans font-medium text-[14px] lg:text-[16px] truncate">{nextProject.titleJa}</span>
+            </span>
+            <span class="shrink-0 flex items-center justify-center size-10 rounded-full border border-gray-300 group-hover:border-main-orange group-hover:bg-main-orange/5 transition-colors" aria-hidden="true">
+              <svg class="size-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+              </svg>
+            </span>
+          </a>
+        ) : (
+          <span class="flex items-center gap-3 md:gap-6 text-gray-300 cursor-default ml-auto" aria-hidden="true">
+            <span class="font-noto-sans text-[12px]">次の実績はありません</span>
+            <span class="shrink-0 flex items-center justify-center size-10 rounded-full border border-gray-200">
+              <svg class="size-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+            </span>
+          </span>
+        )}
+      </div>
+    </nav>
+
+    <Contact />
+  </main>
+</Layout>

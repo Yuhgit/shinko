@@ -1,0 +1,499 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { Image } from 'astro:assets';
+import Contact from '../components/Contact.astro';
+import PageHeader from '../components/PageHeader.astro';
+import FeatureItem from '../components/FeatureItem.astro';
+import ProcessStep from '../components/ProcessStep.astro';
+---
+
+<Layout title="ピングラウト工法 | 進晃" description="ピングラウト工法について。NLペーストを用いた特殊止水工法の特徴、工法の流れ、使用する注入材についてご紹介します。">
+	<main class="overflow-x-hidden">
+		<!-- Page Header -->
+		<PageHeader
+			titleEn="TECHNOLOGY"
+			titleJa="ピングラウト工法"
+			breadcrumbCurrent="ピングラウト工法"
+			backgroundSrc="/images/pingrout-header.jpg"
+			backgroundAlt="ピングラウト工法ページヘッダー背景"
+		/>
+
+		<!-- Overview Section -->
+		<section class="flex flex-col gap-[40px] items-center px-[40px] sm:px-[120px] py-[56px] lg:py-[80px] relative w-full">
+			<div class="flex flex-col gap-[24px] items-center relative w-full">
+				<div class="flex flex-col gap-[12px] items-center relative">
+					<p class="font-roboto font-medium leading-none text-main-orange text-[18px] lg:text-[24px] tracking-[2.4px]" style="font-variation-settings: 'wdth' 100">
+						What is Pingrout method ?
+					</p>
+					<div class="section-divider-orange" aria-hidden="true"></div>
+					<p class="font-noto-sans font-bold leading-[1.5] text-main-orange text-[24px] lg:text-[32px] text-center tracking-[3.2px]">
+						ピングラウト工法とは
+					</p>
+				</div>
+			</div>
+			<div class="flex flex-col items-start relative shrink-0 w-full max-w-[800px] mx-auto">
+				<div class="font-noto-sans font-normal leading-[1.5] relative shrink-0 text-[16px] text-[#1b1b1b] tracking-[1.6px] w-full">
+					<p class="mb-0">従来対応不可能な漏水箇所に対応できるNLペーストを用いた止水工法で、状況に応じた複数の工法があり5,000件以上に及ぶ実績があります。清水建設㈱と武田薬品工業㈱が共同開発し、協力を得て会員の責任施工で品質を守る特殊止水工法です。</p>
+					<p>※現在の材料メーカーは㈱ダイフレックス</p>
+				</div>
+			</div>
+		</section>
+
+		<!-- Features Section -->
+		<section class="flex flex-col gap-[40px] items-start px-[40px] sm:px-[120px] py-[56px] lg:py-[80px] relative w-full">
+			<div class="flex flex-col gap-[24px] items-center relative w-full">
+				<div class="flex flex-col gap-[12px] items-center relative">
+					<p class="font-roboto font-medium leading-none text-main-orange text-[18px] lg:text-[24px] tracking-[2.4px]" style="font-variation-settings: 'wdth' 100">
+						FEATURES
+					</p>
+					<div class="section-divider-orange" aria-hidden="true"></div>
+					<p class="font-noto-sans font-bold leading-[1.5] text-main-orange text-[24px] lg:text-[32px] text-center tracking-[3.2px]">
+						ピングラウト工法の特徴
+					</p>
+				</div>
+			</div>
+			<div class="flex flex-col gap-[24px] items-start relative w-full max-w-[1080px] mx-auto">
+				<FeatureItem
+					number={1}
+					title="多様な工法で幅広い構造物に対応"
+					description="複数の工法を組み合わせることで、さまざまな形状の構造物に柔軟に適応できます。"
+				/>
+				<FeatureItem
+					number={2}
+					title="微細なひび割れにも浸透する高い止水性能"
+					description="漏水部の水とゆっくり反応するため、細かいクラックにも樹脂が浸透し、確実な止水を実現します。"
+				/>
+				<FeatureItem
+					number={3}
+					title="地下水位の変動に追従する優れた接着性"
+					description="高い接着力と追従性により、地下水位の変化にも柔軟に対応し、長期的な安定性を確保します。"
+				/>
+				<FeatureItem
+					number={4}
+					title="湿潤面でも強力に接着し再漏水を防止"
+					description="湿ったコンクリート面でも優れた接着性を発揮し、硬化後の樹脂がほとんど収縮しないため、空隙ができにくく再漏水のリスクを抑えます。"
+				/>
+				<FeatureItem
+					number={5}
+					title="耐酸・耐アルカリ・耐塩水に優れた長期耐久性"
+					description="ＮＬペーストは高い耐薬品性を持ち、酸性・アルカリ性・塩水環境でも長期的な止水性能を維持します。"
+				/>
+				<FeatureItem
+					number={6}
+					title="飲料水施設でも安全に使用可能"
+					description="安全性が高く、飲料水設備にも使用できる品質を備えています。※"
+				/>
+				<FeatureItem
+					number={7}
+					title="特許取得の「スマート止水工法」で短工期を実現"
+					description="独自の特許工法により、短期間で効率的な止水作業が可能です。"
+				/>
+			</div>
+			<p class="font-noto-sans font-normal leading-[1.5] relative shrink-0 text-[#6b7280] text-[16px] tracking-[1.6px] w-full max-w-[1080px] mx-auto">
+				※【スマート止水工法】とは・・・ピングラウト工法を応用し、低粘度化したＮＬペーストを用いて特殊な機械で高圧注入し止水する工法です。他にも漏水箇所に適したＡ工法、Ｃ工法、ＰＷシステム工法、Ｗストッパー工法がありますが、ここではスマート止水工法のみをご紹介致します。
+			</p>
+		</section>
+
+		<!-- Process Flow Section -->
+		<section class="bg-main-orange flex flex-col gap-[40px] items-start px-[40px] sm:px-[120px] py-[56px] lg:py-[80px] relative w-full">
+			<div class="absolute right-[-150px] top-0 w-[620px] h-[470px] hidden lg:block">
+				<img alt="装飾用のベクター" class="block max-w-none size-full" src="/images/pingrout-vector.svg" loading="lazy" />
+			</div>
+			<div class="flex flex-col gap-[24px] items-center relative w-full">
+				<div class="flex flex-col gap-[12px] items-center relative">
+					<p class="font-roboto font-medium leading-none text-white text-[18px] lg:text-[24px] tracking-[2.4px]" style="font-variation-settings: 'wdth' 100">
+						FLOW
+					</p>
+					<div class="section-divider-white" aria-hidden="true"></div>
+					<p class="font-noto-sans font-bold leading-[1.5] text-white text-[24px] lg:text-[32px] text-center tracking-[3.2px]">
+						工法の基本的な流れ
+					</p>
+				</div>
+			</div>
+			<div class="flex flex-col lg:flex-row gap-[12px] lg:gap-[80px] items-start justify-center relative w-full">
+				<div class="flex flex-col gap-[12px] lg:gap-[16px] items-center relative w-full lg:w-auto">
+					<ProcessStep
+						number={1}
+						title="漏水状況確認"
+						description="現場の状況を詳細に調査"
+					/>
+					<ProcessStep
+						number={2}
+						title="止水工法の選定"
+						description="最適な工法を選択"
+					/>
+					<ProcessStep
+						number={3}
+						title="注入孔穴あけ"
+						description="精密な穴あけ作業"
+					/>
+					<ProcessStep
+						number={4}
+						title="注入孔清掃・NTプラグ設置"
+						description="清掃後にプラグを設置"
+						showArrow={false}
+					/>
+				</div>
+				<!-- 縦並び時のみ4と5の間に棒線（ProcessStepと同じ gap-[12px] + 24px線 + gap-[12px]） -->
+				<div class="lg:hidden flex justify-center w-full" aria-hidden="true">
+					<div class="h-[24px] w-[2px] bg-white rounded-[1px] shrink-0"></div>
+				</div>
+				<div class="flex flex-col gap-[12px] lg:gap-[16px] items-center relative w-full lg:w-auto">
+					<ProcessStep
+						number={5}
+						title="水注入"
+						description="水の注入作業"
+					/>
+					<ProcessStep
+						number={6}
+						title="NLペースト注入→発泡"
+						description="材料注入と発泡反応"
+					/>
+					<ProcessStep
+						number={7}
+						title="NTプラグ及び発泡材撤去"
+						description="プラグと余材の撤去"
+					/>
+					<ProcessStep
+						number={8}
+						title="完了（漏水閉鎖部の確認）"
+						description="最終確認と完了"
+						showArrow={false}
+					/>
+				</div>
+			</div>
+		</section>
+
+		<!-- Technology & Materials Section -->
+		<section class="bg-[#f8f9fa] flex flex-col gap-[40px] items-start px-[20px] sm:px-[120px] py-[56px] lg:py-[80px] relative w-full max-w-[1200px] mx-auto">
+			<div class="flex flex-col gap-[24px] items-center relative w-full  px-[6%]">
+				<div class="flex flex-col gap-[12px] items-center relative">
+					<p class="font-roboto font-medium leading-none text-main-orange text-[18px] lg:text-[24px] tracking-[2.4px]" style="font-variation-settings: 'wdth' 100">
+						TECHNOLOGY
+					</p>
+					<div class="section-divider-orange" aria-hidden="true"></div>
+					<p class="font-noto-sans font-bold leading-[1.5] text-main-orange text-[24px] lg:text-[32px] text-center tracking-[3.2px]">
+						スマート止水工法で使用する注入材について
+					</p>
+				</div>
+			</div>
+				<div class="bg-white flex flex-col gap-[32px] items-start px-[4%] py-[40px] relative rounded-[8px] w-full min-w-0">
+				<!-- NLペースト製品 -->
+				<div class="bg-[#f8f9fa] flex flex-col gap-[24px] items-center px-[9%] py-[40px] relative rounded-[8px] w-full min-w-0">
+					<div class="flex flex-col gap-[24px] items-center relative w-full">
+						<div class="flex flex-col gap-[24px] items-center relative">
+							<div class="bg-main-orange flex flex-col h-[32px] items-center justify-center relative rounded-[16px] shrink-0 w-[120px]">
+								<p class="font-noto-sans font-bold leading-[16.8px] relative shrink-0 text-[14px] text-white">
+									主力製品
+								</p>
+							</div>
+							<div class="flex flex-col font-noto-sans font-bold gap-[8px] items-center leading-[1.5] relative text-[#1b1b1b] text-center">
+								<p class="relative shrink-0 text-[16px]">
+									加水反応型（親水性）一液ポリウレタン樹脂
+								</p>
+								<p class="relative shrink-0 text-[24px]">
+									『NLペースト』
+								</p>
+							</div>
+						</div>
+						<p class="font-noto-sans font-normal leading-[1.5] relative shrink-0 text-[#1b1b1b] text-[16px] tracking-[1.6px] w-full max-w-[720px] text-center">
+							NLペーストは、水と反応する過程で発生する炭酸ガスの力によって、発泡しながら膨張し、時間をかけてクラックの中に充填され、反応が完了した強固な発泡体が止水効果を発揮する止水材です。
+						</p>
+					</div>
+					<div class="flex flex-col lg:flex-row items-start justify-between gap-[24px] relative w-full min-w-0">
+						<!-- NLペースト無溶剤型 -->
+						<div class="bg-white flex flex-col gap-[24px] items-center p-[32px] relative rounded-[8px] shadow-[0px_8px_32px_0px_rgba(0,0,0,0.04)] w-full lg:min-w-0 lg:flex-1 lg:max-w-[260px]">
+							<div class="h-[140px] sm:h-[180px] relative rounded-[12px] shrink-0 w-full">
+								<Image
+									src="/images/nl-paste-standard.jpg"
+									alt="NLペースト無溶剤型"
+									class="absolute inset-0 object-contain pointer-events-none rounded-[12px] size-full"
+									width={260}
+									height={120}
+								/>
+							</div>
+							<div class="flex flex-col gap-[16px] items-center relative shrink-0 w-full">
+								<p class="font-noto-sans font-bold leading-[1.5] relative shrink-0 text-[#1b1b1b] text-[18px] text-center w-full">
+									NLペースト無溶剤型
+								</p>
+								<div class="flex flex-col items-start relative shrink-0 w-full">
+									<div class="flex gap-[8px] items-center relative shrink-0 w-full">
+										<div class="bg-[#6e6e6e] rounded-[3px] shrink-0 size-[6px]"></div>
+										<p class="font-noto-sans font-normal leading-[1.5] relative shrink-0 text-[#6b7280]">
+											無溶剤で安全
+										</p>
+									</div>
+									<div class="flex gap-[8px] items-center relative shrink-0 w-full">
+										<div class="bg-[#6e6e6e] rounded-[3px] shrink-0 size-[6px]"></div>
+										<p class="font-noto-sans font-normal leading-[1.5] relative shrink-0 text-[#6b7280]">
+											環境に優しい
+										</p>
+									</div>
+									<div class="flex gap-[8px] items-center relative shrink-0 w-full">
+										<div class="bg-[#6e6e6e] rounded-[3px] shrink-0 size-[6px]"></div>
+										<p class="font-noto-sans font-normal leading-[1.5] relative shrink-0 text-[#6b7280]">
+											標準仕様
+										</p>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- NLペースト冬用 -->
+						<div class="bg-white flex flex-col gap-[24px] items-center p-[32px] relative rounded-[8px] shadow-[0px_8px_32px_0px_rgba(0,0,0,0.04)] w-full lg:min-w-0 lg:flex-1 lg:max-w-[260px]">
+							<div class="h-[140px] sm:h-[180px] relative rounded-[12px] shrink-0 w-full">
+								<Image
+									src="/images/nl-paste-winter.jpg"
+									alt="NLペースト冬用"
+									class="absolute inset-0 object-contain pointer-events-none rounded-[12px] size-full"
+									width={260}
+									height={120}
+								/>
+							</div>
+							<div class="flex flex-col gap-[16px] items-center relative shrink-0 w-full">
+								<p class="font-noto-sans font-bold leading-[1.5] relative shrink-0 text-[#1b1b1b] text-[18px] text-center w-full">
+									NLペースト冬用
+								</p>
+								<div class="flex flex-col items-start relative shrink-0 w-full">
+									<div class="flex gap-[8px] items-center relative shrink-0 w-full">
+										<div class="bg-[#6e6e6e] rounded-[3px] shrink-0 size-[6px]"></div>
+										<p class="font-noto-sans font-normal leading-[1.5] relative shrink-0 text-[#6b7280]">
+											低温対応
+										</p>
+									</div>
+									<div class="flex gap-[8px] items-center relative shrink-0 w-full">
+										<div class="bg-[#6e6e6e] rounded-[3px] shrink-0 size-[6px]"></div>
+										<p class="font-noto-sans font-normal leading-[1.5] relative shrink-0 text-[#6b7280]">
+											寒冷地仕様
+										</p>
+									</div>
+									<div class="flex gap-[8px] items-center relative shrink-0 w-full">
+										<div class="bg-[#6e6e6e] rounded-[3px] shrink-0 size-[6px]"></div>
+										<p class="font-noto-sans font-normal leading-[1.5] relative shrink-0 text-[#6b7280]">
+											高品質施工
+										</p>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- NLペースト夏用 -->
+						<div class="bg-white flex flex-col gap-[24px] items-center p-[32px] relative rounded-[8px] shadow-[0px_8px_32px_0px_rgba(0,0,0,0.04)] w-full lg:min-w-0 lg:flex-1 lg:max-w-[260px]">
+							<div class="h-[140px] sm:h-[180px] relative rounded-[12px] shrink-0 w-full">
+								<Image
+									src="/images/nl-paste-summer.jpg"
+									alt="NLペースト夏用"
+									class="absolute inset-0 object-contain pointer-events-none rounded-[12px] size-full"
+									width={260}
+									height={120}
+								/>
+							</div>
+							<div class="flex flex-col gap-[16px] items-center relative shrink-0 w-full">
+								<p class="font-noto-sans font-bold leading-[1.5] relative shrink-0 text-[#1b1b1b] text-[18px] text-center w-full">
+									NLペースト夏用
+								</p>
+								<div class="flex flex-col items-start relative shrink-0 w-full">
+									<div class="flex gap-[8px] items-center relative shrink-0 w-full">
+										<div class="bg-[#6e6e6e] rounded-[3px] shrink-0 size-[6px]"></div>
+										<p class="font-noto-sans font-normal leading-[1.5] relative shrink-0 text-[#6b7280]">
+											高温対応
+										</p>
+									</div>
+									<div class="flex gap-[8px] items-center relative shrink-0 w-full">
+										<div class="bg-[#6e6e6e] rounded-[3px] shrink-0 size-[6px]"></div>
+										<p class="font-noto-sans font-normal leading-[1.5] relative shrink-0 text-[#6b7280]">
+											夏季専用
+										</p>
+									</div>
+									<div class="flex gap-[8px] items-center relative shrink-0 w-full">
+										<div class="bg-[#6e6e6e] rounded-[3px] shrink-0 size-[6px]"></div>
+										<p class="font-noto-sans font-normal leading-[1.5] relative shrink-0 text-[#6b7280]">
+											安定性重視
+										</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- グラフ画像 -->
+					<div class="flex flex-col lg:flex-row items-start justify-between gap-[24px] relative w-full min-w-0">
+						<div class="bg-white flex flex-col gap-[8px] items-center p-[16px] relative rounded-[8px] w-full lg:min-w-0 lg:flex-1 lg:max-w-[50%]">
+							<div class="h-[180px] sm:h-[180px] relative rounded-[12px] shrink-0 w-full max-w-[387px] lg:max-w-full">
+								<Image
+									src="/images/adhesion-strength.png"
+									alt="接着強度"
+									class="absolute inset-0 object-contain pointer-events-none rounded-[12px] size-full"
+									width={387}
+									height={234}
+								/>
+							</div>
+							<p class="font-noto-sans font-bold leading-[1.5] relative shrink-0 text-[#1b1b1b] text-[18px] text-center">
+								接着強度
+							</p>
+						</div>
+						<div class="bg-white flex flex-col gap-[8px] items-center p-[16px] relative rounded-[8px] w-full lg:min-w-0 lg:flex-1 lg:max-w-[50%]">
+							<div class="h-[180px] sm:h-[180px] relative rounded-[12px] shrink-0 w-full max-w-[365px] lg:max-w-full">
+								<Image
+									src="/images/injection-filling.png"
+									alt="注入充填性"
+									class="absolute inset-0 object-contain pointer-events-none rounded-[12px] size-full"
+									width={365}
+									height={234}
+								/>
+							</div>
+							<p class="font-noto-sans font-bold leading-[1.5] relative shrink-0 text-[#1b1b1b] text-[18px] text-center">
+								注入充填性
+							</p>
+						</div>
+					</div>
+				</div>
+
+				<!-- NLペースト注入機器 -->
+				<div class="bg-[#f8f9fa] flex flex-col items-center px-[9%] py-[40px] relative rounded-[8px] w-full">
+					<div class="flex flex-col gap-[24px] items-center relative w-full">
+						<div class="flex flex-col items-center relative">
+							<div class="bg-main-orange flex flex-col h-[32px] items-center justify-center px-[24px] relative rounded-[16px] shrink-0">
+								<p class="font-noto-sans font-bold leading-[16.8px] relative shrink-0 text-[14px] text-white">
+									NLペースト注入機器
+								</p>
+							</div>
+						</div>
+						<p class="font-noto-sans font-normal leading-[1.5] relative shrink-0 text-[#1b1b1b] text-[16px] text-center tracking-[1.6px] w-full max-w-[720px]">
+							高圧注入装置を用い、NLペーストをコンクリート躯体のひび割れ・隙間に充填することで、高精度な止水を実現します。
+						</p>
+						<div class="flex flex-col lg:flex-row items-start justify-between gap-[24px] relative w-full min-w-0">
+							<!-- 高圧注入機 -->
+							<div class="bg-white flex flex-col gap-[16px] items-center justify-center p-[32px] relative rounded-[8px] w-full lg:min-w-0 lg:flex-1 lg:max-w-[260px]">
+								<div class="h-[177px] relative rounded-[12px] shrink-0 w-[212px]">
+									<Image
+										src="/images/high-pressure-injector.jpg"
+										alt="高圧注入機"
+										class="absolute inset-0 object-contain pointer-events-none rounded-[12px] size-full"
+										width={212}
+										height={177}
+									/>
+								</div>
+								<p class="font-noto-sans font-bold leading-[1.5] relative shrink-0 text-[#1b1b1b] text-[18px] text-center">
+									高圧注入機
+								</p>
+								<p class="font-noto-sans font-normal leading-[1.5] relative shrink-0 text-[#6b7280] text-[16px] text-center tracking-[1.6px]">
+									高圧での確実な注入を実現
+								</p>
+							</div>
+							<!-- 高圧電動注入機 -->
+							<div class="bg-white flex flex-col gap-[16px] items-center justify-center p-[32px] relative rounded-[8px] w-full lg:min-w-0 lg:flex-1 lg:max-w-[260px]">
+								<div class="h-[177px] relative rounded-[12px] shrink-0 w-[212px]">
+									<Image
+										src="/images/electric-injector.jpg"
+										alt="高圧電動注入機"
+										class="absolute inset-0 object-contain pointer-events-none rounded-[12px] size-full"
+										width={212}
+										height={177}
+									/>
+								</div>
+								<p class="font-noto-sans font-bold leading-[1.5] relative shrink-0 text-[#1b1b1b] text-[18px] text-center">
+									高圧電動注入機
+								</p>
+								<p class="font-noto-sans font-normal leading-[1.5] relative shrink-0 text-[#6b7280] text-[16px] text-center tracking-[1.6px]">
+									電動による安定した注入圧力
+								</p>
+							</div>
+							<!-- 高圧注入プラグ -->
+							<div class="bg-white flex flex-col gap-[16px] items-center justify-center p-[32px] relative rounded-[8px] w-full lg:min-w-0 lg:flex-1 lg:max-w-[260px]">
+								<div class="h-[177px] relative rounded-[12px] shrink-0 w-[212px]">
+									<Image
+										src="/images/injection-plug.jpg"
+										alt="高圧注入プラグ"
+										class="absolute inset-0 object-contain pointer-events-none rounded-[12px] size-full"
+										width={212}
+										height={177}
+									/>
+								</div>
+								<p class="font-noto-sans font-bold leading-[1.5] relative shrink-0 text-[#1b1b1b] text-[18px] text-center">
+									高圧注入プラグ
+								</p>
+								<p class="font-noto-sans font-normal leading-[1.5] relative shrink-0 text-[#6b7280] text-[16px] text-center tracking-[1.6px]">
+									確実な密封と注入を実現
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- NLペースト注入状況 -->
+				<div class="bg-[#f8f9fa] flex flex-col items-center px-[9%] py-[40px] relative rounded-[8px] w-full">
+					<div class="flex flex-col gap-[24px] items-center relative w-full">
+						<div class="flex flex-col items-center relative">
+							<div class="bg-main-orange flex flex-col h-[32px] items-center justify-center px-[24px] relative rounded-[16px] shrink-0">
+								<p class="font-noto-sans font-bold leading-[16.8px] relative shrink-0 text-[14px] text-white">
+									NLペースト注入状況
+								</p>
+							</div>
+						</div>
+						<p class="font-noto-sans font-normal leading-[1.5] relative shrink-0 text-[#1b1b1b] text-[16px] text-center tracking-[1.6px] w-full max-w-[720px]">
+							当社が誇る NLペースト注入による止水施工の実際の現場をぜひご確認ください。
+						</p>
+						<div class="h-[248px] lg:h-[787px] relative shrink-0 w-full grid grid-cols-2 gap-[8px]">
+							<div class="relative">
+								<Image
+									src="/images/injection-work-1.jpg"
+									alt="NLペースト注入施工現場1"
+									class="absolute inset-0 object-cover rounded-[8px] size-full"
+									width={461}
+									height={279}
+								/>
+							</div>
+							<div class="relative">
+								<Image
+									src="/images/injection-work-2.jpg"
+									alt="NLペースト注入施工現場2"
+									class="absolute inset-0 object-cover rounded-[8px] size-full"
+									width={461}
+									height={465}
+								/>
+							</div>
+							<div class="relative">
+								<Image
+									src="/images/injection-work-3.jpg"
+									alt="NLペースト注入施工現場3"
+									class="absolute inset-0 object-cover rounded-[8px] size-full"
+									width={461}
+									height={487}
+								/>
+							</div>
+							<div class="relative">
+								<Image
+									src="/images/injection-work-4.jpg"
+									alt="NLペースト注入施工現場4"
+									class="absolute inset-0 object-cover rounded-[8px] size-full"
+									width={461}
+									height={294}
+								/>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Contact Section -->
+		<Contact />
+	</main>
+</Layout>
+
+<style>
+	.section-divider-orange {
+		position: relative;
+		width: 24px;
+		height: 1px;
+		background-color: #EA5903;
+		margin: 0 auto;
+	}
+
+	.section-divider-white {
+		position: relative;
+		width: 24px;
+		height: 1px;
+		background-color: #FFFFFF;
+		margin: 0 auto;
+	}
+</style>
+

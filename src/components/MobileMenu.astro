@@ -1,6 +1,6 @@
 ---
 import { Image } from 'astro:assets';
-import { navLinks, navButtons } from '../config/navigation';
+import { navLinks, navButtons, isNavLinkWithChildren } from '../config/navigation';
 ---
 
 <!-- Mobile Menu Overlay -->
@@ -32,16 +32,50 @@ import { navLinks, navButtons } from '../config/navigation';
         <div class="flex flex-col gap-4 items-start px-10 py-20 relative w-full">
           <!-- Menu Links -->
           <div class="flex flex-col items-center overflow-clip relative w-full">
-            {navLinks.map((link) => (
-              <a 
-                href={link.href} 
-                class="flex items-center justify-center px-0 py-4 relative w-full mobile-menu-link"
-              >
-                <span class="font-normal leading-[1.5] text-[#1b1b1b] text-base text-center tracking-[1.6px]">
-                  {link.label}
-                </span>
-              </a>
-            ))}
+            {navLinks.map((item) => {
+              if (isNavLinkWithChildren(item)) {
+                return (
+                  <div class="mobile-menu-accordion flex flex-col items-center w-full">
+                    <button
+                      type="button"
+                      class="mobile-menu-accordion-trigger relative flex items-center justify-center px-0 py-4 w-full font-normal leading-[1.5] text-[#1b1b1b] text-base text-center tracking-[1.6px] bg-transparent border-none cursor-pointer"
+                      aria-expanded="false"
+                      aria-controls="mobile-menu-tech-children"
+                      id="mobile-menu-tech-trigger"
+                    >
+                      <span class="block w-full">{item.label}</span>
+                      <span class="mobile-menu-accordion-chevron-wrapper absolute right-0 top-1/2 -translate-y-1/2 flex items-center justify-center pointer-events-none">
+                        <svg class="mobile-menu-accordion-chevron size-5 transition-transform duration-200" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                          <path d="M6 9l6 6 6-6" />
+                        </svg>
+                      </span>
+                    </button>
+                    <div id="mobile-menu-tech-children" class="mobile-menu-children overflow-hidden transition-[max-height] duration-200 ease-out max-h-0" role="region" aria-labelledby="mobile-menu-tech-trigger">
+                      {item.children.map((child) => (
+                        <a
+                          href={child.href}
+                          class="flex items-center justify-center px-0 py-3 w-full mobile-menu-link mobile-menu-sublink"
+                        >
+                          <span class="font-normal leading-[1.5] text-[#1b1b1b] text-sm tracking-[1.6px]">
+                            {child.label}
+                          </span>
+                        </a>
+                      ))}
+                    </div>
+                  </div>
+                );
+              }
+              return (
+                <a 
+                  href={item.href} 
+                  class="flex items-center justify-center px-0 py-4 relative w-full mobile-menu-link"
+                >
+                  <span class="font-normal leading-[1.5] text-[#1b1b1b] text-base text-center tracking-[1.6px]">
+                    {item.label}
+                  </span>
+                </a>
+              );
+            })}
           </div>
           
           <!-- Buttons -->
@@ -90,6 +124,13 @@ import { navLinks, navButtons } from '../config/navigation';
       closeIcon.classList.remove('opacity-0');
       menuToggle.setAttribute('aria-expanded', 'true');
       body.style.overflow = 'hidden';
+      // 技術紹介アコーディオンを閉じた状態にリセット
+      const techTrigger = document.getElementById('mobile-menu-tech-trigger');
+      const techChildren = document.getElementById('mobile-menu-tech-children');
+      if (techTrigger && techChildren) {
+        techTrigger.setAttribute('aria-expanded', 'false');
+        techChildren.classList.remove('mobile-menu-children-open');
+      }
     }
 
     function closeMenu() {
@@ -115,6 +156,17 @@ import { navLinks, navButtons } from '../config/navigation';
     });
 
     menuClose.addEventListener('click', closeMenu);
+
+    // 技術紹介のアコーディオン（タップで開閉）
+    const techTrigger = document.getElementById('mobile-menu-tech-trigger');
+    const techChildren = document.getElementById('mobile-menu-tech-children');
+    if (techTrigger && techChildren) {
+      techTrigger.addEventListener('click', () => {
+        const isExpanded = techTrigger.getAttribute('aria-expanded') === 'true';
+        techTrigger.setAttribute('aria-expanded', isExpanded ? 'false' : 'true');
+        techChildren.classList.toggle('mobile-menu-children-open', !isExpanded);
+      });
+    }
 
     // Close menu when clicking on a link
     const menuLinks = document.querySelectorAll('.mobile-menu-link, .mobile-menu-button, .mobile-menu-button-primary');
@@ -151,6 +203,23 @@ import { navLinks, navButtons } from '../config/navigation';
 
   .mobile-menu-link:hover {
     color: var(--color-main-orange);
+  }
+
+  .mobile-menu-sublink {
+    justify-content: flex-start;
+  }
+
+  /* 技術紹介アコーディオン：タップで子項目を表示 */
+  .mobile-menu-accordion-trigger:hover {
+    color: var(--color-main-orange);
+  }
+
+  .mobile-menu-children-open {
+    max-height: 140px;
+  }
+
+  .mobile-menu-accordion-trigger[aria-expanded="true"] .mobile-menu-accordion-chevron {
+    transform: rotate(180deg);
   }
 
   .mobile-menu-button {

@@ -1,0 +1,410 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { Image } from 'astro:assets';
+import Contact from '../components/Contact.astro';
+import FeatureCard from '../components/FeatureCard.astro';
+import PageHeader from '../components/PageHeader.astro';
+---
+
+<Layout title="会社概要 | 進晃" description="株式会社進晃の会社概要ページ。代表挨拶、会社情報、アクセス情報をご紹介します。">
+	<main class="overflow-x-hidden">
+		<!-- Page Header -->
+		<PageHeader
+			titleEn="COMPANY"
+			titleJa="会社概要"
+			breadcrumbCurrent="会社概要"
+			backgroundSrc="/images/about-header.jpg"
+			backgroundAlt="会社概要ページヘッダー背景"
+		/>
+
+		<!-- CEO Message Section -->
+		<section class="flex flex-col gap-[24px] lg:gap-[40px] items-center px-[40px] sm:px-[120px] py-[56px] lg:py-[80px] relative w-full">
+			<div class="flex flex-col gap-[12px] items-center relative w-full">
+				<p class="font-roboto font-medium leading-none text-main-orange text-[18px] lg:text-[24px] tracking-[2.4px]" style="font-variation-settings: 'wdth' 100">
+					MESSAGE
+				</p>
+				<div class="section-divider-orange" aria-hidden="true"></div>
+				<p class="font-noto-sans font-bold leading-[1.5] text-main-orange text-[24px] lg:text-[32px] text-center tracking-[3.2px]">
+					代表挨拶
+				</p>
+			</div>
+			<div class="flex flex-col lg:flex-row items-start justify-between gap-[32px] relative w-full max-w-[1200px]">
+				<div class="border border-[#e5e7eb] h-[292px] sm:h-[368px] relative w-full lg:w-[472px] overflow-hidden">
+					<Image 
+						src="/images/ceo-image.png"
+						alt="代表取締役 伊藤 幹" 
+						class="absolute inset-0 object-cover object-left w-full h-full ceo-image-zoom"
+						width={472}
+						height={368}
+					/>
+				</div>
+				<div class="flex flex-col gap-[16px] lg:gap-[24px] items-start leading-[1.5] text-[#1b1b1b] w-full lg:w-[640px]">
+					<div class="font-noto-sans font-bold text-[24px] lg:text-[32px] tracking-[3.2px] w-full">
+						<p class="mb-0">"出来ない"にも真剣に考え、<br class="hidden sm:inline">経験と発想力で対応する。</p>
+					</div>
+					<div class="font-noto-sans font-normal text-[16px] tracking-[1.6px] w-full">
+						<p class="mb-0">当社は、建設現場の防水・止水・リニューアル工事を通じて「建物を長く、安心して使えるものにする」使命を担っています。</p>
+						<p class="mb-0">創業以来、数々の新築・改修現場で経験を積み、社員一人ひとりが企業を体現する存在として育つことをこれまで大切にして参りました。時代と現場の変化を恐れずに、スピードと発想で"できない"とされる課題にも挑戦し続けています。</p>
+						<p class="mb-0">建築は技術の結晶。そして、その技術を支えるのは人です。今やAIやロボットが広がる時代だからこそ、人の手・心・知が生かされる技術に誇りを持ち、次の50年・100年へと受け継がれる価値を創造していきます。</p>
+						<p>お客様、地域、社員、ご家族──すべてのステークホルダーに貢献できる企業であり続けるため、私はこれからも努力を続けます。</p>
+					</div>
+					<p class="font-noto-sans font-medium text-[16px] text-right w-full">
+						代表取締役　伊藤 幹
+					</p>
+				</div>
+			</div>
+		</section>
+
+		<!-- Strengths Section -->
+		<section class="bg-main-orange flex flex-col gap-[24px] lg:gap-[40px] items-center px-[40px] sm:px-[120px] py-[56px] lg:py-[80px] relative w-full">
+            <div class="absolute right-[-150px] top-0 w-[620px] h-[470px] opacity-10">
+                <Image
+                    src="/images/logo-bg.png"
+                    alt="logo-bg" 
+                    class="absolute inset-0 object-cover w-full h-full" 
+                    width={1200}
+                    height={1200}
+                />
+            </div>
+			<div class="flex flex-col gap-[24px] items-center relative w-full">
+				<div class="flex flex-col gap-[12px] items-center relative w-full">
+					<p class="font-roboto font-medium leading-none text-white text-[18px] lg:text-[24px] tracking-[2.4px]" style="font-variation-settings: 'wdth' 100">
+						STRENGTHS
+					</p>
+					<div class="section-divider-white" aria-hidden="true"></div>
+					<p class="font-noto-sans font-bold leading-[1.5] text-white text-[24px] lg:text-[32px] text-center tracking-[3.2px]">
+						進晃が選ばれる理由
+					</p>
+				</div>
+				<p class="font-noto-sans font-normal leading-[1.5] text-white text-[16px] text-center tracking-[1.6px]">
+					私たちの3つの強みをご紹介します
+				</p>
+			</div>
+			<div class="flex flex-col gap-[32px] items-start relative w-full max-w-[1200px]">
+			<!-- Feature 01 -->
+			<FeatureCard
+				featureNumber="FEATURE 01"
+				titleLine1="困難な"
+				titleLine2="止水工事への対応力"
+				descriptionLine1="豊富な現場実績と高度な注入技術で確実な成果をお届け。"
+				descriptionLine2="ウレタン系高圧注入工法を軸とした最適な施工を実現します。"
+				imageSrc="/images/rectangle-12.png"
+				imageAlt="困難な止水工事への対応力"
+				imageWidth={275}
+				imageHeight={352}
+			/>
+			<!-- Feature 02 -->
+			<FeatureCard
+				featureNumber="FEATURE 02"
+				titleLine1="小規模案件や"
+				titleLine2="緊急工事にも迅速対応"
+				descriptionLine1="地域密着だからこそ実現できる機動力。"
+				descriptionLine2="お客様の「困った」に一貫したサポートで即応いたします。"
+				imageSrc="/images/rectangle-13.png"
+				imageAlt="小規模案件や緊急工事にも迅速対応"
+				imageWidth={275}
+				imageHeight={446}
+			/>
+			<!-- Feature 03 -->
+			<FeatureCard
+				featureNumber="FEATURE 03"
+				titleLine1="丁寧な施工と"
+				titleLine2="強い信頼関係"
+				descriptionLine1="事前説明から完了後のフォローまで。"
+				descriptionLine2="お客様との信頼関係を大切にした長期安心サポートを提供します。"
+				imageSrc="/images/rectangle-14.png"
+				imageAlt="丁寧な施工と強い信頼関係"
+				imageWidth={275}
+				imageHeight={446}
+			/>
+			</div>
+		</section>
+
+		<!-- Company Info Section -->
+		<section class="flex flex-col gap-[24px] lg:gap-[40px] items-center px-[40px] sm:px-[120px] py-[56px] lg:py-[80px] relative w-full">
+			<div class="flex flex-col gap-[24px] lg:gap-[40px] items-center relative w-full">
+				<div class="flex flex-col gap-[12px] items-center relative w-full">
+					<p class="font-roboto font-medium leading-none text-main-orange text-[18px] lg:text-[24px] tracking-[2.4px]" style="font-variation-settings: 'wdth' 100">
+						COMPANY
+					</p>
+					<div class="section-divider-orange" aria-hidden="true"></div>
+					<p class="font-noto-sans font-bold leading-[1.5] text-main-orange text-[24px] lg:text-[32px] text-center tracking-[3.2px]">
+						会社概要
+					</p>
+				</div>
+			</div>
+			<div class="company-info-table bg-white border border-[#dadada] flex flex-col items-start p-[16px] lg:p-[40px] relative rounded-[8px] w-full max-w-[900px]">
+				<div class="border-[#e5e7eb] border-b flex flex-col lg:flex-row gap-[8px] lg:gap-[60px] items-start lg:items-center justify-center leading-[1.5] pb-[20px] pt-0 px-0 relative w-full">
+					<p class="font-noto-sans font-bold text-main-orange w-full lg:w-[120px] shrink-0">会社名</p>
+					<p class="font-noto-sans font-normal text-[#1b1b1b] tracking-[1.6px] w-full lg:w-[620px] text-[14px] sm:text-[16px]">株式会社　進晃</p>
+				</div>
+				<div class="border-[#e5e7eb] border-b flex flex-col lg:flex-row gap-[8px] lg:gap-[60px] items-start lg:items-center justify-center leading-[1.5] px-0 py-[20px] relative w-full">
+					<p class="font-noto-sans font-bold text-main-orange w-full lg:w-[120px] shrink-0">創業</p>
+					<p class="font-noto-sans font-normal text-[#1b1b1b] tracking-[1.6px] w-full lg:w-[620px] text-[14px] sm:text-[16px]">平成23年8月</p>
+				</div>
+				<div class="border-[#e5e7eb] border-b flex flex-col lg:flex-row gap-[8px] lg:gap-[60px] items-start lg:items-center justify-center leading-[1.5] px-0 py-[20px] relative w-full">
+					<p class="font-noto-sans font-bold text-main-orange w-full lg:w-[120px] shrink-0">設立</p>
+					<p class="font-noto-sans font-normal text-[#1b1b1b] tracking-[1.6px] w-full lg:w-[620px] text-[14px] sm:text-[16px]">平成25年1月</p>
+				</div>
+				<div class="border-[#e5e7eb] border-b flex flex-col lg:flex-row gap-[8px] lg:gap-[60px] items-start lg:items-center justify-center px-0 py-[20px] relative w-full">
+					<p class="font-noto-sans font-bold leading-[1.5] text-main-orange w-full lg:w-[120px] shrink-0">本社</p>
+					<div class="font-noto-sans font-normal leading-[1.5] text-[#1b1b1b] tracking-[1.6px] w-full lg:w-[620px] text-[14px] sm:text-[16px]">
+						<p class="mb-0">〒210-0012</p>
+						<p class="mb-0">神奈川県川崎市川崎区宮前町1-7</p>
+						<p class="mb-0">TEL : 044-276-7057</p>
+						<p>FAX : 044-276-7058</p>
+					</div>
+				</div>
+				<div class="border-[#e5e7eb] border-b flex flex-col lg:flex-row gap-[8px] lg:gap-[60px] items-start lg:items-center justify-center px-0 py-[20px] relative w-full">
+					<p class="font-noto-sans font-bold leading-[1.5] text-main-orange w-full lg:w-[120px] shrink-0">東京支店</p>
+					<div class="font-noto-sans font-normal leading-[1.5] text-[#1b1b1b] tracking-[1.6px] w-full lg:w-[620px] text-[14px] sm:text-[16px]">
+						<p class="mb-0">〒145-0065</p>
+						<p class="mb-0">東京都大田区東雪谷4-25-6</p>
+						<p>TEL：03-4332-1418</p>
+					</div>
+				</div>
+				<div class="border-[#e5e7eb] border-b flex flex-col lg:flex-row gap-[8px] lg:gap-[60px] items-start lg:items-center justify-center leading-[1.5] px-0 py-[20px] relative w-full">
+					<p class="font-noto-sans font-bold text-main-orange w-full lg:w-[120px] shrink-0">資本金</p>
+					<p class="font-noto-sans font-normal text-[#1b1b1b] tracking-[1.6px] w-full lg:w-[620px] text-[14px] sm:text-[16px]">2,000万円</p>
+				</div>
+				<div class="border-[#e5e7eb] border-b flex flex-col lg:flex-row gap-[8px] lg:gap-[60px] items-start lg:items-center justify-center leading-[1.5] px-0 py-[20px] relative w-full">
+					<p class="font-noto-sans font-bold text-main-orange w-full lg:w-[120px] shrink-0">代表取締役</p>
+					<p class="font-noto-sans font-normal text-[#1b1b1b] tracking-[1.6px] w-full lg:w-[620px] text-[14px] sm:text-[16px]">伊藤 幹</p>
+				</div>
+				<div class="border-[#e5e7eb] border-b flex flex-col lg:flex-row gap-[8px] lg:gap-[60px] items-start lg:items-center justify-center px-0 py-[20px] relative w-full">
+					<p class="font-noto-sans font-bold leading-[1.5] text-main-orange text-[16px] w-full lg:w-[120px] shrink-0">事業内容</p>
+					<div class="font-noto-sans font-normal leading-[1.5] text-[#1b1b1b] tracking-[1.6px] w-full lg:w-[620px] text-[14px] sm:text-[16px]">
+						<p class="mb-0">ビル・マンション内外装劣化調査・診断・修繕・改修工事</p>
+						<p class="mb-0">防水工事（メンブレン防水・シーリング・モルタル防水）</p>
+						<p class="mb-0">コンクリート躯体、補修、補強、補正（無収縮グラウト注入工事）</p>
+						<p class="mb-0">漏水補修工事（止水工事）</p>
+					</div>
+				</div>
+				<div class="border-[#e5e7eb] border-b flex flex-col lg:flex-row gap-[8px] lg:gap-[60px] items-start lg:items-center justify-center px-0 py-[20px] relative w-full">
+					<p class="font-noto-sans font-bold leading-[1.5] text-main-orange text-[16px] w-full lg:w-[120px] shrink-0">加入団体</p>
+					<div class="flex flex-col lg:flex-row font-noto-sans font-normal gap-[16px] items-start relative text-[#1b1b1b] text-[14px] sm:text-[16px] tracking-[1.6px] w-full lg:w-[620px]">
+						<p class="leading-[1.5]">
+							・ピングラウト協議会<br />
+							・サラセーヌ工業会<br />
+							・コニシべステム工業会<br />
+							・川崎市防水工事協力会<br />
+							・(一社)全建総連リフォーム協会<br />
+							・日本セリノール防水事業協同組合
+						</p>
+						<div class="leading-[1.5]">
+							<p class="mb-0">・(一社)日本アスベスト調査診断協会</p>
+							<p class="mb-0">・(一社)全国防水工事業協会</p>
+							<p class="mb-0">・建設業労働災害防止協会</p>
+							<p class="mb-0">・川崎商工会議所</p>
+							<p>・神奈川県中小建設業協会</p>
+						</div>
+					</div>
+				</div>
+				<div class="border-[#e5e7eb] border-b flex flex-col lg:flex-row gap-[8px] lg:gap-[60px] items-start lg:items-center justify-center px-0 py-[20px] relative w-full">
+					<p class="font-noto-sans font-bold leading-[1.5] text-main-orange w-full lg:w-[120px] shrink-0">建設業許可</p>
+					<div class="font-noto-sans font-normal leading-[1.5] text-[#1b1b1b] text-[14px] sm:text-[16px] tracking-[1.6px] w-full lg:w-[620px] flex flex-col lg:grid lg:grid-cols-2 lg:gap-x-8 lg:gap-y-0 gap-y-1">
+						<p class="mb-0 lg:col-span-2">神奈川県知事許可(特‐3)第80103号</p>
+						<p class="mb-0">・建築工事業</p>
+						<p class="mb-0">・鉄筋工事業</p>
+						<p class="mb-0">・大工工事業</p>
+						<p class="mb-0">・板金工事業</p>
+						<p class="mb-0">・左官工事業</p>
+						<p class="mb-0">・ガラス工事業</p>
+						<p class="mb-0">・とび・土工工事業</p>
+						<p class="mb-0">・塗装工事業</p>
+						<p class="mb-0">・石工事業</p>
+						<p class="mb-0">・防水工事業</p>
+						<p class="mb-0">・屋根工事業</p>
+						<p class="mb-0">・内装仕上工事業</p>
+						<p class="mb-0">・熱絶縁工事業</p>
+						<p class="mb-0">・タイル・れんが・ブロック工事業</p>
+						<p class="mb-0">・鋼構造物工事業</p>
+						<p class="mb-0">・建具工事業</p>
+					</div>
+				</div>
+				<div class="border-[#e5e7eb] border-b flex flex-col lg:flex-row gap-[8px] lg:gap-[60px] items-start lg:items-center justify-center px-0 py-[20px] relative w-full">
+					<p class="font-noto-sans font-bold leading-[1.5] text-main-orange w-full lg:w-[120px] shrink-0">有資格者</p>
+					<div class="font-noto-sans font-normal leading-[1.5] text-[#1b1b1b] text-[13px] sm:text-[14px] sm:text-[16px] tracking-[1.6px] w-full lg:w-[620px]">
+						<p class="mb-0 flex items-center"><span class="min-w-[220px] sm:min-w-[330px]">監理技術者</span><span>2名</span></p>
+						<p class="mb-0 flex items-center"><span class="min-w-[220px] sm:min-w-[330px]">１級建築施工管理技士</span><span>2名</span></p>
+						<p class="mb-0 flex items-center"><span class="min-w-[220px] sm:min-w-[330px]">二級建築士</span><span>1名</span></p>
+						<p class="mb-0 flex items-center"><span class="min-w-[220px] sm:min-w-[330px]">危険物取扱者乙種第４類</span><span>1名</span></p>
+						<p class="mb-0 flex items-center"><span class="min-w-[220px] sm:min-w-[330px]">建築仕上げ診断技術者</span><span>1名</span></p>
+						<p class="mb-0 flex items-center"><span class="min-w-[220px] sm:min-w-[330px]">建築仕上げ改修施工管理技術者</span><span>1名</span></p>
+						<p class="mb-0 flex items-center"><span class="min-w-[220px] sm:min-w-[330px]">連続繊維施工管理士</span><span>2名</span></p>
+						<p class="mb-0 flex items-center"><span class="min-w-[220px] sm:min-w-[330px]">シーリング管理士</span><span>2名</span></p>
+						<p class="mb-0 flex items-center"><span class="min-w-[220px] sm:min-w-[330px]">一級技能士(防水・塗装)</span><span>5名</span></p>
+						<p class="flex items-center"><span class="min-w-[220px] sm:min-w-[330px]">登録基幹技能者</span><span>2名</span></p>
+					</div>
+				</div>
+			</div>
+			<div class="flex flex-col items-start relative w-full max-w-[900px] mt-0 md:mt-[40px]">
+				<div class="border border-[#e5e7eb] h-[250px] lg:h-[550px] relative rounded-[8px] w-full">
+					<div aria-hidden="true" class="absolute inset-0 pointer-events-none rounded-[8px]">
+						<Image 
+							src="/images/company-image-2.png"
+							alt="進晃の会社内観" 
+							class="absolute inset-0 object-cover rounded-[8px] size-full" 
+							width={900}
+							height={630}
+						/>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Social Contribution Section -->
+		<section class="bg-main-orange flex flex-col gap-[16px] lg:gap-[40px] items-center px-[40px] lg:px-[120px] py-[56px] lg:py-[80px] relative w-full">
+			<div class="flex flex-col gap-[24px] items-center relative w-full">
+				<div class="flex flex-col gap-[12px] items-center relative w-full">
+					<p class="font-roboto font-medium leading-none text-white text-[18px] lg:text-[24px] tracking-[2.4px] uppercase" style="font-variation-settings: 'wdth' 100">
+						Social Contribution
+					</p>
+					<div class="section-divider-white" aria-hidden="true"></div>
+					<p class="font-noto-sans font-bold leading-[1.5] text-white text-[24px] lg:text-[32px] text-center tracking-[3.2px]">
+						進晃の取り組み
+					</p>
+				</div>
+				<p class="font-noto-sans font-normal leading-[1.5] text-white text-[16px] text-center tracking-[1.6px]">
+					当社は下記の認証を取得しており、社会に貢献しております。
+				</p>
+			</div>
+			<div class="bg-white flex flex-col gap-[16px] items-center justify-center px-4 lg:px-[120px] py-[40px] lg:py-[80px] relative rounded-[8px] w-full max-w-[1200px]">
+				<div class="flex flex-col lg:flex-row flex-wrap gap-[40px] lg:gap-[40px_80px] items-center justify-center relative w-full lg:w-[680px]">
+					<a href="https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/0000100266.html" target="_blank" rel="noopener noreferrer" class="flex flex-col gap-[16px] items-center p-0 relative w-full max-w-[300px] hover:opacity-80 transition-opacity">
+						<div class="h-[110px] lg:h-[126px] relative w-[114px] lg:w-[130px] flex items-center justify-center">
+							<Image 
+								src="/images/youth-ell.png"
+								alt="ユースエール認定" 
+								class="w-full h-full object-contain" 
+								width={130}
+								height={126}
+							/>
+						</div>
+						<p class="font-noto-sans font-normal leading-[1.5] text-[#1b1b1b] text-[16px] text-left tracking-[1.6px]">
+							若者の採用・育成に積極的で、若者の雇用管理の状況などが優良な中小企業を厚生労働大臣が認定する制度
+						</p>
+					</a>
+					<a href="https://www.city.kawasaki.jp/shisei/category/60-10-10-0-0-0-0-0-0-0.html" target="_blank" rel="noopener noreferrer" class="flex flex-col gap-[16px] items-center justify-center p-0 relative w-full max-w-[300px] hover:opacity-80 transition-opacity">
+						<div class="h-[146px] relative w-[160px] flex items-center justify-center">
+							<Image 
+								src="/images/kawasaki-ell.png"
+								alt="かわさき☆えるぼし認証" 
+								class="w-full h-full object-contain" 
+								width={160}
+								height={146}
+							/>
+						</div>
+						<p class="font-noto-sans font-normal leading-[1.5] text-[#1b1b1b] text-[16px] text-left tracking-[1.6px]">
+							女性の活躍推進及びワーク・ライフ・バランスを推進するため、働きやすい職場づくりに積極的に取り組んでいる中小企業
+						</p>
+					</a>
+					<a href="https://www.city.kawasaki.jp/shisei/category/54-10-6-0-0-0-0-0-0-0.html" target="_blank" rel="noopener noreferrer" class="flex flex-col gap-[16px] items-center p-0 relative w-full max-w-[300px] hover:opacity-80 transition-opacity">
+						<div class="h-[109px] relative w-[212px] flex items-center justify-center">
+							<Image 
+								src="/images/sdgs.png"
+								alt="SDGs認証" 
+								class="w-full h-full object-contain" 
+								width={212}
+								height={109}
+							/>
+						</div>
+						<p class="font-noto-sans font-normal leading-[1.5] text-[#1b1b1b] text-[16px] text-left tracking-[1.6px]">
+							SDGsの達成に向けて取り組む企業・団体の皆様を川崎市が登録・認証する制度
+						</p>
+					</a>
+					<div class="flex flex-col gap-[16px] items-center justify-center p-0 relative w-full max-w-[300px]">
+						<div class="flex gap-[8px] items-center justify-center px-0 py-[8px] relative rounded-[16px] w-[230px]">
+						<div class="h-[160px] relative w-[300px] flex items-center justify-center">
+							<Image 
+								src="/images/iso.png"
+								alt="ISO認証" 
+								class="w-full h-full object-contain" 
+								width={323}
+								height={314}
+							/>
+						</div>
+						</div>
+						<div class="flex flex-col gap-[8px] items-start justify-center leading-[1.5] text-[#1b1b1b] w-full">
+						<p class="font-noto-sans font-bold text-[16px] lg:text-[20px]">
+							ISO 9001 <span class="text-[12px] lg:text-[14px]">(品質マネジメントシステム)</span>
+						</p>
+							<p class="font-noto-sans font-normal">
+								「良い品質を安定して提供するための仕組みづくり」を国際基準に沿って整えている
+							</p>
+							<p class="font-noto-sans font-bold text-[16px] lg:text-[20px]">
+								ISO 14001 <span class="text-[12px] lg:text-[14px]">(環境マネジメントシステム)</span>
+							</p>
+							<p class="font-noto-sans font-normal">
+								「環境に配慮した事業活動を行うための仕組み」を国際基準で整えている
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Access Section -->
+		<section class="flex flex-col gap-[24px] lg:gap-[40px] items-start px-[40px] lg:px-[120px] py-[56px] lg:py-[80px] relative w-full">
+			<div class="flex flex-col gap-[24px] items-center relative w-full">
+				<div class="flex flex-col gap-[12px] items-center relative w-full">
+					<p class="font-roboto font-medium leading-none text-main-orange text-[18px] lg:text-[24px] tracking-[2.4px]" style="font-variation-settings: 'wdth' 100">
+						ACCESS
+					</p>
+					<div class="section-divider-orange" aria-hidden="true"></div>
+					<p class="font-noto-sans font-bold leading-[1.5] text-main-orange text-[24px] lg:text-[32px] text-center tracking-[3.2px]">
+						アクセス
+					</p>
+				</div>
+			</div>
+			<div class="flex flex-col h-[400px] items-center justify-center relative rounded-[8px] w-full overflow-hidden  max-w-[1200px] mx-auto">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3247.0579709425797!2d139.70128807644278!3d35.527565072637124!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x601860bb81c89195%3A0x6b61f7aa9b1ee5d6!2z5qCq5byP5Lya56S-6YCy5pmD!5e0!3m2!1sja!2sjp!4v1769507295297!5m2!1sja!2sjp" width="100%" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+			</div>
+		</section>
+
+		<!-- Contact Section -->
+		<Contact />
+	</main>
+</Layout>
+
+<style>
+	.chevron-right {
+		display: inline-block;
+		width: 16px;
+		height: 16px;
+		position: relative;
+	}
+
+	.chevron-right::before {
+		content: '';
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%) rotate(45deg);
+		width: 6px;
+		height: 6px;
+		border-right: 2px solid currentColor;
+		border-top: 2px solid currentColor;
+		color: #1B1B1B;
+	}
+
+	.section-divider-orange {
+		position: relative;
+		width: 24px;
+		height: 1px;
+		background-color: #EA5903;
+		margin: 0 auto;
+	}
+
+	.section-divider-white {
+		position: relative;
+		width: 24px;
+		height: 1px;
+		background-color: #FFFFFF;
+		margin: 0 auto;
+	}
+
+	.ceo-image-zoom {
+		transform: scale(1.2);
+	}
+</style>

@@ -21,12 +21,12 @@ const { class: className = '' } = Astro.props;
       />
     </a>
   </div>
-  <button id="menu-toggle" class="mobile-header-toggle" aria-label="メニューを開く" aria-expanded="false">
-    <svg id="menu-icon" class="mobile-header-icon" viewBox="0 0 24 24" fill="none">
-      <path d="M3 12H21M3 6H21M3 18H21" stroke="#1B1B1B" stroke-width="2" stroke-linecap="round"/>
+  <button id="menu-toggle" class="mobile-header-toggle" aria-label="メニューを開く" aria-expanded="false" type="button">
+    <svg id="menu-icon" class="mobile-header-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="M3 12H21M3 6H21M3 18H21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
     </svg>
-    <svg id="close-icon" class="mobile-header-icon mobile-header-icon-close" viewBox="0 0 24 24" fill="none">
-      <path d="M18 6L6 18M6 6L18 18" stroke="#1B1B1B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <svg id="close-icon" class="mobile-header-icon mobile-header-icon-close opacity-0" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
     </svg>
   </button>
 </header>
@@ -76,7 +76,7 @@ const { class: className = '' } = Astro.props;
 
   .mobile-header-icon-close {
     position: absolute;
-    opacity: 0;
+    inset: 0;
   }
 </style>
 

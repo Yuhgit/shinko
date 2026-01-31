@@ -1,0 +1,186 @@
+---
+/**
+ * 施工前 / 施工後 のタブ切り替え表示コンポーネント。
+ * プロジェクト詳細ページの「施工実績写真」で利用。
+ */
+interface TabImage {
+  src: string;
+  alt: string;
+  width?: number;
+  height?: number;
+}
+
+interface Props {
+  beforeImage: TabImage;
+  afterImage: TabImage;
+  /** 同一ページに複数ある場合の識別用（省略可） */
+  idSuffix?: string;
+}
+
+const { beforeImage, afterImage, idSuffix = '' } = Astro.props;
+const tabId = `before-after-${idSuffix || '0'}`;
+---
+
+<div class="before-after-tabs" data-tab-group={tabId}>
+  <div class="before-after-tabs__buttons" role="tablist" aria-label="施工前・施工後の切り替え">
+    <button
+      type="button"
+      role="tab"
+      aria-selected="true"
+      aria-controls={`${tabId}-panel-before`}
+      id={`${tabId}-tab-before`}
+      class="before-after-tab-btn before-after-tab-btn--active"
+      data-tab="before"
+    >
+      施工前
+    </button>
+    <button
+      type="button"
+      role="tab"
+      aria-selected="false"
+      aria-controls={`${tabId}-panel-after`}
+      id={`${tabId}-tab-after`}
+      class="before-after-tab-btn"
+      data-tab="after"
+    >
+      施工後
+    </button>
+  </div>
+  <div
+    id={`${tabId}-panel-before`}
+    role="tabpanel"
+    aria-labelledby={`${tabId}-tab-before`}
+    class="before-after-tabs__panel before-after-tabs__panel--active"
+    data-panel="before"
+  >
+    <div class="before-after-tabs__image-wrap">
+      <img
+        src={beforeImage.src}
+        alt={beforeImage.alt}
+        class="before-after-tabs__image"
+        width={beforeImage.width ?? 1200}
+        height={beforeImage.height ?? 600}
+        loading="lazy"
+      />
+    </div>
+  </div>
+  <div
+    id={`${tabId}-panel-after`}
+    role="tabpanel"
+    aria-labelledby={`${tabId}-tab-after`}
+    class="before-after-tabs__panel"
+    data-panel="after"
+    hidden
+  >
+    <div class="before-after-tabs__image-wrap">
+      <img
+        src={afterImage.src}
+        alt={afterImage.alt}
+        class="before-after-tabs__image"
+        width={afterImage.width ?? 1200}
+        height={afterImage.height ?? 600}
+        loading="lazy"
+      />
+    </div>
+  </div>
+</div>
+
+<script>
+  function initBeforeAfterTabs(container: HTMLElement) {
+    const buttons = container.querySelectorAll<HTMLButtonElement>('.before-after-tab-btn');
+    const panels = container.querySelectorAll<HTMLElement>('.before-after-tabs__panel');
+
+    buttons.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const target = btn.getAttribute('data-tab');
+        if (!target) return;
+
+        buttons.forEach((b) => {
+          const isActive = b.getAttribute('data-tab') === target;
+          b.classList.toggle('before-after-tab-btn--active', isActive);
+          b.setAttribute('aria-selected', String(isActive));
+        });
+
+        panels.forEach((panel) => {
+          const isActive = panel.getAttribute('data-panel') === target;
+          panel.classList.toggle('before-after-tabs__panel--active', isActive);
+          (panel as HTMLElement).hidden = !isActive;
+        });
+      });
+    });
+  }
+
+  document.querySelectorAll<HTMLElement>('.before-after-tabs').forEach(initBeforeAfterTabs);
+</script>
+
+<style>
+  .before-after-tabs {
+    width: 100%;
+  }
+
+  .before-after-tabs__buttons {
+    display: flex;
+    gap: 0;
+    margin-bottom: 0;
+  }
+
+  .before-after-tab-btn {
+    flex: 1;
+    padding: 16px 24px;
+    border: none;
+    border-radius: 8px 8px 0 0;
+    font-family: 'Noto Sans JP', sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1.5;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    background-color: #f3f4f6;
+    color: #1b1b1b;
+  }
+
+  .before-after-tab-btn:hover {
+    background-color: #e5e7eb;
+  }
+
+  .before-after-tab-btn--active {
+    background-color: var(--color-main-orange);
+    color: white;
+    font-weight: 700;
+  }
+
+  .before-after-tab-btn--active:hover {
+    background-color: #d14d02;
+    color: white;
+  }
+
+  .before-after-tabs__panel {
+    display: none;
+    border: 1px solid #e5e7eb;
+    border-top: none;
+    border-radius: 0 0 8px 8px;
+    overflow: hidden;
+    background: #fff;
+  }
+
+  .before-after-tabs__panel--active {
+    display: block;
+  }
+
+  .before-after-tabs__panel[hidden] {
+    display: none !important;
+  }
+
+  .before-after-tabs__image-wrap {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+  }
+
+  .before-after-tabs__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+</style>

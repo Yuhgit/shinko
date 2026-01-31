@@ -1,0 +1,86 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Contact from '../components/Contact.astro';
+import PageHeader from '../components/PageHeader.astro';
+import ServiceCard from '../components/ServiceCard.astro';
+import ImageSlider from '../components/ImageSlider.astro';
+---
+
+<Layout title="事業内容 | 進晃" description="株式会社進晃の事業内容ページ。止水工事・防水工事・各種注入工事・ビル・マンション修繕工事・公共工事についてご紹介します。">
+	<main class="overflow-x-hidden">
+		<!-- Page Header -->
+		<PageHeader
+			titleEn="SERVICE"
+			titleJa="事業内容"
+			breadcrumbCurrent="事業内容"
+			backgroundSrc="/images/service-header.jpg"
+			backgroundAlt="事業内容ページヘッダー背景"
+		/>
+
+		<!-- Services Section -->
+		<section class="flex flex-col gap-[40px] items-start px-[40px] sm:px-[120px] py-[56px] lg:py-[80px] relative w-full">
+			<!-- 止水工事 -->
+			<ServiceCard
+				imageSrc="/images/service-water-stop.jpg"
+				imageAlt="止水工事の施工風景"
+				labelEn="WATER STOP"
+				titleJa="止水工事"
+				description="建物や地下構造物に浸入した“水”を、その発生源から根本的に封じる工事です。打ち継ぎ部・ひび割れ・地下ピットなどからの漏水に対し、発泡ウレタン系注入材や高圧注入機を駆使して隙間まで充填。構造体の劣化進行を防ぎ、建物の寿命を大きく延ばします。"
+				linkHref="/projects#止水工事"
+			/>
+
+			<!-- 防水工事 -->
+			<ServiceCard
+				imageSrc="/images/service-waterproof.jpg"
+				imageAlt="防水工事の施工風景"
+				labelEn="WATERPROOFING"
+				titleJa="防水工事"
+				description="屋上・ベランダ・外壁・地下室など“水の侵入口”へ防水膜やシート、防水塗膜を施工し、浸水を未然に防ぐ工事です。建築物の外側から雨水や地下水の侵入を防止し、快適な環境と資産価値の維持に貢献します。"
+				linkHref="/projects#防水工事"
+			/>
+
+			<!-- 各種注入工事 -->
+			<ServiceCard
+				imageSrc="/images/service-injection.jpg"
+				imageAlt="各種注入工事の施工風景"
+				labelEn="INJECTION"
+				titleJa="各種注入工事"
+				description="建物のひび割れ・浮き・モルタル剥離など、構造に生じた隙間や浮動部分を補修・強化する注入工事です。エポキシ樹脂・セメント系注入材を用い、穴あけ・注入・硬化・仕上げまで一貫して実施。剥落リスクの回避と耐久性の改善を図ります。"
+				linkHref="/projects#各種注入工事"
+			/>
+
+			<!-- ビル・マンション修繕工事 -->
+			<ServiceCard
+				imageSrc="/images/service-renovation.jpg"
+				imageAlt="ビル・マンション修繕工事の施工風景"
+				labelEn="RENOVATION"
+				titleJa="ビル・マンション修繕工事"
+				description="築年数を重ねたビル・マンションの外壁補修・屋上防水・共用部設備更新などを含む大規模修繕を行います。建物の安全性・機能性・美観を回復・向上させ、資産価値を守るために、入念な劣化診断と計画的な施工で対応します。"
+				linkHref="/projects#ビル・マンション修繕工事"
+			/>
+
+			<!-- 公共工事 -->
+			<ServiceCard
+				imageSrc="/images/service-public.jpg"
+				imageAlt="公共工事の様子"
+				labelEn="PUBLIC WORKS"
+				titleJa="公共工事"
+				description="国・地方自治体発注の土木・建築工事に参画し、公共施設・インフラ構造物を対象に、許認可・技術・安全管理を備えた施工を行います。信頼性と実績を背景に、社会資本としての価値を支える役割を果たします。"
+				linkHref="/projects#公共工事"
+			/>
+		</section>
+
+			<ImageSlider
+				images={[
+					{ src: '/images/service-slider-1.jpg', alt: '進晃の施工事例1 - 止水工事の施工現場', width: 776, height: 381 },
+					{ src: '/images/service-slider-2.jpg', alt: '進晃の施工事例2 - 防水工事の施工現場', width: 776, height: 381 },
+					{ src: '/images/service-slider-3.jpg', alt: '進晃の施工事例3 - グラウト工法の施工現場', width: 776, height: 381 },
+					{ src: '/images/service-slider-4.jpg', alt: '進晃の施工事例4 - 止水・防水工事の完成例', width: 776, height: 381 },
+				]}
+			/>
+
+		<!-- Contact Section -->
+		<Contact />
+	</main>
+</Layout>
+

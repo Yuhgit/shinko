@@ -1,0 +1,107 @@
+---
+import { Image } from 'astro:assets';
+
+interface Props {
+  imageSrc: string;
+  imageAlt: string;
+  labelEn: string;
+  titleJa: string;
+  description: string;
+  linkHref?: string;
+}
+
+const {
+  imageSrc,
+  imageAlt,
+  labelEn,
+  titleJa,
+  description,
+  linkHref = '/projects',
+} = Astro.props;
+---
+
+<article class="bg-white flex flex-col lg:flex-row items-center lg:items-stretch gap-[24px] lg:gap-[32px] w-full max-w-[1200px] mx-auto rounded-[8px] shadow-[0px_0px_40px_0px_rgba(0,0,0,0.08)] overflow-hidden">
+  <div class="w-full lg:w-1/2 h-[220px] md:h-[350px] lg:h-[500px] relative">
+    <Image
+      src={imageSrc}
+      alt={imageAlt}
+      class="absolute inset-0 w-full h-full object-cover"
+      width={600}
+      height={640}
+    />
+  </div>
+  <div class="flex flex-col gap-[24px] items-start justify-center px-[24px] lg:px-[40px] py-[24px] lg:py-[40px] w-full lg:w-1/2">
+    <div class="flex flex-col gap-[8px] items-start">
+      <p class="font-noto-sans font-bold text-[12px] leading-[14.4px] text-main-orange">
+        {labelEn}
+      </p>
+      <p class="font-noto-sans font-bold text-[24px] lg:text-[32px] leading-[1.5] text-[#1b1b1b] tracking-[3.2px]">
+        {titleJa}
+      </p>
+    </div>
+    <p class="font-noto-sans font-normal text-[16px] leading-[1.5] text-[#1b1b1b] tracking-[1.6px]">
+      {description}
+    </p>
+    <a href={linkHref} class="flex items-center gap-[16px] arrow-link-orange">
+      <div class="flex items-center justify-center py-[12px] rounded">
+        <p class="font-noto-sans font-medium text-[16px] leading-[1.5] text-[#1b1b1b] tracking-[0.32px] mb-0">
+          施工事例を見る
+        </p>
+      </div>
+      <div class="bg-main-orange flex items-center justify-center rounded-full size-8 arrow-button-orange">
+        <div class="arrow-icon-white"></div>
+      </div>
+    </a>
+  </div>
+</article>
+
+<style>
+  .arrow-link-orange {
+    transition: all 0.3s ease;
+  }
+
+  .arrow-button-orange {
+    transition: all 0.3s ease;
+  }
+
+  .arrow-icon-white {
+    position: relative;
+    display: inline-block;
+    width: 6px;
+    height: 10px;
+    transition: transform 0.3s ease;
+  }
+
+  .arrow-icon-white::before,
+  .arrow-icon-white::after {
+    content: "";
+    position: absolute;
+    top: calc(50% - 1px);
+    right: 0;
+    width: 6px;
+    height: 2px;
+    border-radius: 9999px;
+    background-color: white;
+    transform-origin: calc(100% - 1px) 50%;
+  }
+
+  .arrow-icon-white::before {
+    transform: rotate(45deg);
+  }
+
+  .arrow-icon-white::after {
+    transform: rotate(-45deg);
+  }
+
+  .arrow-link-orange:hover .arrow-button-orange {
+    transform: scale(1.1);
+    box-shadow: 0px 4px 12px 0px rgba(0,0,0,0.2);
+    background-color: #fff;
+  }
+
+  .arrow-link-orange:hover .arrow-icon-white::before,
+  .arrow-link-orange:hover .arrow-icon-white::after {
+    background-color: var(--color-main-orange);
+  }
+</style>
+

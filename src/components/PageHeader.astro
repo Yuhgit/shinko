@@ -1,0 +1,231 @@
+---
+import { Image } from 'astro:assets';
+
+interface Props {
+  /** 英語見出し（カテゴリタグ未指定時のみ表示） */
+  titleEn?: string;
+  titleJa: string;
+  breadcrumbCurrent: string;
+  backgroundSrc: string;
+  backgroundAlt: string;
+  homeLabel?: string;
+  breadcrumbParent?: string;
+  breadcrumbParentHref?: string;
+  /** タイトル直上に表示するカテゴリタグ（Figma: 薄桃背景・オレンジ文字のピル） */
+  categoryTag?: string;
+  /** パンくずの top 位置（指定時のみ。例: 施工事例詳細では別の値に） */
+  breadcrumbTopClass?: string;
+}
+
+const {
+  titleEn,
+  titleJa,
+  breadcrumbCurrent,
+  backgroundSrc,
+  backgroundAlt,
+  homeLabel = 'ホーム',
+  breadcrumbParent,
+  breadcrumbParentHref,
+  categoryTag,
+  breadcrumbTopClass,
+} = Astro.props;
+
+const breadcrumbTop = breadcrumbTopClass ?? 'top-[240px] md:top-[300px] lg:top-[461px]';
+---
+
+<section class="relative w-full h-[450px]  md:h-[550px] overflow-hidden">
+  <!-- Background Image -->
+  <div class="absolute inset-0">
+    <Image
+      src={backgroundSrc}
+      alt={backgroundAlt}
+      class="absolute inset-0 object-cover w-full h-full"
+      width={1440}
+      height={508}
+    />
+  </div>
+  <!-- Gradient Overlay -->
+  <div class="absolute inset-0 bg-gradient-to-r from-[#fca385] from-[11.538%] to-[#ebca6b] opacity-70"></div>
+  <!-- Shape Divider -->
+  <div class="about-header-shape-divider">
+    <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" preserveAspectRatio="none">
+      <path
+        d="M0,120L60,150C120,180,240,240,360,280C480,320,600,320,720,280C840,240,960,160,1080,120C1200,80,1320,80,1380,90L1440,100L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"
+        class="shape-fill"
+      ></path>
+    </svg>
+  </div>
+  <!-- Breadcrumb -->
+  <div class="max-w-[1200px] mx-auto relative px-4 lg:px-0">
+    <div class={`absolute ${breadcrumbTop} left-[40px] lg:left-[120px] 2xl:left-0 z-10`}>
+      <div class="flex flex-wrap gap-[8px] items-center">
+        <a
+          href="/"
+          class="font-noto-sans font-normal leading-[1.5] text-[14px] hover:text-main-orange transition-colors text-white lg:text-black"
+        >
+          {homeLabel}
+        </a>
+        <span class="chevron-right" aria-hidden="true"></span>
+        {breadcrumbParent && breadcrumbParentHref ? (
+          <>
+            <a
+              href={breadcrumbParentHref}
+              class="font-noto-sans font-normal leading-[1.5] text-[14px] hover:text-main-orange transition-colors text-white lg:text-black"
+            >
+              {breadcrumbParent}
+            </a>
+            <span class="chevron-right" aria-hidden="true"></span>
+          </>
+        ) : null}
+        <span class="font-noto-sans font-normal leading-[1.5] text-[14px] text-white lg:text-black">{breadcrumbCurrent}</span>
+      </div>
+    </div>
+  </div>
+  <!-- Main Title（categoryTag 時はタグをタイトル直上に表示） -->
+  <div class="max-w-[1200px] mx-auto relative px-4 lg:px-0">
+    <div class="absolute top-[170px] md:top-[208px] left-[40px] lg:left-[120px] 2xl:left-0 z-10 min-w-0 max-w-[calc(100vw-80px)] lg:max-w-[calc(100vw-240px)] 2xl:max-w-[1080px]">
+      <div class="flex flex-col gap-[12px] items-start min-w-0 w-full">
+        {categoryTag ? (
+          <span class="page-header-category-tag">{categoryTag}</span>
+        ) : titleEn ? (
+          <p
+            class="font-roboto font-medium leading-none text-white text-[16px] lg:text-[24px] tracking-[1.6px] lg:tracking-[2.4px]"
+            style="font-variation-settings: 'wdth' 100"
+          >
+            {titleEn}
+          </p>
+        ) : null}
+        <p
+          id="page-header-title-ja"
+          class="page-header-title-ja font-noto-sans font-bold leading-[1.5] text-white tracking-[3.2px] lg:tracking-[4.8px] whitespace-nowrap max-w-full"
+        >
+          {titleJa}
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .about-header-shape-divider {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    z-index: 1;
+  }
+
+  .about-header-shape-divider svg {
+    position: relative;
+    display: block;
+    width: calc(145% + 1.3px);
+    height: 120px;
+    transform: rotateY(180deg);
+  }
+
+  @media (min-width: 768px) {
+    .about-header-shape-divider svg {
+      height: 150px;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .about-header-shape-divider svg {
+      height: 180px;
+    }
+  }
+
+  .about-header-shape-divider .shape-fill {
+    fill: rgb(249 250 251 / var(--tw-bg-opacity, 1));
+  }
+
+  @media (min-width: 768px) {
+    .about-header-shape-divider svg {
+      height: 150px;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .about-header-shape-divider svg {
+      height: 180px;
+    }
+  }
+
+  .chevron-right {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    position: relative;
+  }
+
+  .chevron-right::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(45deg);
+    width: 6px;
+    height: 6px;
+    border-right: 2px solid currentColor;
+    border-top: 2px solid currentColor;
+    color: #FFFFFF;
+    @media (min-width: 1024px){
+      color: #1B1B1B;
+    }
+  }
+
+  /* タイトル: 1行表示・デバイス幅に収める（JSで縮小し全文字表示） */
+  .page-header-title-ja {
+    font-size: clamp(1.25rem, 6vw, 2rem);
+  }
+  @media (min-width: 1024px) {
+    .page-header-title-ja {
+      font-size: clamp(2rem, 3.5vw, 3rem);
+    }
+  }
+
+  /* Figma 320-6961: 薄桃背景・オレンジ文字のピルタグ（タイトル直上） */
+  .page-header-category-tag {
+    display: inline-block;
+    padding: 8px 20px;
+    border-radius: 8px;
+    background-color: #fde8dd;
+    color: #ea5903;
+    font-family: 'Noto Sans JP', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 1.5;
+    letter-spacing: 0.02em;
+  }
+</style>
+
+<script>
+  function fitPageHeaderTitle() {
+    const el = document.getElementById('page-header-title-ja');
+    if (!el) return;
+    const minPx = 12;
+    el.style.fontSize = '';
+    requestAnimationFrame(() => {
+      const parent = el.parentElement;
+      if (!parent) return;
+      const maxW = parent.clientWidth;
+      let size = parseFloat(getComputedStyle(el).fontSize) || 32;
+      while (el.scrollWidth > maxW && size > minPx) {
+        size -= 2;
+        el.style.fontSize = `${size}px`;
+      }
+    });
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => {
+      fitPageHeaderTitle();
+      window.addEventListener('resize', fitPageHeaderTitle);
+    });
+  } else {
+    fitPageHeaderTitle();
+    window.addEventListener('resize', fitPageHeaderTitle);
+  }
+</script>
+

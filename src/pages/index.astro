@@ -1,28 +1,12 @@
 ---
+import Layout from '../layouts/Layout.astro';
 import { Image } from 'astro:assets';
-import Header from '../components/Header.astro';
-import HeaderSp from '../components/HeaderSp.astro';
-import Footer from '../components/Footer.astro';
 import Contact from '../components/Contact.astro';
-import '../styles/globals.css';
+import ImageSlider from '../components/ImageSlider.astro';
 ---
 
-<html lang="ja">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<meta name="generator" content={Astro.generator} />
-		<title>進晃 - 水は止める、変化は止めない。</title>
-	</head>
-	<body class="bg-white">
-		<!-- Desktop Header -->
-		<Header class="hidden lg:flex" />
-		
-		<!-- Mobile Header -->
-		<HeaderSp class="lg:hidden" />
-
-		<main class="relative w-full overflow-x-hidden">
+<Layout title="進晃 - 水は止める、変化は止めない。" description="進晃は、水は止める、変化は止めない。見えない水まで確かに止める止水・防水工事の専門会社です。">
+	<main class="relative w-full overflow-x-hidden">
 			<!-- Background Elements -->
 			<div class="fixed inset-0 bg-gray-50 -z-10" />
 			<div class="absolute left-[-363px] size-[800px] top-[-559px] sm:size-[1001px]">
@@ -114,7 +98,7 @@ import '../styles/globals.css';
 							<p class="mb-0">はじめの調査から最後の仕上げまで、<br class="hidden lg:block">当社で一貫して対応します。</p>
 						</div>
 						<div class="flex flex-col gap-2 lg:flex-row lg:gap-8 items-start relative">
-							<a href="#business" class="flex gap-4 items-center arrow-link-orange">
+							<a href="/service" class="flex gap-4 items-center arrow-link-orange">
 								<div class="flex items-center justify-center px-0 py-3 rounded">
 									<div class="flex flex-col font-medium justify-center leading-0 relative">
 										<p class="leading-6">事業内容</p>
@@ -124,7 +108,7 @@ import '../styles/globals.css';
 									<div class="arrow-icon-white"></div>
 								</div>
 							</a>
-							<a href="#reason" class="flex gap-4 items-center arrow-link-orange">
+							<a href="/company" class="flex gap-4 items-center arrow-link-orange">
 								<div class="flex items-center justify-center px-0 py-3 rounded">
 									<div class="flex flex-col font-medium justify-center leading-0 relative">
 										<p class="leading-6">進晃が選ばれる理由</p>
@@ -206,7 +190,7 @@ import '../styles/globals.css';
 					</div>
 					<div class="flex flex-col gap-4 items-start relative w-full max-w-[1200px] mx-auto">
 						<div class="border-t border-[rgba(255,255,255,0.4)] flex flex-col items-start pb-0 pt-px px-0 relative w-full">
-							<a href="#pingrout" class="flex items-center justify-between px-0 py-6 relative w-full arrow-link">
+							<a href="/pingrout" class="flex items-center justify-between px-0 py-6 relative w-full arrow-link">
 								<div class="basis-0 flex flex-col gap-1 grow items-start min-h-px min-w-px relative">
 									<div class="flex flex-col items-start opacity-80 relative w-full">
 										<div class="flex flex-col font-roboto font-normal justify-center leading-0 relative text-sm text-white w-full" style="font-variation-settings: 'wdth' 100">
@@ -225,7 +209,7 @@ import '../styles/globals.css';
 							</a>
 						</div>
 						<div class="border-t border-[rgba(255,255,255,0.4)] flex flex-col items-start pb-0 pt-px px-0 relative w-full">
-							<a href="#tapgrout" class="flex items-center justify-between px-0 py-6 relative w-full arrow-link">
+							<a href="/tapgrout" class="flex items-center justify-between px-0 py-6 relative w-full arrow-link">
 								<div class="basis-0 flex flex-col gap-1 grow items-start min-h-px min-w-px relative">
 									<div class="flex flex-col items-start opacity-80 relative w-full">
 										<div class="flex flex-col font-roboto font-normal justify-center leading-0 relative text-sm text-white w-full" style="font-variation-settings: 'wdth' 100">
@@ -271,7 +255,7 @@ import '../styles/globals.css';
 							</div>
 						</div>
 					</div>
-					<a href="#projects-detail" class="flex gap-4 items-center arrow-link-orange">
+					<a href="/projects" class="flex gap-4 items-center arrow-link-orange">
 						<div class="flex items-center justify-center px-0 py-3 rounded">
 							<div class="flex flex-col font-medium justify-center leading-0 relative">
 								<p class="leading-6">施工事例を見る</p>
@@ -282,59 +266,14 @@ import '../styles/globals.css';
 						</div>
 					</a>
 				</div>
-				<div class="relative w-full overflow-hidden">
-					<div class="flex gap-2 items-center animate-slider">
-						<div class="flex-shrink-0 w-[300px] h-[200px] lg:w-[776px] lg:h-[450px] relative overflow-clip">
-							<Image src="/images/works-slider1.png" alt="進晃の施工事例1 - 止水工事の施工現場" class="absolute inset-0 object-cover w-full h-full" width={776} height={381} />
-							<div class="absolute left-[-30%] size-[500px] top-[50%]">
-								<img alt="装飾用の円形グラフィック" class="block size-full" src="/images/ellipse-7.svg" loading="lazy" width="500" height="500" />
-							</div>
-						</div>
-						<div class="flex-shrink-0 w-[300px] h-[200px] lg:w-[776px] lg:h-[450px] relative overflow-clip">
-							<Image src="/images/works-slider2.jpg" alt="進晃の施工事例2 - 防水工事の施工現場" class="absolute inset-0 object-cover w-full h-full" width={776} height={381} />
-							<div class="absolute left-[-30%] size-[500px] top-[50%]">
-								<img alt="装飾用の円形グラフィック" class="block size-full" src="/images/ellipse-7.svg" loading="lazy" width="500" height="500" />
-							</div>
-						</div>
-						<div class="flex-shrink-0 w-[300px] h-[200px] lg:w-[776px] lg:h-[450px] relative overflow-clip">
-							<Image src="/images/works-slider3.png" alt="進晃の施工事例3 - グラウト工法の施工現場" class="absolute inset-0 object-cover w-full h-full" width={776} height={381} />
-							<div class="absolute left-[-30%] size-[500px] top-[50%]">
-								<img alt="装飾用の円形グラフィック" class="block size-full" src="/images/ellipse-7.svg" loading="lazy" width="500" height="500" />
-							</div>
-						</div>
-						<div class="flex-shrink-0 w-[300px] h-[200px] lg:w-[776px] lg:h-[450px] relative overflow-clip">
-							<Image src="/images/works-slider4.jpg" alt="進晃の施工事例4 - 止水・防水工事の完成例" class="absolute inset-0 object-cover w-full h-full" width={776} height={381} />
-							<div class="absolute left-[-30%] size-[500px] top-[50%]">
-								<img alt="装飾用の円形グラフィック" class="block size-full" src="/images/ellipse-7.svg" loading="lazy" width="500" height="500" />
-							</div>
-						</div>
-						<!-- 無限ループ用の複製 -->
-						<div class="flex-shrink-0 w-[300px] h-[200px] lg:w-[776px] lg:h-[450px] relative overflow-clip">
-							<Image src="/images/works-slider1.png" alt="進晃の施工事例1 - 止水工事の施工現場" class="absolute inset-0 object-cover w-full h-full" width={776} height={381} />
-							<div class="absolute left-[-30%] size-[500px] top-[50%]">
-								<img alt="装飾用の円形グラフィック" class="block size-full" src="/images/ellipse-7.svg" loading="lazy" width="500" height="500" />
-							</div>
-						</div>
-						<div class="flex-shrink-0 w-[300px] h-[200px] lg:w-[776px] lg:h-[450px] relative overflow-clip">
-							<Image src="/images/works-slider2.jpg" alt="進晃の施工事例2 - 防水工事の施工現場" class="absolute inset-0 object-cover w-full h-full" width={776} height={381} />
-							<div class="absolute left-[-30%] size-[500px] top-[50%]">
-								<img alt="装飾用の円形グラフィック" class="block size-full" src="/images/ellipse-7.svg" loading="lazy" width="500" height="500" />
-							</div>
-						</div>
-						<div class="flex-shrink-0 w-[300px] h-[200px] lg:w-[776px] lg:h-[450px] relative overflow-clip">
-							<Image src="/images/works-slider3.png" alt="進晃の施工事例3 - グラウト工法の施工現場" class="absolute inset-0 object-cover w-full h-full" width={776} height={381} />
-							<div class="absolute left-[-30%] size-[500px] top-[50%]">
-								<img alt="装飾用の円形グラフィック" class="block size-full" src="/images/ellipse-7.svg" loading="lazy" width="500" height="500" />
-							</div>
-						</div>
-						<div class="flex-shrink-0 w-[300px] h-[200px] lg:w-[776px] lg:h-[450px] relative overflow-clip">
-							<Image src="/images/works-slider4.jpg" alt="進晃の施工事例4 - 止水・防水工事の完成例" class="absolute inset-0 object-cover w-full h-full" width={776} height={381} />
-							<div class="absolute left-[-30%] size-[500px] top-[50%]">
-								<img alt="装飾用の円形グラフィック" class="block size-full" src="/images/ellipse-7.svg" loading="lazy" width="500" height="500" />
-							</div>
-						</div>
-					</div>
-				</div>
+				<ImageSlider
+				images={[
+					{ src: '/images/works-slider1.png', alt: '進晃の施工事例1 - 止水工事の施工現場', width: 776, height: 381 },
+					{ src: '/images/works-slider2.jpg', alt: '進晃の施工事例2 - 防水工事の施工現場', width: 776, height: 381 },
+					{ src: '/images/works-slider3.png', alt: '進晃の施工事例3 - グラウト工法の施工現場', width: 776, height: 381 },
+					{ src: '/images/works-slider4.jpg', alt: '進晃の施工事例4 - 止水・防水工事の完成例', width: 776, height: 381 },
+				]}
+			/>
 			</section>
 
 			<!-- Recruitment Section -->
@@ -372,7 +311,7 @@ import '../styles/globals.css';
 									<p class="mb-0">未来の建築を守る。</p>
 									<p>共に挑もう、進晃で。</p>
 								</div>
-								<a href="#recruit-detail" class="inline-flex gap-4 items-center arrow-link order-4 lg:order-3">
+								<a href="#recruit" class="inline-flex gap-4 items-center arrow-link order-4 lg:order-3">
 									<div class="flex items-center justify-center px-0 py-3 rounded">
 										<div class="flex flex-col font-medium justify-center leading-0 relative text-white tracking-[0.32px]">
 											<p class="leading-[20.8px]">採用情報について</p>
@@ -390,12 +329,8 @@ import '../styles/globals.css';
 
 			<!-- Contact Section -->
 			<Contact />
-
-			<!-- Footer -->
-			<Footer />
 		</main>
-	</body>
-</html>
+</Layout>
 
 <style>
 	.arrow-link {
@@ -532,28 +467,6 @@ import '../styles/globals.css';
 	.arrow-link:hover .arrow-icon-orange::before,
 	.arrow-link:hover .arrow-icon-orange::after {
 		background-color: #fff;
-	}
-
-	@keyframes slider {
-		0% {
-			transform: translateX(0);
-		}
-		100% {
-			transform: translateX(calc(-50% - 0.5rem));
-		}
-	}
-
-	.animate-slider {
-		animation: slider 8s linear infinite;
-		display: flex;
-		width: calc(200% + 1rem);
-	}
-
-	@media (min-width: 768px) {
-		.animate-slider {
-			animation: slider 24s linear infinite;
-			width: calc(200% + 0.5rem);
-		}
 	}
 
 	.mv-image-clip {

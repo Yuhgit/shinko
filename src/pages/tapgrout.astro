@@ -1,0 +1,639 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { Image } from 'astro:assets';
+import Contact from '../components/Contact.astro';
+import PageHeader from '../components/PageHeader.astro';
+import FeatureItem from '../components/FeatureItem.astro';
+import ProcessStep from '../components/ProcessStep.astro';
+import ComparisonCard from '../components/ComparisonCard.astro';
+---
+
+<Layout title="TAPグラウト工法 | 進晃" description="TAPグラウト工法について。高圧注入を前提に特化した画期的な止水工法の特徴、工法の流れ、使用する注入材についてご紹介します。">
+	<main class="overflow-x-hidden">
+		<!-- Page Header -->
+		<PageHeader
+			titleEn="TECHNOLOGY"
+			titleJa="TAPグラウト工法"
+			breadcrumbCurrent="TAPグラウト工法"
+			backgroundSrc="/images/tapgrout-header.jpg"
+			backgroundAlt="TAPグラウト工法ページヘッダー背景"
+		/>
+
+		<!-- Overview Section -->
+		<section class="flex flex-col items-center px-[40px] sm:px-[120px] py-[56px] lg:py-[80px] relative w-full">
+			<div class="flex flex-col gap-[40px] items-center relative w-full">
+				<div class="flex flex-col gap-[24px] items-center relative w-full max-w-[1360px]">
+					<div class="flex flex-col gap-[12px] items-center relative">
+						<p class="font-roboto font-medium leading-none text-main-orange text-[18px] lg:text-[24px] tracking-[2.4px]" style="font-variation-settings: 'wdth' 100">
+							What is Tapgrout method ?
+						</p>
+						<div class="section-divider-orange" aria-hidden="true"></div>
+						<p class="font-noto-sans font-bold leading-[1.5] text-main-orange text-[24px] lg:text-[32px] text-center tracking-[3.2px]">
+							TAPグラウト工法とは
+						</p>
+					</div>
+				</div>
+				<p class="font-noto-sans font-normal leading-[1.5] relative shrink-0 text-[#1b1b1b] text-[16px] text-center tracking-[1.6px] w-full max-w-[800px]">
+					TAP グラウト工法は高圧注入を前提に特化した画期的な止水工法です。
+				</p>
+				<div class="flex flex-col lg:flex-row gap-[16px] lg:gap-[24px] items-stretch lg:items-center justify-center relative w-full max-w-[1200px]">
+					<div class="w-full flex-none lg:flex-[1_0_0]">
+						<ComparisonCard
+							title="従来工法（表面止水）"
+							imageSrc="/images/traditional-method.jpg"
+							imageAlt="従来工法（表面止水）の図解"
+							description="今までの止水工事は手押しポンプなどで注入液を注入か、急結セメントで止水する等といった表面のみの処理でコンクリート構造物内部に水が存在している状況が続き、新たにほかの水の道より漏水が発生する可能性がありました。"
+						/>
+					</div>
+					<div class="flex items-center justify-center relative shrink-0 size-[40px] rotate-180 lg:rotate-90 self-center">
+						<div class="relative size-[40px]">
+							<img alt="矢印" class="block max-w-none size-full" src="/images/arrow-polygon.svg" loading="lazy" />
+						</div>
+					</div>
+					<div class="w-full flex-none lg:flex-[1_0_0]">
+						<ComparisonCard
+							title="TAPグラウト工法"
+							imageSrc="/images/tapgrout-method.jpg"
+							imageAlt="TAPグラウト工法の図解"
+							description="コンクリート構造物内に存在する水の道に対して、TAP注入機を使用し、タップグラウト注入液を継続的に高圧で注入・充填することで、コンクリート躯体内の隙間や水を注入止水材へ置換する工法です。また、注入孔には着脱が容易な専用の逆止弁付き注入用プラグ「Oープラグ」を設置することで、注入材の流量を確保しつつ、高圧注入によるプラグの引き抜けや破断を防止し、工期短縮にもつながります。"
+						/>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Features Section -->
+		<section class="flex flex-col gap-[40px] items-start px-[40px] sm:px-[120px] py-[56px] lg:py-[80px] relative w-full">
+			<div class="flex flex-col gap-[24px] items-center relative w-full">
+				<div class="flex flex-col gap-[12px] items-center relative">
+					<p class="font-roboto font-medium leading-none text-main-orange text-[18px] lg:text-[24px] tracking-[2.4px]" style="font-variation-settings: 'wdth' 100">
+						FEATURES
+					</p>
+					<div class="section-divider-orange" aria-hidden="true"></div>
+					<p class="font-noto-sans font-bold leading-[1.5] text-main-orange text-[24px] lg:text-[32px] text-center tracking-[3.2px]">
+						ＴＡＰグラウト工法の特徴
+					</p>
+				</div>
+			</div>
+			<div class="flex flex-col gap-[24px] items-start relative w-full max-w-[1080px] mx-auto">
+				<FeatureItem
+					number={1}
+					title="深部まで水みちを遮断する高圧注入プラグの高い止水性能"
+					description="高圧注入専用プラグ「O-プラグ」により、構造物内部の深い水みちまで止水材を行き渡らせ、確実な止水が可能です。"
+				/>
+				<FeatureItem
+					number={2}
+					title="環境と人体にやさしい無臭・無溶剤の高発泡止水材"
+					description="高発泡・無臭・無溶剤・耐アルカリ仕様で、TAP注入機を前提に開発された安全性の高い止水材です。"
+				/>
+				<FeatureItem
+					number={3}
+					title="複雑な形状や不規則な欠損部にも対応可能"
+					description="コールドジョイント・ジャンカ・H鋼周りにも適応し、さまざまな現場状況で安定した止水性能を発揮します。"
+				/>
+				<FeatureItem
+					number={4}
+					title="工期短縮に貢献するスピーディーな施工性"
+					description="高い注入効率により短工期での施工が可能で、現場の負担を軽減します。"
+				/>
+				<FeatureItem
+					number={5}
+					title="建築・土木どちらの現場でも使用できる汎用性"
+					description="用途が幅広く、建築・土木双方の現場で安心して使用できる止水材です。"
+				/>
+				<FeatureItem
+					number={6}
+					title="海水環境でも反応・固化する高い充填・固結性"
+					description="優れた注入充填性を持ち、海水環境下でも確実に反応・固結して止水性を発揮します。"
+				/>
+			</div>
+		</section>
+
+		<!-- Process Flow Section -->
+		<section class="bg-main-orange flex flex-col gap-[40px] items-start px-[40px] sm:px-[120px] py-[56px] lg:py-[80px] relative w-full">
+			<div class="absolute right-[-150px] top-0 w-[620px] h-[470px] hidden lg:block">
+				<img alt="装飾用のベクター" class="block max-w-none size-full" src="/images/tapgrout-vector.svg" loading="lazy" />
+			</div>
+			<div class="flex flex-col gap-[24px] items-center relative w-full">
+				<div class="flex flex-col gap-[12px] items-center relative">
+					<p class="font-roboto font-medium leading-none text-white text-[18px] lg:text-[24px] tracking-[2.4px]" style="font-variation-settings: 'wdth' 100">
+						FLOW
+					</p>
+					<div class="section-divider-white" aria-hidden="true"></div>
+					<p class="font-noto-sans font-bold leading-[1.5] text-white text-[24px] lg:text-[32px] text-center tracking-[3.2px]">
+						工法の基本的な流れ
+					</p>
+				</div>
+			</div>
+			<div class="flex flex-col lg:flex-row gap-[12px] lg:gap-[80px] items-start justify-center relative w-full">
+				<div class="flex flex-col gap-[12px] lg:gap-[16px] items-center relative w-full lg:w-auto">
+					<ProcessStep
+						number={1}
+						title="漏水状況確認"
+						description="現場の状況を詳細に調査"
+					/>
+					<ProcessStep
+						number={2}
+						title="タップグラフト液の選定"
+						description="最適な工法を選択"
+					/>
+					<ProcessStep
+						number={3}
+						title="注入孔穴あけ"
+						description="精密な穴あけ作業"
+					/>
+					<ProcessStep
+						number={4}
+						title="注入孔清掃・O - プラグ設置"
+						description="清掃後にプラグを設置"
+						showArrow={false}
+					/>
+				</div>
+				<!-- 縦並び時のみ4と5の間に棒線（ProcessStepと同じ gap-[12px] + 24px線 + gap-[12px]） -->
+				<div class="lg:hidden flex justify-center w-full py-[12px]" aria-hidden="true">
+					<div class="h-[24px] w-[2px] bg-white rounded-[1px] shrink-0"></div>
+				</div>
+				<div class="flex flex-col gap-[12px] lg:gap-[16px] items-center relative w-full lg:w-auto">
+					<ProcessStep
+						number={5}
+						title="タップグラフト液注入"
+						description="材料注入と発泡反応"
+					/>
+					<ProcessStep
+						number={6}
+						title="タップグラフト発泡材撤去"
+						description="材料注入による余材の撤去"
+					/>
+					<ProcessStep
+						number={7}
+						title="完了（漏水閉鎖部の確認）"
+						description="最終確認と完了"
+						showArrow={false}
+					/>
+				</div>
+			</div>
+		</section>
+
+		<!-- Technology & Materials Section -->
+		<section class="bg-[#f8f9fa] flex flex-col gap-[40px] items-start px-[40px] sm:px-[120px] py-[56px] lg:py-[80px] relative w-full">
+			<div class="flex flex-col gap-[24px] items-center relative w-full">
+				<div class="flex flex-col gap-[12px] items-center relative">
+					<p class="font-roboto font-medium leading-none text-main-orange text-[18px] lg:text-[24px] tracking-[2.4px]" style="font-variation-settings: 'wdth' 100">
+						TECHNOLOGY
+					</p>
+					<div class="section-divider-orange" aria-hidden="true"></div>
+					<p class="font-noto-sans font-bold leading-[1.5] text-main-orange text-[24px] lg:text-[32px] text-center tracking-[3.2px]">
+						タップグラウト注入液について
+					</p>
+				</div>
+			</div>
+			<div class="bg-white flex flex-col gap-[32px] items-start py-[40px] relative rounded-[8px] w-full max-w-[1200px] mx-auto px-[20px] lg:px-[40px]">
+				<!-- 疎水性タイプ -->
+				<div class="flex flex-col gap-[24px] items-center relative w-full">
+					<div class="bg-main-orange flex flex-col items-center justify-center px-[24px] py-[8px] relative rounded-[16px] shrink-0">
+						<p class="font-noto-sans font-bold leading-[16.8px] relative shrink-0 text-[14px] text-white">
+							疎水性タイプ
+						</p>
+					</div>
+					<div class="relative w-full max-w-[900px]">
+						<div class="js-scroll-table flex flex-col items-start relative shrink-0 w-full max-w-[700px] md:max-w-[900px] overflow-x-auto">
+						<!-- テーブルヘッダー -->
+						<div class="bg-[#f1f2f4] border-[#ebeaed] border-[1.6px] border-solid flex font-noto-sans font-bold gap-[40px] items-center justify-end leading-[1.5] px-[32px] py-[16px] relative shrink-0 text-[14px] md:text-[16px] text-[#1b1b1b] text-center w-full min-w-[700px] md:min-w-[900px]">
+							<p class="relative shrink-0 w-[140px] md:w-[180px]"></p>
+							<p class="relative shrink-0 w-[140px] md:w-[180px]">TA-80L</p>
+							<p class="relative shrink-0 w-[140px] md:w-[180px]">TA-100L</p>
+							<p class="relative shrink-0 w-[140px] md:w-[180px]">TA-2001</p>
+						</div>
+						<!-- 注入液の種類 -->
+						<div class="border-[#ebeaed] border-b-[1.6px] border-l-[1.6px] border-r-[1.6px] border-solid flex gap-[40px] items-center justify-center py-[16px] relative shrink-0 w-full min-w-[700px] md:min-w-[900px]">
+							<p class="font-noto-sans font-bold leading-[1.5] relative shrink-0 text-[14px] md:text-[16px] text-[#1b1b1b] text-center w-[140px] md:w-[180px]">
+								注入液の種類
+							</p>
+							<div class="h-[120px] md:h-[230px] relative shrink-0 w-[140px] md:w-[180px]">
+								<Image
+									src="/images/ta-80l.jpg"
+									alt="TA-80L"
+									class="absolute inset-0 object-contain pointer-events-none size-full"
+									width={180}
+									height={230}
+								/>
+							</div>
+							<div class="h-[120px] md:h-[230px] relative shrink-0 w-[140px] md:w-[180px]">
+								<Image
+									src="/images/ta-100l.jpg"
+									alt="TA-100L"
+									class="absolute inset-0 object-contain pointer-events-none size-full"
+									width={180}
+									height={230}
+								/>
+							</div>
+							<div class="h-[120px] md:h-[230px] relative shrink-0 w-[140px] md:w-[180px]">
+								<Image
+									src="/images/ta-2001.jpg"
+									alt="TA-2001"
+									class="absolute inset-0 object-contain pointer-events-none size-full"
+									width={180}
+									height={230}
+								/>
+							</div>
+						</div>
+						<!-- 特徴 -->
+						<div class="border-[#ebeaed] border-b-[1.6px] border-l-[1.6px] border-r-[1.6px] border-solid flex gap-[40px] items-center justify-center leading-[1.5] py-[16px] relative shrink-0 text-[14px] md:text-[16px] text-[#1b1b1b] text-center w-full min-w-[700px] md:min-w-[900px]">
+							<p class="font-noto-sans font-bold relative shrink-0 w-[140px] md:w-[180px]">
+								特徴 ※1
+							</p>
+							<div class="font-noto-sans font-normal relative shrink-0 tracking-[1.6px] w-[140px] md:w-[180px]">
+								<p class="mb-0">低粘度・無臭</p>
+								<p>無溶剤・耐アルカリ</p>
+							</div>
+							<div class="font-noto-sans font-normal relative shrink-0 tracking-[1.6px] w-[140px] md:w-[180px]">
+								<p class="mb-0">高発泡・無臭</p>
+								<p>無溶剤・耐アルカリ</p>
+							</div>
+							<div class="font-noto-sans font-normal relative shrink-0 tracking-[1.6px] w-[140px] md:w-[180px]">
+								<p class="mb-0">低粘度・無臭</p>
+								<p class="mb-0">無溶剤・耐アルカリ</p>
+								<p class="mb-0">(厚生省令</p>
+								<p>第15号水質試験適合)</p>
+							</div>
+						</div>
+						<!-- 粘度 -->
+						<div class="border-[#ebeaed] border-b-[1.6px] border-l-[1.6px] border-r-[1.6px] border-solid flex gap-[40px] items-center justify-center leading-[1.5] py-[16px] relative shrink-0 text-[14px] md:text-[16px] text-[#1b1b1b] text-center w-full min-w-[700px] md:min-w-[900px]">
+							<div class="font-noto-sans font-bold relative shrink-0 w-[140px] md:w-[180px]">
+								<p class="mb-0">粘度</p>
+								<p>(mPa.s/20℃)</p>
+							</div>
+							<p class="font-noto-sans font-normal relative shrink-0 tracking-[1.6px] w-[140px] md:w-[180px]">
+								50~150
+							</p>
+							<p class="font-noto-sans font-normal relative shrink-0 tracking-[1.6px] w-[140px] md:w-[180px]">
+								150~350
+							</p>
+							<p class="font-noto-sans font-normal relative shrink-0 tracking-[1.6px] w-[140px] md:w-[180px]">
+								2000~3000
+							</p>
+						</div>
+						<!-- 配合 -->
+						<div class="border-[#ebeaed] border-b-[1.6px] border-l-[1.6px] border-r-[1.6px] border-solid flex gap-[40px] items-center justify-center leading-[1.5] py-[16px] relative shrink-0 text-[14px] md:text-[16px] text-[#1b1b1b] text-center w-full min-w-[700px] md:min-w-[900px]">
+							<p class="font-noto-sans font-bold relative shrink-0 w-[140px] md:w-[180px]">
+								配合
+							</p>
+							<p class="font-noto-sans font-normal relative shrink-0 tracking-[1.6px] w-[140px] md:w-[180px]">
+								90/10/3
+							</p>
+							<p class="font-noto-sans font-normal relative shrink-0 tracking-[1.6px] w-[140px] md:w-[180px]">
+								90/10/3
+							</p>
+							<p class="font-noto-sans font-normal relative shrink-0 tracking-[1.6px] w-[140px] md:w-[180px]">
+								90/10
+							</p>
+						</div>
+						<!-- 硬化時間 -->
+						<div class="border-[#ebeaed] border-b-[1.6px] border-l-[1.6px] border-r-[1.6px] border-solid flex gap-[40px] items-center justify-center leading-[1.5] py-[16px] relative shrink-0 text-[14px] md:text-[16px] text-[#1b1b1b] text-center w-full min-w-[700px] md:min-w-[900px]">
+							<p class="font-noto-sans font-bold relative shrink-0 w-[140px] md:w-[180px]">
+								硬化時間
+							</p>
+							<div class="font-noto-sans font-normal relative shrink-0 tracking-[1.6px] w-[140px] md:w-[180px]">
+								<p class="mb-0">1分〜15分</p>
+								<p>（配合剤添加量による）</p>
+							</div>
+							<div class="font-noto-sans font-normal relative shrink-0 tracking-[1.6px] w-[140px] md:w-[180px]">
+								<p class="mb-0">2分〜15分</p>
+								<p>（配合剤添加量による）</p>
+							</div>
+							<div class="font-noto-sans font-normal relative shrink-0 tracking-[1.6px] w-[140px] md:w-[180px]">
+								<p class="mb-0">6分〜15分</p>
+								<p>（水比による）</p>
+							</div>
+						</div>
+						<!-- 適用 -->
+						<div class="border-[#ebeaed] border-b-[1.6px] border-l-[1.6px] border-r-[1.6px] border-solid flex gap-[40px] items-center justify-center leading-[1.5] py-[16px] relative shrink-0 text-[14px] md:text-[16px] text-[#1b1b1b] text-center w-full min-w-[700px] md:min-w-[900px]">
+							<p class="font-noto-sans font-bold relative shrink-0 w-[140px] md:w-[180px]">
+								適用
+							</p>
+							<div class="font-noto-sans font-normal relative shrink-0 tracking-[1.6px] w-[140px] md:w-[180px]">
+								<p class="mb-0">にじみ程度の漏水</p>
+								<p>一般止水</p>
+							</div>
+							<div class="font-noto-sans font-normal relative shrink-0 tracking-[1.6px] w-[140px] md:w-[180px]">
+								<p class="mb-0">セグメント裏込め</p>
+								<p>空隙充填・一般止水</p>
+							</div>
+							<div class="font-noto-sans font-normal relative shrink-0 tracking-[1.6px] w-[140px] md:w-[180px]">
+								<p class="mb-0">空隙充填・一般止水</p>
+								<p>飲料水施設 ※2</p>
+							</div>
+						</div>
+						<!-- 発泡倍率 -->
+						<div class="border-[#ebeaed] border-b-[1.6px] border-l-[1.6px] border-r-[1.6px] border-solid flex gap-[40px] items-center justify-center leading-[1.5] py-[16px] relative shrink-0 text-[14px] md:text-[16px] text-[#1b1b1b] text-center w-full min-w-[700px] md:min-w-[900px]">
+							<p class="font-noto-sans font-bold relative shrink-0 w-[140px] md:w-[180px]">
+								発泡倍率
+							</p>
+							<p class="font-noto-sans font-normal relative shrink-0 tracking-[1.6px] w-[140px] md:w-[180px]">
+								1~1.5
+							</p>
+							<p class="font-noto-sans font-normal relative shrink-0 tracking-[1.6px] w-[140px] md:w-[180px]">
+								30~50
+							</p>
+							<p class="font-noto-sans font-normal relative shrink-0 tracking-[1.6px] w-[140px] md:w-[180px]">
+								8~14
+							</p>
+						</div>
+						<!-- 荷姿 -->
+						<div class="border-[#ebeaed] border-b-[1.6px] border-l-[1.6px] border-r-[1.6px] border-solid flex gap-[40px] items-center justify-center leading-[1.5] py-[16px] relative shrink-0 text-[14px] md:text-[16px] text-[#1b1b1b] text-center w-full min-w-[700px] md:min-w-[900px]">
+							<p class="font-noto-sans font-bold relative shrink-0 w-[140px] md:w-[180px]">
+								荷姿
+							</p>
+							<div class="font-noto-sans font-normal relative shrink-0 tracking-[1.6px] w-[140px] md:w-[180px]">
+								<p class="mb-0">18kg/缶</p>
+								<p>0.5kg/缶（配合剤）</p>
+							</div>
+							<div class="font-noto-sans font-normal relative shrink-0 tracking-[1.6px] w-[140px] md:w-[180px]">
+								<p class="mb-0">18kg/缶</p>
+								<p>0.5kg/缶（配合剤）</p>
+							</div>
+							<p class="font-noto-sans font-normal relative shrink-0 tracking-[1.6px] w-[140px] md:w-[180px]">
+								18kg/缶
+							</p>
+						</div>
+						<!-- 危険物表示 -->
+						<div class="border-[#ebeaed] border-b-[1.6px] border-l-[1.6px] border-r-[1.6px] border-solid flex gap-[40px] items-center justify-center leading-[1.5] py-[16px] relative shrink-0 text-[14px] md:text-[16px] text-[#1b1b1b] text-center w-full min-w-[700px] md:min-w-[900px]">
+							<p class="font-noto-sans font-bold relative shrink-0 w-[140px] md:w-[180px]">
+								危険物表示
+							</p>
+							<div class="font-noto-sans font-normal relative shrink-0 tracking-[1.6px] w-[140px] md:w-[180px]">
+								<p class="mb-0">危険物第4類第3石油類</p>
+								<p>危険等級Ⅲ</p>
+							</div>
+							<div class="font-noto-sans font-normal relative shrink-0 tracking-[1.6px] w-[140px] md:w-[180px]">
+								<p class="mb-0">危険物第4類第3石油類</p>
+								<p>危険等級Ⅲ</p>
+							</div>
+							<div class="font-noto-sans font-normal relative shrink-0 tracking-[1.6px] w-[140px] md:w-[180px]">
+								<p class="mb-0">危険物第4類第4石油類</p>
+								<p>危険等級Ⅲ</p>
+							</div>
+						</div>
+						</div>
+						<!-- モバイル用スクロールヒント（lg以上で非表示） -->
+						<div class="scroll-hint lg:hidden absolute right-3 top-1/2 -translate-y-1/2 z-10 flex items-center gap-1.5 rounded-full bg-white/90 px-3 py-2 shadow-md pointer-events-none transition-opacity duration-300" aria-hidden="true">
+							<span class="font-noto-sans text-[12px] font-medium text-[#1b1b1b]">スクロールできます</span>
+							<svg class="size-4 shrink-0 text-main-orange" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+								<path d="M5 12h14M12 5l7 7-7 7"/>
+							</svg>
+						</div>
+					</div>
+				</div>
+
+				<!-- 親水性タイプ -->
+				<div class="flex flex-col gap-[24px] items-center relative w-full">
+					<div class="bg-main-orange flex flex-col items-center justify-center px-[24px] py-[8px] relative rounded-[16px] shrink-0">
+						<p class="font-noto-sans font-bold leading-[16.8px] relative shrink-0 text-[14px] text-white">
+							親水性タイプ
+						</p>
+					</div>
+					<div class="relative w-full max-w-[720px]">
+						<div class="js-scroll-table flex flex-col items-start relative shrink-0 w-full max-w-[560px] md:max-w-[720px] overflow-x-auto">
+						<!-- テーブルヘッダー -->
+						<div class="bg-[#f1f2f4] border-[#ebeaed] border-[1.6px] border-solid flex font-noto-sans font-bold gap-[40px] items-center justify-end leading-[1.5] px-[32px] py-[16px] relative shrink-0 text-[14px] md:text-[16px] text-[#1b1b1b] text-center w-full min-w-[560px] md:min-w-[720px]">
+							<p class="relative shrink-0 w-[140px] md:w-[180px]"></p>
+							<p class="relative shrink-0 w-[140px] md:w-[180px]">TA-6X</p>
+							<p class="relative shrink-0 w-[140px] md:w-[180px]">TA-120X</p>
+						</div>
+						<!-- 注入液の種類 -->
+						<div class="border-[#ebeaed] border-b-[1.6px] border-l-[1.6px] border-r-[1.6px] border-solid flex gap-[40px] items-center justify-center py-[16px] relative shrink-0 w-full min-w-[560px] md:min-w-[720px]">
+							<p class="font-noto-sans font-bold leading-[1.5] relative shrink-0 text-[14px] md:text-[16px] text-[#1b1b1b] text-center w-[140px] md:w-[180px]">
+								注入液の種類
+							</p>
+							<div class="h-[120px] md:h-[245px] relative shrink-0 w-[140px] md:w-[180px]">
+								<Image
+									src="/images/ta-6x.jpg"
+									alt="TA-6X"
+									class="absolute inset-0 object-contain pointer-events-none size-full"
+									width={180}
+									height={213}
+								/>
+							</div>
+							<div class="h-[120px] md:h-[245px] relative shrink-0 w-[140px] md:w-[180px]">
+								<Image
+									src="/images/ta-120x.jpg"
+									alt="TA-120X"
+									class="absolute inset-0 object-contain pointer-events-none size-full"
+									width={180}
+									height={213}
+								/>
+							</div>
+						</div>
+						<!-- 特徴 -->
+						<div class="border-[#ebeaed] border-b-[1.6px] border-l-[1.6px] border-r-[1.6px] border-solid flex gap-[40px] items-center justify-center leading-[1.5] py-[16px] relative shrink-0 text-[14px] md:text-[16px] text-[#1b1b1b] text-center w-full min-w-[560px] md:min-w-[720px]">
+							<p class="font-noto-sans font-bold relative shrink-0 w-[140px] md:w-[180px]">
+								特徴 ※1
+							</p>
+							<p class="font-noto-sans font-normal relative shrink-0 tracking-[1.6px] w-[140px] md:w-[180px]">
+								無臭・無溶剤・耐アルカリ
+							</p>
+							<p class="font-noto-sans font-normal relative shrink-0 tracking-[1.6px] w-[140px] md:w-[180px]">
+								無臭・無溶剤・耐アルカリ
+							</p>
+						</div>
+						<!-- 粘度 -->
+						<div class="border-[#ebeaed] border-b-[1.6px] border-l-[1.6px] border-r-[1.6px] border-solid flex gap-[40px] items-center justify-center leading-[1.5] py-[16px] relative shrink-0 text-[14px] md:text-[16px] text-[#1b1b1b] text-center w-full min-w-[560px] md:min-w-[720px]">
+							<div class="font-noto-sans font-bold relative shrink-0 w-[140px] md:w-[180px]">
+								<p class="mb-0">粘度</p>
+								<p>(mPa.s/20℃)</p>
+							</div>
+							<p class="font-noto-sans font-normal relative shrink-0 tracking-[1.6px] w-[140px] md:w-[180px]">
+								400~800
+							</p>
+							<p class="font-noto-sans font-normal relative shrink-0 tracking-[1.6px] w-[140px] md:w-[180px]">
+								100~300
+							</p>
+						</div>
+						<!-- 配合 -->
+						<div class="border-[#ebeaed] border-b-[1.6px] border-l-[1.6px] border-r-[1.6px] border-solid flex gap-[40px] items-center justify-center leading-[1.5] py-[16px] relative shrink-0 text-[14px] md:text-[16px] text-[#1b1b1b] text-center w-full min-w-[560px] md:min-w-[720px]">
+							<p class="font-noto-sans font-bold relative shrink-0 w-[140px] md:w-[180px]">
+								配合(TA/水)
+							</p>
+							<p class="font-noto-sans font-normal relative shrink-0 tracking-[1.6px] w-[140px] md:w-[180px]">
+								10/90
+							</p>
+							<p class="font-noto-sans font-normal relative shrink-0 tracking-[1.6px] w-[140px] md:w-[180px]">
+								20/80
+							</p>
+						</div>
+						<!-- 硬化時間 -->
+						<div class="border-[#ebeaed] border-b-[1.6px] border-l-[1.6px] border-r-[1.6px] border-solid flex gap-[40px] items-center justify-center leading-[1.5] py-[16px] relative shrink-0 text-[14px] md:text-[16px] text-[#1b1b1b] text-center w-full min-w-[560px] md:min-w-[720px]">
+							<p class="font-noto-sans font-bold relative shrink-0 w-[140px] md:w-[180px]">
+								硬化時間
+							</p>
+							<p class="font-noto-sans font-normal relative shrink-0 tracking-[1.6px] w-[140px] md:w-[180px]">
+								60秒~180秒
+							</p>
+							<p class="font-noto-sans font-normal relative shrink-0 tracking-[1.6px] w-[140px] md:w-[180px]">
+								20秒~60秒
+							</p>
+						</div>
+						<!-- 適用 -->
+						<div class="border-[#ebeaed] border-b-[1.6px] border-l-[1.6px] border-r-[1.6px] border-solid flex gap-[40px] items-center justify-center leading-[1.5] py-[16px] relative shrink-0 text-[14px] md:text-[16px] text-[#1b1b1b] text-center w-full min-w-[560px] md:min-w-[720px]">
+							<p class="font-noto-sans font-bold relative shrink-0 w-[140px] md:w-[180px]">
+								適用
+							</p>
+							<p class="font-noto-sans font-normal relative shrink-0 tracking-[1.6px] w-[140px] md:w-[180px]">
+								水量が多い場所
+							</p>
+							<p class="font-noto-sans font-normal relative shrink-0 tracking-[1.6px] w-[140px] md:w-[180px]">
+								水量が多い箇所
+							</p>
+						</div>
+						<!-- 発泡倍率 -->
+						<div class="border-[#ebeaed] border-b-[1.6px] border-l-[1.6px] border-r-[1.6px] border-solid flex gap-[40px] items-center justify-center leading-[1.5] py-[16px] relative shrink-0 text-[14px] md:text-[16px] text-[#1b1b1b] text-center w-full min-w-[560px] md:min-w-[720px]">
+							<p class="font-noto-sans font-bold relative shrink-0 w-[140px] md:w-[180px]">
+								発泡倍率
+							</p>
+							<p class="font-noto-sans font-normal relative shrink-0 tracking-[1.6px] w-[140px] md:w-[180px]">
+								1~3
+							</p>
+							<p class="font-noto-sans font-normal relative shrink-0 tracking-[1.6px] w-[140px] md:w-[180px]">
+								1~2.2
+							</p>
+						</div>
+						<!-- 荷姿 -->
+						<div class="border-[#ebeaed] border-b-[1.6px] border-l-[1.6px] border-r-[1.6px] border-solid flex gap-[40px] items-center justify-center leading-[1.5] py-[16px] relative shrink-0 text-[14px] md:text-[16px] text-[#1b1b1b] text-center w-full min-w-[560px] md:min-w-[720px]">
+							<p class="font-noto-sans font-bold relative shrink-0 w-[140px] md:w-[180px]">
+								荷姿
+							</p>
+							<p class="font-noto-sans font-normal relative shrink-0 tracking-[1.6px] w-[140px] md:w-[180px]">
+								18kg/缶
+							</p>
+							<p class="font-noto-sans font-normal relative shrink-0 tracking-[1.6px] w-[140px] md:w-[180px]">
+								18kg/缶
+							</p>
+						</div>
+						<!-- 危険物表示 -->
+						<div class="border-[#ebeaed] border-b-[1.6px] border-l-[1.6px] border-r-[1.6px] border-solid flex gap-[40px] items-center justify-center leading-[1.5] py-[16px] relative shrink-0 text-[14px] md:text-[16px] text-[#1b1b1b] text-center w-full min-w-[560px] md:min-w-[720px]">
+							<p class="font-noto-sans font-bold relative shrink-0 w-[140px] md:w-[180px]">
+								危険物表示
+							</p>
+							<div class="font-noto-sans font-normal relative shrink-0 tracking-[1.6px] w-[140px] md:w-[180px]">
+								<p class="mb-0">危険物第4類第3石油類</p>
+								<p>危険等級Ⅲ</p>
+							</div>
+							<div class="font-noto-sans font-normal relative shrink-0 tracking-[1.6px] w-[140px] md:w-[180px]">
+								<p class="mb-0">危険物第4類第3石油類</p>
+								<p>危険等級Ⅲ</p>
+							</div>
+						</div>
+						</div>
+						<!-- モバイル用スクロールヒント（lg以上で非表示） -->
+						<div class="scroll-hint lg:hidden absolute right-3 top-1/2 -translate-y-1/2 z-10 flex items-center gap-1.5 rounded-full bg-white/90 px-3 py-2 shadow-md pointer-events-none transition-opacity duration-300" aria-hidden="true">
+							<span class="font-noto-sans text-[12px] font-medium text-[#1b1b1b]">スクロールできます</span>
+							<svg class="size-4 shrink-0 text-main-orange" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+								<path d="M5 12h14M12 5l7 7-7 7"/>
+							</svg>
+						</div>
+					</div>
+					<div class="font-noto-sans font-normal leading-[1.5] relative shrink-0 text-[16px] text-[#1b1b1b] tracking-[1.6px] w-full max-w-[900px]">
+						<p class="mb-0">※1 無溶剤=労働安全衛生法有機則に規定される有機溶剤を含まない。</p>
+						<p>※2 完全に反応硬化した材料に限る。</p>
+					</div>
+				</div>
+
+				<!-- 使用機械 -->
+				<div class="flex flex-col gap-[24px] items-center py-[40px] relative w-full">
+					<div class="flex flex-col items-center relative">
+						<div class="bg-main-orange flex flex-col h-[32px] items-center justify-center px-[24px] relative rounded-[16px] shrink-0">
+							<p class="font-noto-sans font-bold leading-[16.8px] relative shrink-0 text-[14px] text-white">
+								使用機械
+							</p>
+						</div>
+					</div>
+					<div class="flex flex-col lg:flex-row gap-[40px] items-start justify-center relative w-full">
+						<div class="flex flex-col gap-[8px] items-center p-[16px] relative rounded-[8px] shrink-0 w-full lg:w-auto">
+							<div class="h-[282px] relative rounded-[12px] shrink-0 w-full lg:w-[387px]">
+								<Image
+									src="/images/tap-injection-plug.jpg"
+									alt="TAPグラフト工法専用注入プラグ"
+									class="absolute inset-0 object-contain pointer-events-none rounded-[12px] size-full"
+									width={387}
+									height={282}
+								/>
+							</div>
+							<p class="font-noto-sans font-bold leading-[1.5] relative shrink-0 text-[18px] text-[#1b1b1b] text-center">
+								TAPグラフト工法専用注入プラグ
+							</p>
+						</div>
+						<div class="flex flex-col gap-[8px] items-center p-[16px] relative rounded-[8px] shrink-0 w-full lg:w-auto">
+							<div class="h-[282px] relative rounded-[12px] shrink-0 w-full lg:w-[343px]">
+								<Image
+									src="/images/tap-injection-machine.jpg"
+									alt="TAPグラウト工法専用注入機"
+									class="absolute inset-0 object-contain pointer-events-none rounded-[12px] size-full"
+									width={343}
+									height={282}
+								/>
+							</div>
+							<p class="font-noto-sans font-bold leading-[1.5] relative shrink-0 text-[18px] text-[#1b1b1b] text-center">
+								ＴＡＰグラウト工法専用注入機
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Contact Section -->
+		<Contact />
+	</main>
+</Layout>
+
+<style>
+	.section-divider-orange {
+		position: relative;
+		width: 24px;
+		height: 1px;
+		background-color: #EA5903;
+		margin: 0 auto;
+	}
+
+	.section-divider-white {
+		position: relative;
+		width: 24px;
+		height: 1px;
+		background-color: #FFFFFF;
+		margin: 0 auto;
+	}
+
+	/* 横スクロールコンテナ（iOSでscrollイベントが発火するように） */
+	.js-scroll-table {
+		-webkit-overflow-scrolling: touch;
+	}
+	/* JSで追加するクラスは:globalでスコープ外にして確実に適用 */
+	:global(.scroll-hint.is-scrolled) {
+		opacity: 0 !important;
+		visibility: hidden !important;
+		pointer-events: none !important;
+	}
+</style>
+
+<script>
+	// 横スクロールしたらヒントを非表示（scroll + touchmoveでモバイルにも対応）
+	function hideHintIfScrolled(scrollEl: Element, hint: Element) {
+		if (scrollEl.scrollLeft > 10) hint.classList.add('is-scrolled');
+	}
+	function initScrollHints() {
+		document.querySelectorAll('.js-scroll-table').forEach((el) => {
+			// ヒントは常に次の兄弟要素（closestだと他の.relativeに当たる可能性あり）
+			const hint = el.nextElementSibling;
+			if (!hint || !hint.classList.contains('scroll-hint')) return;
+			el.addEventListener('scroll', () => hideHintIfScrolled(el, hint), { passive: true });
+			// モバイル: touchmove/touchendでも検知（scrollが発火しない環境対策）
+			el.addEventListener('touchmove', () => hideHintIfScrolled(el, hint), { passive: true });
+			el.addEventListener('touchend', () => hideHintIfScrolled(el, hint), { passive: true });
+		});
+	}
+	if (document.readyState === 'loading') {
+		document.addEventListener('DOMContentLoaded', initScrollHints);
+	} else {
+		initScrollHints();
+	}
+</script>

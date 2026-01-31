@@ -1,0 +1,123 @@
+---
+/**
+ * 施工事例詳細の「施工前」「施工中」「施工後」セクション。
+ * 見出し＋単一画像、または見出し＋画像グリッド（2列）を表示。
+ */
+interface PhaseImage {
+  src: string;
+  alt: string;
+  width?: number;
+  height?: number;
+}
+
+interface Props {
+  /** セクション見出し（施工前 / 施工中 / 施工後） */
+  title: string;
+  /** 画像リスト。1枚の場合は中央1枚、複数枚の場合は2列グリッドで表示 */
+  images: PhaseImage[];
+}
+
+const { title, images } = Astro.props;
+const isGrid = images.length > 1;
+---
+
+<section class="project-phase-section">
+  <h2 class="project-phase-section__title">{title}</h2>
+  {isGrid ? (
+    <div class="project-phase-section__grid" role="list">
+      {images.map((img) => (
+        <div class="project-phase-section__grid-item" role="listitem">
+          <div class="project-phase-section__image-wrap">
+            <img
+              src={img.src}
+              alt={img.alt}
+              class="project-phase-section__image"
+              width={img.width ?? 600}
+              height={img.height ?? 400}
+              loading="lazy"
+            />
+          </div>
+        </div>
+      ))}
+    </div>
+  ) : (
+    <div class="project-phase-section__single">
+      <div class="project-phase-section__image-wrap">
+        <img
+          src={images[0].src}
+          alt={images[0].alt}
+          class="project-phase-section__image"
+          width={images[0].width ?? 1200}
+          height={images[0].height ?? 600}
+          loading="lazy"
+        />
+      </div>
+    </div>
+  )}
+</section>
+
+<style>
+  .project-phase-section {
+    width: 100%;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .project-phase-section__title {
+    font-family: 'Noto Sans JP', sans-serif;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 1.5;
+    color: #1b1b1b;
+    letter-spacing: 0.1em;
+    text-align: center;
+    margin: 0 0 24px;
+  }
+
+  @media (min-width: 1024px) {
+    .project-phase-section__title {
+      font-size: 32px;
+      letter-spacing: 3.2px;
+      margin-bottom: 40px;
+    }
+  }
+
+  .project-phase-section__single {
+    width: 100%;
+  }
+
+  .project-phase-section__image-wrap {
+    position: relative;
+    width: 100%;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+    aspect-ratio: 16 / 10;
+  }
+
+  .project-phase-section__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* 施工中：2列グリッド */
+  .project-phase-section__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    width: 100%;
+  }
+
+  @media (min-width: 768px) {
+    .project-phase-section__grid {
+      gap: 24px;
+    }
+  }
+
+  .project-phase-section__grid-item .project-phase-section__image-wrap {
+    aspect-ratio: 4 / 3;
+  }
+</style>
