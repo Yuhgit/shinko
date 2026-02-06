@@ -1,0 +1,67 @@
+---
+import { recruitJobTable } from "./recruit-data";
+const { headers, rows } = recruitJobTable;
+---
+
+<div class="recruit-job-table-wrapper">
+  <table class="recruit-job-table" role="table">
+    <thead>
+      <tr>
+        {headers.map((h) => (
+          <th scope="col" class="recruit-job-table__th">
+            {h}
+          </th>
+        ))}
+      </tr>
+    </thead>
+    <tbody>
+      {rows.map((row) => (
+        <tr>
+          {headers.map((key) => (
+            <td class="recruit-job-table__td">{row[key]}</td>
+          ))}
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>
+
+<style>
+  .recruit-job-table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .recruit-job-table {
+    width: 100%;
+    min-width: 20rem;
+    border-collapse: collapse;
+    font-family: var(--recruit-font-sans);
+  }
+
+  .recruit-job-table__th,
+  .recruit-job-table__td {
+    padding: clamp(0.75rem, 1.5vw, 1rem) clamp(1rem, 2vw, 1.25rem);
+    text-align: left;
+    border: 1px solid var(--recruit-gray-100);
+  }
+
+  .recruit-job-table__th {
+    font-size: clamp(0.875rem, 1.2vw, 1rem);
+    font-weight: 700;
+    color: var(--recruit-white);
+    background: var(--recruit-main-orange);
+  }
+
+  .recruit-job-table__td {
+    font-size: clamp(0.875rem, 1.2vw, 1rem);
+    font-weight: 400;
+    color: var(--recruit-text-black);
+    background: var(--recruit-white);
+  }
+
+  .recruit-job-table tbody tr:hover .recruit-job-table__td {
+    background: var(--recruit-gray-100);
+  }
+</style>

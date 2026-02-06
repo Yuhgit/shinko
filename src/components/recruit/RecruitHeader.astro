@@ -1,0 +1,206 @@
+---
+import { recruitHeaderNavLinks, recruitHeaderCta } from "./recruit-data";
+---
+
+<header
+  id="recruit-header"
+  role="banner"
+  class="sticky top-0 left-0 right-0 z-[100] bg-transparent transition-colors duration-300"
+>
+  <div
+    class="recruit-header__bar relative z-10 flex items-center justify-between min-h-[5.5rem] px-[var(--recruit-container-px)] mx-auto py-3"
+  >
+    <a
+      href="/recruit"
+      class="inline-flex items-center gap-2 no-underline text-[var(--recruit-text-black)] hover:text-[var(--recruit-main-orange)] font-noto-sans"
+      aria-label="shinko 採用サイト ホーム"
+    >
+      <img
+        src="/images/site-logo.png"
+        alt=""
+        class="block h-8 md:h-10 w-auto shrink-0 object-contain"
+        width="120"
+        height="32"
+        loading="eager"
+        fetchpriority="high"
+      />
+      <span
+        class="text-[var(--recruit-text-black)] text-sm lg:text-base font-bold tracking-wide"
+      >
+        採用サイト
+      </span>
+    </a>
+
+    <nav class="hidden lg:flex items-center gap-4 lg:gap-6 list-none m-0 p-0 shrink-0" aria-label="メインナビゲーション">
+      {
+        recruitHeaderNavLinks.map((link) => (
+          <a
+            href={link.href}
+            class="font-noto-sans text-[0.9375rem] font-medium no-underline text-[var(--recruit-text-black)] hover:text-[var(--recruit-main-orange)]"
+          >
+            {link.label}
+          </a>
+        ))
+      }
+      <a
+        href={recruitHeaderCta.requirements.href}
+        class="inline-flex items-center justify-center min-w-[7rem] py-2 px-5 font-noto-sans text-sm font-bold text-white no-underline hover:opacity-90 transition-opacity whitespace-nowrap rounded [background:var(--recruit-gradient-cta-blue)]"
+      >
+        {recruitHeaderCta.requirements.label}
+      </a>
+      <a
+        href={recruitHeaderCta.entry.href}
+        class="inline-flex items-center justify-center min-w-[7rem] py-2 px-5 font-noto-sans text-sm font-bold text-white no-underline hover:opacity-90 transition-opacity whitespace-nowrap rounded [background:var(--recruit-gradient-orange)]"
+      >
+        {recruitHeaderCta.entry.label}
+      </a>
+    </nav>
+
+    <button
+      type="button"
+      class="recruit-hamburger flex flex-col justify-center gap-1.5 w-8 h-8 p-0 border-0 bg-transparent cursor-pointer lg:hidden"
+      aria-label="メニューを開く"
+      aria-expanded="false"
+      aria-controls="recruit-mobile-menu"
+      id="recruit-hamburger"
+    >
+      <span
+        class="recruit-hamburger__line recruit-hamburger__line--top block w-full h-0.5 bg-[var(--recruit-text-black)] rounded-sm transition-[transform,opacity] duration-200"
+      ></span>
+      <span
+        class="recruit-hamburger__line recruit-hamburger__line--mid block w-full h-0.5 bg-[var(--recruit-text-black)] rounded-sm transition-[transform,opacity] duration-200"
+      ></span>
+      <span
+        class="recruit-hamburger__line recruit-hamburger__line--bottom block w-full h-0.5 bg-[var(--recruit-text-black)] rounded-sm transition-[transform,opacity] duration-200"
+      ></span>
+    </button>
+  </div>
+
+  <div
+    id="recruit-mobile-menu"
+    class="recruit-mobile-menu absolute top-full left-0 right-0 z-0 bg-white shadow-[0_4px_12px_rgba(0,0,0,0.08)] px-4 py-4 max-h-[calc(100vh-4.5rem)] overflow-y-auto lg:hidden transition-transform duration-300 ease-out -translate-y-full"
+    aria-hidden="true"
+  >
+    <nav class="flex flex-col gap-1 text-center" aria-label="モバイルメニュー">
+      {
+        recruitHeaderNavLinks.map((link) => (
+          <a
+            href={link.href}
+            class="block py-3 px-3 font-noto-sans text-base font-medium no-underline text-[var(--recruit-text-black)] hover:text-[var(--recruit-main-orange)] hover:bg-[var(--recruit-gray-100)] rounded"
+          >
+            {link.label}
+          </a>
+        ))
+      }
+      <a
+        href={recruitHeaderCta.requirements.href}
+        class="inline-flex items-center justify-center min-h-[2.75rem] py-2 px-5 font-noto-sans text-sm font-bold text-white rounded-md no-underline hover:opacity-90 transition-opacity [background:var(--recruit-gradient-cta-blue)] mt-2"
+      >
+        {recruitHeaderCta.requirements.label}
+      </a>
+      <a
+        href={recruitHeaderCta.entry.href}
+        class="inline-flex items-center justify-center min-h-[2.75rem] py-2 px-5 font-noto-sans text-sm font-bold text-white rounded-md no-underline hover:opacity-90 transition-opacity [background:var(--recruit-gradient-orange)]"
+      >
+        {recruitHeaderCta.entry.label}
+      </a>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const header = document.getElementById("recruit-header");
+  const hamburger = document.getElementById("recruit-hamburger");
+  const menu = document.getElementById("recruit-mobile-menu");
+
+  if (header) {
+    const toggleHeaderSolid = () => {
+      const shouldSolid = window.scrollY > 8;
+      header.classList.toggle("recruit-header--solid", shouldSolid);
+    };
+    toggleHeaderSolid();
+    window.addEventListener("scroll", toggleHeaderSolid, { passive: true });
+  }
+
+  if (hamburger && menu) {
+    const closeMenu = () => {
+      menu.classList.remove("recruit-mobile-menu--open");
+      menu.addEventListener(
+        "transitionend",
+        () => {
+          menu.setAttribute("aria-hidden", "true");
+          menu.style.visibility = "hidden";
+          header?.classList.remove("recruit-header--menu-open");
+        },
+        { once: true }
+      );
+      hamburger.setAttribute("aria-expanded", "false");
+      hamburger.setAttribute("aria-label", "メニューを開く");
+      hamburger.classList.remove("recruit-hamburger--open");
+    };
+
+    const openMenu = () => {
+      header?.classList.add("recruit-header--menu-open");
+      menu.setAttribute("aria-hidden", "false");
+      menu.style.visibility = "visible";
+      menu.classList.remove("recruit-mobile-menu--open");
+      requestAnimationFrame(() => {
+        menu.classList.add("recruit-mobile-menu--open");
+      });
+      hamburger.setAttribute("aria-expanded", "true");
+      hamburger.setAttribute("aria-label", "メニューを閉じる");
+      hamburger.classList.add("recruit-hamburger--open");
+    };
+
+    hamburger.addEventListener("click", () => {
+      const expanded = hamburger.getAttribute("aria-expanded") === "true";
+      if (expanded) closeMenu();
+      else openMenu();
+    });
+
+    // ページ内リンク（#）クリックでメニューを閉じる
+    menu.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+      anchor.addEventListener("click", closeMenu);
+    });
+  }
+</script>
+
+<style is:global>
+  #recruit-header {
+    backdrop-filter: blur(6px);
+  }
+
+  #recruit-header.recruit-header--solid {
+    background-color: rgba(255, 255, 255, 0.96);
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);
+  }
+
+  /* メニュー表示中はバーに背景を付け、メニューがヘッダー下から見えるように */
+  #recruit-header.recruit-header--menu-open .recruit-header__bar {
+    background: rgba(255, 255, 255, 0.96);
+    backdrop-filter: blur(6px);
+  }
+
+  /* ハンバーガー → × の開閉アニメーション（gap-1.5 + h-0.5×3 の中心で交差させる） */
+  #recruit-hamburger.recruit-hamburger--open .recruit-hamburger__line--top {
+    transform: translateY(0.5rem) rotate(45deg);
+  }
+
+  #recruit-hamburger.recruit-hamburger--open .recruit-hamburger__line--mid {
+    opacity: 0;
+  }
+
+  #recruit-hamburger.recruit-hamburger--open .recruit-hamburger__line--bottom {
+    transform: translateY(-0.5rem) rotate(-45deg);
+  }
+
+  /* モバイルメニュー: 画面上からスライドダウンで出現 */
+  .recruit-mobile-menu {
+    visibility: hidden;
+  }
+
+  .recruit-mobile-menu.recruit-mobile-menu--open {
+    transform: translateY(0);
+    visibility: visible;
+  }
+</style>

@@ -1,0 +1,287 @@
+---
+import { recruitFlowTabItems, recruitFlowSection } from "./recruit-data";
+---
+
+<div class="recruit-flow-tabs" aria-label="採用フロー">
+  <div class="recruit-flow-tabs__label">{recruitFlowSection.stepLabel}</div>
+  <h2 class="recruit-flow-tabs__heading">{recruitFlowSection.heading}</h2>
+  <div class="recruit-flow-tabs__list" role="tablist">
+    {
+      recruitFlowTabItems.map((item, index) => (
+        <button
+          type="button"
+          role="tab"
+          id={`recruit-flow-tab-${item.id}`}
+          aria-selected={index === 0}
+          aria-controls={`recruit-flow-panel-${item.id}`}
+          class="recruit-flow-tabs__trigger"
+          class:list={[index === 0 && "recruit-flow-tabs__trigger--active"]}
+          data-flow-tab-index={index}
+        >
+          {item.label}
+        </button>
+      ))
+    }
+  </div>
+  <div class="recruit-flow-tabs__panels">
+    <div
+      role="tabpanel"
+      id="recruit-flow-panel-shinsotsu"
+      aria-labelledby="recruit-flow-tab-shinsotsu"
+      class="recruit-flow-tabs__panel"
+      data-flow-panel="shinsotsu"
+    >
+      <div class="recruit-flow-tabs__panel-label">{recruitFlowSection.shinsotsu.label}</div>
+      <p class="recruit-flow-tabs__panel-lead">{recruitFlowSection.shinsotsu.lead}</p>
+      <div class="recruit-flow-tabs__images">
+        {
+          recruitFlowSection.shinsotsu.images.map((src) => (
+            <img
+              src={src}
+              alt=""
+              class="recruit-flow-tabs__img"
+              width="400"
+              height="250"
+              loading="lazy"
+            />
+          ))
+        }
+      </div>
+      <div class="recruit-flow-tabs__cards">
+        {
+          recruitFlowSection.shinsotsu.cards.map((card) => (
+            <div class="recruit-flow-card">
+              <span class="recruit-flow-card__icon" aria-hidden="true"></span>
+              <h3 class="recruit-flow-card__title">{card.title}</h3>
+              <p class="recruit-flow-card__desc">{card.desc}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+    <div
+      role="tabpanel"
+      id="recruit-flow-panel-chuto"
+      aria-labelledby="recruit-flow-tab-chuto"
+      class="recruit-flow-tabs__panel"
+      data-flow-panel="chuto"
+      hidden
+    >
+      <div class="recruit-flow-tabs__panel-label">{recruitFlowSection.chuto.label}</div>
+      <p class="recruit-flow-tabs__panel-lead">{recruitFlowSection.chuto.lead}</p>
+      <div class="recruit-flow-tabs__images">
+        {
+          recruitFlowSection.chuto.images.map((src) => (
+            <img
+              src={src}
+              alt=""
+              class="recruit-flow-tabs__img"
+              width="400"
+              height="250"
+              loading="lazy"
+            />
+          ))
+        }
+      </div>
+      <div class="recruit-flow-tabs__cards recruit-flow-tabs__cards--two">
+        {
+          recruitFlowSection.chuto.cards.map((card) => (
+            <div class="recruit-flow-card">
+              <span class="recruit-flow-card__icon" aria-hidden="true"></span>
+              <h3 class="recruit-flow-card__title">{card.title}</h3>
+              <p class="recruit-flow-card__desc">{card.desc}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .recruit-flow-tabs {
+    width: 100%;
+  }
+
+  .recruit-flow-tabs__label {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    margin-bottom: 0.75rem;
+    font-family: var(--recruit-font-sans);
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--recruit-white);
+    background: var(--recruit-main-orange);
+    border-radius: 0.25rem;
+  }
+
+  .recruit-flow-tabs__heading {
+    margin: 0 0 1.5rem;
+    font-family: var(--recruit-font-sans);
+    font-size: clamp(1.375rem, 3vw, 1.75rem);
+    font-weight: 700;
+    color: var(--recruit-text-black);
+    line-height: 1.4;
+  }
+
+  .recruit-flow-tabs__list {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 0;
+    border-bottom: 2px solid var(--recruit-gray-100);
+    margin-bottom: 1.5rem;
+    overflow-x: auto;
+  }
+
+  .recruit-flow-tabs__trigger {
+    flex: 0 0 auto;
+    min-width: max-content;
+    padding: 0.75rem 1.25rem;
+    font-family: var(--recruit-font-sans);
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--recruit-gray-500);
+    background: var(--recruit-white);
+    border: 2px solid var(--recruit-gray-100);
+    border-bottom: none;
+    cursor: pointer;
+    transition: color 0.2s, background 0.2s, border-color 0.2s;
+  }
+
+  .recruit-flow-tabs__trigger:hover {
+    color: var(--recruit-main-orange);
+  }
+
+  .recruit-flow-tabs__trigger--active {
+    color: var(--recruit-white);
+    background: var(--recruit-main-orange);
+    border-color: var(--recruit-main-orange);
+    position: relative;
+    margin-bottom: -2px;
+    padding-bottom: calc(0.75rem + 2px);
+  }
+
+  @media (min-width: 640px) {
+    .recruit-flow-tabs__trigger {
+      flex: 1 1 0;
+      min-width: 0;
+    }
+  }
+
+  .recruit-flow-tabs__panel[hidden] {
+    display: none !important;
+  }
+
+  .recruit-flow-tabs__panel-label {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    margin-bottom: 0.75rem;
+    font-family: var(--recruit-font-sans);
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: var(--recruit-white);
+    background: var(--recruit-main-orange);
+    border-radius: 0.25rem;
+  }
+
+  .recruit-flow-tabs__panel-lead {
+    margin: 0 0 1.5rem;
+    font-family: var(--recruit-font-sans);
+    font-size: clamp(1rem, 1.5vw, 1.125rem);
+    font-weight: 500;
+    line-height: 1.6;
+    color: var(--recruit-text-black);
+  }
+
+  .recruit-flow-tabs__images {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .recruit-flow-tabs__img {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+    border-radius: 0.5rem;
+  }
+
+  .recruit-flow-tabs__cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  .recruit-flow-tabs__cards--two {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 36rem;
+  }
+
+  @media (max-width: 639px) {
+    .recruit-flow-tabs__cards {
+      grid-template-columns: 1fr;
+    }
+
+    .recruit-flow-tabs__cards--two {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .recruit-flow-card {
+    padding: 1.25rem;
+    background: var(--recruit-white);
+    border: 1px solid var(--recruit-gray-100);
+    border-radius: 0.5rem;
+  }
+
+  .recruit-flow-card__icon {
+    display: block;
+    width: 2.5rem;
+    height: 2.5rem;
+    margin-bottom: 0.75rem;
+    background: var(--recruit-main-orange);
+    border-radius: 0.25rem;
+    opacity: 0.9;
+  }
+
+  .recruit-flow-card__title {
+    margin: 0 0 0.5rem;
+    font-family: var(--recruit-font-sans);
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--recruit-text-black);
+  }
+
+  .recruit-flow-card__desc {
+    margin: 0;
+    font-family: var(--recruit-font-sans);
+    font-size: 0.875rem;
+    font-weight: 400;
+    line-height: 1.6;
+    color: var(--recruit-gray-500);
+  }
+</style>
+
+<script>
+  const container = document.querySelector(".recruit-flow-tabs");
+  if (!container) throw new Error("recruit-flow-tabs not found");
+
+  const triggers = container.querySelectorAll<HTMLButtonElement>('[role="tab"]');
+  const panels = container.querySelectorAll<HTMLElement>('[role="tabpanel"]');
+
+  function switchFlowTab(activeIndex: number) {
+    triggers.forEach((t, i) => {
+      const selected = i === activeIndex;
+      t.setAttribute("aria-selected", String(selected));
+      t.classList.toggle("recruit-flow-tabs__trigger--active", selected);
+    });
+    panels.forEach((p, i) => {
+      (p as HTMLElement).hidden = i !== activeIndex;
+    });
+  }
+
+  triggers.forEach((trigger, index) => {
+    trigger.addEventListener("click", () => switchFlowTab(index));
+  });
+</script>

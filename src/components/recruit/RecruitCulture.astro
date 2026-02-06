@@ -1,0 +1,123 @@
+---
+/**
+ * 会社文化・クラブ活動（Figma 320:6281 準拠）
+ * 左: オレンジグラデーション＋3行見出し（白枠）＋説明文＋クラブボタン / 右: 6枚写真グリッド
+ */
+import { recruitCulture } from "./recruit-data";
+---
+
+<section
+  id="people"
+  class="recruit-culture grid grid-cols-1 lg:grid-cols-2 py-14 lg:py-0 lg:h-[100vh] bg-gradient-to-br from-[#ffbf1c] via-main-orange to-recruit-dark-orange px-[var(--recruit-container-px)]"
+  aria-labelledby="recruit-culture-heading"
+>
+  <!-- 左: オレンジグラデーション・見出し3行（白枠）・説明・クラブボタン -->
+  <div
+    class="recruit-culture__left flex flex-col justify-center mb-8 lg:mb-0"
+  >
+    <div>
+      <div class="recruit-culture__title-lines space-y-3 mb-6 flex flex-col w-fit lg:block">
+        {
+          recruitCulture.titleLines.map((line) => (
+            <div class="recruit-culture__title-box inline-block px-4 py-2 w-fit bg-white">
+              <span
+                class={`recruit-culture__title-line inline-block w-fit font-noto-sans font-bold bg-recruit-gradient-orange bg-clip-text text-transparent leading-none ${line.size}`}
+              >
+                {line.text}
+              </span>
+            </div>
+          ))
+        }
+      </div>
+      <p class="recruit-culture__desc font-noto-sans text-base font-normal leading-relaxed text-white mb-8 m-0 text-left whitespace-pre-line max-w-[450px]">
+        {recruitCulture.description}
+      </p>
+      <div class="recruit-culture__clubs flex flex-wrap gap-3">
+        {
+          recruitCulture.clubs.map((label) => (
+            <span
+              class="recruit-culture__club-label inline-block py-2.5 px-5 font-noto-sans text-base text-white border border-white"
+            >
+              {label}
+            </span>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+
+  <!-- 右: md以下は横方向・lg以上は縦方向に無限スクロール -->
+  <div class="recruit-culture__right flex flex-col overflow-hidden lg:min-h-0">
+    <div class="recruit-culture__scroll-wrap flex-1 min-h-0 overflow-hidden">
+      <div class="recruit-culture__scroll-inner flex flex-row lg:flex-col h-auto lg:h-[200%] w-max lg:w-auto gap-4 flex-shrink-0 lg:flex-shrink">
+        <!-- 1周目 -->
+        <div class="recruit-culture__scroll-block flex flex-row lg:grid gap-4 flex-shrink-0 lg:grid-cols-2 lg:grid-rows-3 lg:flex-1">
+          {
+            recruitCulture.images.map((src) => (
+              <img
+                src={src}
+                alt=""
+                class="recruit-culture__photo w-50 md:w-auto aspect-[4/3] md:aspect-[3/4] object-cover rounded-lg flex-shrink-0"
+                width="300"
+                height="300"
+                loading="lazy"
+              />
+            ))
+          }
+        </div>
+        <!-- 2周目（ループ用に同一内容） -->
+        <div class="recruit-culture__scroll-block flex flex-row lg:grid gap-4 flex-shrink-0 lg:grid-cols-2 lg:grid-rows-3 lg:flex-1">
+          {
+            recruitCulture.images.map((src) => (
+              <img
+                src={src}
+                alt=""
+                class="recruit-culture__photo w-50 md:w-auto aspect-[4/3] md:aspect-[3/4] object-cover rounded-lg flex-shrink-0"
+                width="300"
+                height="300"
+                loading="lazy"
+              />
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* グラデーション文字の Safari 対応 */
+  .recruit-culture__title-line {
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* md以下: 横方向に無限スクロール / lg以上: 縦方向に無限スクロール */
+  .recruit-culture__scroll-inner {
+    animation: recruit-culture-scroll-h 25s linear infinite;
+  }
+
+  @media (min-width: 1024px) {
+    .recruit-culture__scroll-inner {
+      animation-name: recruit-culture-scroll-v;
+    }
+  }
+
+  @keyframes recruit-culture-scroll-h {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  @keyframes recruit-culture-scroll-v {
+    0% {
+      transform: translateY(0);
+    }
+    100% {
+      transform: translateY(-50%);
+    }
+  }
+</style>

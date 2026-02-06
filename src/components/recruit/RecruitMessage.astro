@@ -1,0 +1,47 @@
+---
+import { recruitMessage } from "./recruit-data";
+---
+
+<section class="recruit-message" aria-labelledby="recruit-message-title">
+  <h2 id="recruit-message-title" class="recruit-message__title">
+    {recruitMessage.title}
+  </h2>
+  <div class="recruit-message__body">
+    {
+      recruitMessage.body.split("\n").map((line) => (
+        <p class="recruit-message__p">{line}</p>
+      ))
+    }
+  </div>
+</section>
+
+<style>
+  .recruit-message {
+    margin-bottom: var(--recruit-section-gap);
+  }
+
+  .recruit-message__title {
+    margin: 0 0 1rem;
+    font-family: var(--recruit-font-sans);
+    font-size: clamp(1.25rem, 2.5vw, 1.5rem);
+    font-weight: 700;
+    line-height: 1.5;
+    color: var(--recruit-text-black);
+  }
+
+  .recruit-message__body {
+    font-family: var(--recruit-font-sans);
+    font-size: clamp(0.9375rem, 1.5vw, 1rem);
+    font-weight: 400;
+    line-height: 1.75;
+    color: var(--recruit-gray-500);
+  }
+
+  .recruit-message__p {
+    margin: 0 0 0.75rem;
+  }
+
+  .recruit-message__p:last-child {
+    margin-bottom: 0;
+  }
+</style>

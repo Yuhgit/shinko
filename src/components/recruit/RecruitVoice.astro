@@ -1,0 +1,131 @@
+---
+/**
+ * 社員の声・社員インタビュー（Figma 320:6312 準拠）
+ * 見出し・社員インタビューバー・2名のインタビュー（写真＋オーバーレイ・3項目テキスト）
+ */
+import { recruitVoiceSection } from "./recruit-data";
+---
+
+<section
+  id="voice"
+  class="recruit-voice bg-recruit-grid bg-grid-24 py-12 md:py-16 px-[var(--recruit-container-px)] text-center"
+  aria-labelledby="recruit-voice-heading"
+>
+  <div class="recruit-container">
+    <!-- 上部: Interview・人を知る・2行見出し・社員インタビューバー -->
+    <span class="recruit-voice__en-label block font-roboto text-lg text-center font-normal text-main-orange tracking-wider pb-2 mb-2 relative after:content-[''] after:block after:w-6 after:h-px after:bg-[#EA5903] after:mt-2 after:absolute after:left-[50%] after:translate-x-[-50%] after:bottom-0">
+      {recruitVoiceSection.enLabel}
+    </span>
+    <h2
+      id="recruit-voice-heading"
+      class="recruit-wlb__section-heading font-noto-sans text-xl text-center sm:text-2xl md:text-3xl font-bold text-main-orange leading-tight mb-8 md:mb-16 m-0"
+    >
+      {recruitVoiceSection.sectionHeading}
+    </h2>
+    <div class="recruit-voice__headlines space-y-2 mb-14 text-center">
+      <div class="recruit-voice__headline-box inline-block px-4 bg-recruit-gradient-orange">
+        <span class="font-noto-sans text-4xl sm:text-[6.6vw] font-bold text-white leading-tight">
+          先輩<span class="text-[5.5vw]">が</span>優<span class="text-[5.5vw]">しく</span>丁寧<span class="text-[5.5vw]">に</span>
+        </span>
+      </div>
+      <div class="recruit-voice__headline-box inline-block px-4 bg-recruit-gradient-orange">
+        <span class="font-noto-sans text-4xl sm:text-[6.6vw] font-bold text-white leading-tight">
+          とことん教えます<span class="text-[5.5vw]">。</span>
+        </span>
+      </div>
+    </div>
+  </div>
+
+    <div class="recruit-wlb__content-label inline-block pt-4 pb-2 px-6 bg-main-orange text-white font-noto-sans text-base md:text-xl rounded-t-lg text-center">
+        {recruitVoiceSection.contentLabel}
+    </div>
+  <!-- メイン: 左右縦ラベル＋インタビューカード2つ -->
+  <div class="recruit-voice__main relative mt-0 rounded-b-lg overflow-hidden bg-main-orange rounded-2xl px-0 md:px-[var(--recruit-container-px)]">
+    <span
+      class="recruit-voice__side-label absolute left-0 top-[230px] translate-x-[-45%] rotate-90 font-roboto text-[64px] font-medium text-white opacity-20 whitespace-nowrap pointer-events-none tracking-widest hidden md:block"
+      aria-hidden="true"
+    >
+      {recruitVoiceSection.sideLabel}
+    </span>
+    <span
+      class="recruit-voice__side-label absolute right-0 bottom-[230px] translate-x-[45%] rotate-90 font-roboto text-[64px] font-medium text-white opacity-20 whitespace-nowrap pointer-events-none tracking-widest hidden md:block"
+      aria-hidden="true"
+    >
+      {recruitVoiceSection.sideLabel}
+    </span>
+
+    <div class="recruit-container relative z-10 py-8 md:py-10 px-6 md:px-10">
+      <div class="recruit-voice__cards space-y-8 md:space-y-10">
+        {
+          recruitVoiceSection.voices.map((voice) => (
+            <article class="recruit-voice-card bg-white rounded-lg overflow-hidden shadow-sm py-10 px-6 md:px-16 max-w-[1200px] mx-auto">
+              <div class="recruit-voice-card__inner grid grid-cols-1 lg:grid-cols-2 gap-10">
+                <!-- 写真＋オーバーレイ -->
+                <div
+                  class:list={[
+                    "recruit-voice-card__photo-wrap relative",
+                    !voice.imageLeft && "lg:order-2",
+                  ]}
+                >
+                  <img
+                    src={voice.image}
+                    alt=""
+                    class="recruit-voice-card__photo h-full object-contain mx-auto w-full md:w-[60%] lg:w-[80%]"
+                    width="400"
+                    height="533"
+                    loading="lazy"
+                  />
+                </div>
+                <!-- テキスト -->
+                <div
+                  class:list={[
+                    "recruit-voice-card__text py-0 lg:py-8 flex flex-col justify-center text-left",
+                    !voice.imageLeft && "lg:order-1",
+                  ]}
+                >
+                  <p class="font-noto-sans text-sm text-gray-800 mb-0.5 m-0">
+                    {voice.nameEn}
+                  </p>
+                  <div class="border-b border-gray-300 mb-4 pb-4">
+                    <p class="font-noto-sans text-xl md:text-2xl font-bold text-text-black mb-1 inline-block mr-4">
+                      {voice.nameJa}
+                    </p>
+                    <p class="font-noto-sans text-sm text-gray-800 inline-block">
+                      {voice.joinYearDept}
+                    </p>
+                  </div>
+                  <div class="space-y-5">
+                    <div>
+                      <span class="recruit-voice-card__block-label inline-block py-1 px-3 bg-main-orange text-white font-noto-sans text-xs font-bold mb-2">
+                        {recruitVoiceSection.blockLabels.reason}
+                      </span>
+                      <p class="font-noto-sans text-sm md:text-base leading-relaxed text-text-black m-0">
+                        {voice.reason}
+                      </p>
+                    </div>
+                    <div>
+                      <span class="recruit-voice-card__block-label inline-block py-1 px-3 bg-main-orange text-white font-noto-sans text-xs font-bold mb-2">
+                        {recruitVoiceSection.blockLabels.satisfaction}
+                      </span>
+                      <p class="font-noto-sans text-sm md:text-base leading-relaxed text-text-black m-0">
+                        {voice.satisfaction}
+                      </p>
+                    </div>
+                    <div>
+                      <span class="recruit-voice-card__block-label inline-block py-1 px-3 bg-main-orange text-white font-noto-sans text-xs font-bold mb-2">
+                        {recruitVoiceSection.blockLabels.companyGood}
+                      </span>
+                      <p class="font-noto-sans text-sm md:text-base leading-relaxed text-text-black m-0">
+                        {voice.companyGood}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>

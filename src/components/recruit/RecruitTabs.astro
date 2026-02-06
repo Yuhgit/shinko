@@ -1,0 +1,175 @@
+---
+import { recruitTabItems } from "./recruit-data";
+---
+
+<div class="recruit-tabs" aria-label="採用種別">
+  <div class="recruit-tabs__list" role="tablist">
+    {
+      recruitTabItems.map((item, index) => (
+        <button
+          type="button"
+          role="tab"
+          id={`recruit-tab-${item.id}`}
+          aria-selected={index === 0}
+          aria-controls={`recruit-panel-${item.id}`}
+          data-tab-id={item.id}
+          class="recruit-tabs__trigger"
+          class:list={[index === 0 && "recruit-tabs__trigger--active"]}
+        >
+          {item.label}
+        </button>
+      ))
+    }
+  </div>
+  <div class="recruit-tabs__panels">
+    <div
+      role="tabpanel"
+      id="recruit-panel-shinsotsu"
+      aria-labelledby="recruit-tab-shinsotsu"
+      hidden={false}
+      class="recruit-tabs__panel"
+      data-panel-id="shinsotsu"
+    >
+      <slot name="shinsotsu" />
+    </div>
+    <div
+      role="tabpanel"
+      id="recruit-panel-chuto"
+      aria-labelledby="recruit-tab-chuto"
+      hidden
+      class="recruit-tabs__panel"
+      data-panel-id="chuto"
+    >
+      <slot name="chuto" />
+    </div>
+    <div
+      role="tabpanel"
+      id="recruit-panel-arubaito"
+      aria-labelledby="recruit-tab-arubaito"
+      hidden
+      class="recruit-tabs__panel"
+      data-panel-id="arubaito"
+    >
+      <slot name="arubaito" />
+    </div>
+    <div
+      role="tabpanel"
+      id="recruit-panel-intern"
+      aria-labelledby="recruit-tab-intern"
+      hidden
+      class="recruit-tabs__panel"
+      data-panel-id="intern"
+    >
+      <slot name="intern" />
+    </div>
+  </div>
+</div>
+
+<style>
+  .recruit-tabs {
+    width: 100%;
+  }
+
+  .recruit-tabs__list {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 0;
+    border-bottom: 2px solid var(--recruit-gray-100);
+    margin-bottom: var(--recruit-section-gap);
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+  }
+
+  .recruit-tabs__trigger {
+    flex: 0 0 auto;
+    min-width: max-content;
+    padding: 0.75rem 1rem;
+    font-family: var(--recruit-font-sans);
+    font-size: clamp(0.875rem, 1.5vw, 1rem);
+    font-weight: 700;
+    color: var(--recruit-gray-500);
+    background: var(--recruit-white);
+    border: 2px solid var(--recruit-gray-100);
+    border-bottom: none;
+    cursor: pointer;
+    transition: color 0.2s, background 0.2s, border-color 0.2s;
+  }
+
+  .recruit-tabs__trigger:hover {
+    color: var(--recruit-main-orange);
+  }
+
+  @media (min-width: 640px) {
+    .recruit-tabs__trigger {
+      flex: 1 1 0;
+      min-width: 0;
+      padding: clamp(0.75rem, 2vw, 1rem) clamp(1rem, 2vw, 1.5rem);
+    }
+  }
+
+  .recruit-tabs__trigger--active {
+    color: var(--recruit-white);
+    background: var(--recruit-main-orange);
+    border-color: var(--recruit-main-orange);
+    position: relative;
+    margin-bottom: -2px;
+    padding-bottom: calc(0.75rem + 2px);
+  }
+
+  @media (min-width: 640px) {
+    .recruit-tabs__trigger--active {
+      padding-bottom: calc(clamp(0.75rem, 2vw, 1rem) + 2px);
+    }
+  }
+
+  .recruit-tabs__panel {
+    outline: none;
+  }
+
+  .recruit-tabs__panel[hidden] {
+    display: none !important;
+  }
+</style>
+
+<script>
+  const container = document.querySelector(".recruit-tabs");
+  if (!container) throw new Error("recruit-tabs not found");
+
+  const triggers = container.querySelectorAll<HTMLButtonElement>(
+    '[role="tab"]'
+  );
+  const panels = container.querySelectorAll<HTMLElement>('[role="tabpanel"]');
+
+  function switchTab(activeIndex: number) {
+    triggers.forEach((trigger, i) => {
+      const isSelected = i === activeIndex;
+      trigger.setAttribute("aria-selected", String(isSelected));
+      trigger.classList.toggle("recruit-tabs__trigger--active", isSelected);
+    });
+    panels.forEach((panel, i) => {
+      panel.hidden = i !== activeIndex;
+    });
+  }
+
+  triggers.forEach((trigger, index) => {
+    trigger.addEventListener("click", () => switchTab(index));
+    trigger.addEventListener("keydown", (e) => {
+      let next: number | null = null;
+      if (e.key === "ArrowRight" || e.key === "ArrowDown") {
+        next = (index + 1) % triggers.length;
+      } else if (e.key === "ArrowLeft" || e.key === "ArrowUp") {
+        next = (index - 1 + triggers.length) % triggers.length;
+      } else if (e.key === "Home") {
+        next = 0;
+      } else if (e.key === "End") {
+        next = triggers.length - 1;
+      }
+      if (next !== null) {
+        e.preventDefault();
+        switchTab(next);
+        (triggers[next] as HTMLButtonElement).focus();
+      }
+    });
+  });
+</script>

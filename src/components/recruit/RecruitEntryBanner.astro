@@ -1,0 +1,77 @@
+---
+/**
+ * 応募案内バナー（Figma 320:6409）
+ * フッターとは別セクション。背景画像＋オレンジ系オーバーレイ、見出し、高卒/中途の2カード。
+ */
+import { recruitEntryBanner } from "./recruit-data";
+---
+
+<section
+  id="entry"
+  class="recruit-entry-banner relative flex flex-col items-center justify-center min-h-[min(100vw,28rem)] py-12 md:py-16 px-[var(--recruit-container-px)] overflow-hidden"
+  aria-labelledby="recruit-entry-banner-heading"
+>
+  <!-- 背景画像（ぼかしで雰囲気を表現） -->
+  <div
+    class="recruit-entry-banner__bg absolute inset-0 z-0 bg-cover bg-center bg-no-repeat"
+    style={`background-image: url(${recruitEntryBanner.backgroundImage});`}
+    aria-hidden="true"
+  />
+  <!-- 半透明オレンジ〜茶系オーバーレイ（Figma 320:6409 準拠） -->
+  <div
+    class="recruit-entry-banner__overlay absolute inset-0 z-[1]"
+    aria-hidden="true"
+  />
+
+  <div class="relative z-[2] w-full max-w-[var(--recruit-max-width)] mx-auto text-center">
+    <h2
+      id="recruit-entry-banner-heading"
+      class="font-noto-sans font-bold text-white text-[6vw] 2xl:text-[96px] leading-tight mb-8 md:mb-10"
+    >
+      {recruitEntryBanner.heading}
+    </h2>
+
+    <div
+      class="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6 mx-auto"
+      role="list"
+    >
+      {
+        recruitEntryBanner.cards.map((card) => {
+          const cardClass =
+            "recruit-entry-banner__card block text-center border md:border-2 border-white bg-opacity-20 md:bg-opacity-100 bg-white md:bg-transparent px-6 py-8 md:px-8 md:py-16 text-white " +
+            (card.isLink ? "transition hover:text-main-orange hover:bg-white hover:opacity-70 cursor-pointer" : "cursor-default");
+          return card.isLink ? (
+            <a href={card.href} class={cardClass} role="listitem">
+              <span class="block font-noto-sans font-bold text-lg md:text-3xl mb-2">
+                {card.label}
+              </span>
+              <span class="block font-noto-sans text-sm md:text-base font-normal opacity-95">
+                {card.subtext}
+              </span>
+            </a>
+          ) : (
+            <div class={cardClass} role="listitem">
+              <span class="block font-noto-sans font-bold text-lg md:text-3xl mb-2">
+                {card.label}
+              </span>
+              <span class="block font-noto-sans text-sm md:text-base font-normal opacity-95">
+                {card.subtext}
+              </span>
+            </div>
+          );
+        })
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .recruit-entry-banner__overlay {
+    /* オレンジグラデーション（採用ページ変数と同系） */
+    background: linear-gradient(
+      90deg,
+      rgba(239, 92, 42, 0.7) 0%,
+      rgba(235, 202, 108, 0.7) 100%
+    );
+  }
+</style>

@@ -1,0 +1,52 @@
+---
+import { recruitIntro } from "./recruit-data";
+---
+
+<section class="recruit-intro" aria-labelledby="recruit-intro-heading">
+  <div class="recruit-container">
+    <h2 id="recruit-intro-heading" class="recruit-intro__heading">
+      <span class="recruit-intro__line recruit-intro__line--1">{recruitIntro.line1}</span>
+      <span class="recruit-intro__line recruit-intro__line--2">{recruitIntro.line2}</span>
+    </h2>
+    <p class="recruit-intro__desc">{recruitIntro.description}</p>
+  </div>
+</section>
+
+<style>
+  .recruit-intro {
+    background: var(--recruit-white);
+    padding: var(--recruit-section-gap) var(--recruit-container-px);
+  }
+
+  .recruit-intro__heading {
+    margin: 0 0 1.5rem;
+    font-family: var(--recruit-font-sans);
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    font-weight: 700;
+    line-height: 1.4;
+    letter-spacing: 0.02em;
+  }
+
+  .recruit-intro__line {
+    display: block;
+    padding: 0.25em 0.5em;
+    margin: 0.1em 0;
+    background: var(--recruit-main-orange);
+    color: var(--recruit-white);
+    width: fit-content;
+  }
+
+  .recruit-intro__line--2 {
+    margin-left: 0.5em;
+  }
+
+  .recruit-intro__desc {
+    margin: 0;
+    max-width: 40rem;
+    font-family: var(--recruit-font-sans);
+    font-size: clamp(0.9375rem, 1.5vw, 1rem);
+    font-weight: 400;
+    line-height: 1.75;
+    color: var(--recruit-gray-500);
+  }
+</style>

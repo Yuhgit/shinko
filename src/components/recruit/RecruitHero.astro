@@ -1,0 +1,289 @@
+---
+/**
+ * ヒーロー（MVレイアウト準拠）
+ *
+ * 実装方針:
+ * 1. 背景 … 黒（bg-black）。背景画像を使う場合は opacity + 暗いオーバーレイで黒に寄せる。
+ * 2. 上段 … flex で [左顔 | 中央タイトル | 右顔]。左・右顔は md 以上で表示、有機的角丸（rounded-[2rem]）。
+ * 3. 中央タイトル … 2行、CSS linear-gradient でオレンジ→黄（background-clip: text）。
+ * 4. 下段 … relative コンテナ内に「3枚の顔（横並び）」と「英語テキスト（absolute で下にオーバーレイ）」。
+ * 5. 英語 … 白・大・太字、text-shadow で画像上でも読めるように。z-index で顔の上に表示。
+ */
+import { recruitHero } from "./recruit-data";
+
+/** 「の」「、」「を」「。」を小サイズ用に分割 */
+const SMALL_CHARS = new Set(["の", "、", "を", "。"]);
+function splitTitleSegments(str: string): { small: boolean; text: string }[] {
+  const result: { small: boolean; text: string }[] = [];
+  for (const char of str) {
+    if (SMALL_CHARS.has(char)) {
+      result.push({ small: true, text: char });
+    } else {
+      const last = result[result.length - 1];
+      if (last && !last.small) last.text += char;
+      else result.push({ small: false, text: char });
+    }
+  }
+  return result;
+}
+const line1Segments = splitTitleSegments(recruitHero.titleLine1);
+const line2Segments = splitTitleSegments(recruitHero.titleLine2);
+---
+
+<section
+  class="recruit-hero relative flex flex-col items-center justify-start md:justify-center md:min-h-[clamp(24rem,55vw,36rem)] py-8"
+  aria-label="採用情報 メインビジュアル"
+>
+  <!-- 上段: 左顔・中央タイトル・右顔 -->
+  <div class="relative z-[2] flex items-start justify-between gap-4 md:gap-8 w-full">
+    <!-- 左上の顔（タイトル左・有機的角丸） -->
+    <div class="recruit-hero__face recruit-hero__face--top-left shrink-0 w-[28vw] md:w-[17.7vw] top-[30px] shadow-lg">
+      <img
+        src={recruitHero.faceImages[0]}
+        alt=""
+        class="block w-full h-auto object-cover"
+        width="144"
+        height="144"
+        loading="lazy"
+      />
+    </div>
+    <!-- 中央: 2行タイトル（グラデーション。「の」「、」「を」「。」は小サイズ） -->
+    <h1 class="recruit-hero__title absolute top-[80%] left-[50%] translate-x-[-50%] w-full md:w-auto z-[10] pl-[5%] md:pl-0 md:relative md:top-8 md:left-0 md:translate-x-0">
+      <span class="recruit-hero__title-line">
+        {
+          line1Segments.map((seg) =>
+            seg.small ? (
+              <span class="recruit-hero__title-line--small">{seg.text}</span>
+            ) : (
+              seg.text
+            )
+          )
+        }
+      </span>
+      <span class="recruit-hero__title-line">
+        {
+          line2Segments.map((seg) =>
+            seg.small ? (
+              <span class="recruit-hero__title-line--small">{seg.text}</span>
+            ) : (
+              seg.text
+            )
+          )
+        }
+      </span>
+    </h1>
+    <!-- 右上の顔（タイトル右・有機的角丸） -->
+     <div class="recruit-hero__face w-[20vw] md:w-[13.1vw] h-auto shadow-lg">
+      <img
+        src={recruitHero.faceImages[1]}
+        alt=""
+        class="object-cover w-full h-full"
+        width="144"
+        height="144"
+        loading="lazy"
+      />
+    </div>
+  </div>
+
+  <!-- 下段: 3枚の顔 + その上に英語テキストをオーバーレイ -->
+  <div class="mv-bottom relative z-[2] w-full pb-[20vh] md:pb-0 mt-[18vh] md:mt-12 bg-white">
+    <!-- 下 3 枚の顔（横並び） -->
+    <div class="relative flex justify-center gap-3 md:gap-[8vw]" aria-hidden="true">
+      <div class="recruit-hero__face w-[28vw] h-[28vw] md:w-[22vw] md:h-[22vw] relative top-[30px] shadow-lg">
+        <img
+          src={recruitHero.faceImages[2]}
+          alt=""
+          class="object-cover object-top w-full h-full"
+          width="160"
+          height="192"
+          loading="lazy"
+        />
+      </div>
+      <div class="recruit-hero__face w-[33vw] h-[33vw] md:w-[28vw] md:h-[28vw] relative top-[60px] shadow-lg">
+        <img
+          src={recruitHero.faceImages[3]}
+          alt=""
+          class="object-cover object-top w-full h-full"
+          width="160"
+          height="192"
+          loading="lazy"
+        />
+      </div>
+      <div class="recruit-hero__face w-[28vw] h-[28vw] md:w-[22vw] md:h-[22vw] shadow-lg">
+        <img
+          src={recruitHero.faceImages[4]}
+          alt=""
+          class="object-cover object-top w-full h-full"
+          width="160"
+          height="192"
+          loading="lazy"
+        />
+      </div>
+    </div>
+    <!-- 英語キャッチ: 1行・横に無限スクロール、blend-mode: exclusion -->
+    <div class="recruit-hero__en-wrap">
+      <div class="recruit-hero__en-track">
+        <span class="recruit-hero__en-segment">
+          <span class="recruit-hero__en-text">{recruitHero.en}</span>
+        </span>
+        <span class="recruit-hero__en-segment" aria-hidden="true">
+          <span class="recruit-hero__en-text">{recruitHero.en}</span>
+        </span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .recruit-hero::before, .mv-bottom::before {
+    content: "";
+    position: absolute;
+    aspect-ratio: 1 / 1;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    z-index: -1;
+    pointer-events: none;
+  }
+    .recruit-hero::before {
+    left: 4%;
+    top: -100px;
+    width: 0px;
+    background-image: url("/images/ellipse-4.svg");
+    @media (min-width: 768px) {
+        width: 400px;
+        opacity: 0.8;
+    }
+  }
+  .mv-bottom::before{
+    right: 0;
+    bottom: 0;
+    width: 500px;
+    background-image: url("/images/ellipse-13.svg");
+    @media (min-width: 768px) {
+      width: 700px;
+    }
+  }
+  .recruit-hero__title {
+    font-family: var(--recruit-font-sans);
+    font-weight: 900;
+    text-align: center;
+    line-height: 1.2;
+    letter-spacing: 0.08em;
+    margin: 0;
+    flex-shrink: 0;
+  }
+
+  .recruit-hero__title-line {
+    display: block;
+    font-size: max(50px, 8.8vw);
+  }
+
+  /* 文字にグラデーション（オレンジ→黄） */
+  .recruit-hero__title-line {
+    background: var(--recruit-gradient-orange);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+  }
+
+  /* 「の」「、」「を」「。」のみ 6.6vw・最小 36px */
+  .recruit-hero__title-line--small {
+    display: inline;
+    font-size: max(36px, 6.6vw);
+  }
+
+  .recruit-hero__face {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .recruit-hero__face::before {
+    content: "";
+    position: absolute;
+    left: -150px;
+    bottom: -150px;
+    width: 220px;
+    aspect-ratio: 1 / 1;
+    background-image: url("/images/ellipse-4.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    z-index: 2;
+    pointer-events: none;
+    @media (min-width: 768px) {
+      width: 300px;
+    }
+  }
+
+  .recruit-hero__face > img {
+    position: relative;
+    z-index: 1;
+  }
+
+  /* 英語キャッチ: 1行・横スクロール無限・exclusion */
+  .recruit-hero__en-wrap {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    overflow: hidden;
+    z-index: 10;
+    mix-blend-mode: exclusion;
+    pointer-events: none;
+    user-select: none;
+    /* 左右に余白を入れて文字が画面端で切れないように */
+    padding-left: 0.1em;
+    padding-right: 0.1em;
+    /* モバイル: 下端に寄せつつ少し下にはみ出し */
+    bottom: 20px;
+    @media (min-width: 768px) {
+      bottom: -40px;
+    }
+    @media (min-width: 1024px) {
+      bottom: -60px;
+    }
+  }
+
+  .recruit-hero__en-track {
+    display: flex;
+    white-space: nowrap;
+    width: max-content;
+    animation: recruit-hero__en-scroll 26s linear infinite;
+    will-change: transform;
+    @media (min-width: 768px) {
+      animation: recruit-hero__en-scroll 40s linear infinite;
+    }
+  }
+
+  .recruit-hero__en-segment {
+    flex: 0 0 auto;
+    display: inline-flex;
+  }
+
+  .recruit-hero__en-text {
+    font-family: var(--recruit-font-en);
+    font-weight: 700;
+    color: white;
+    flex-shrink: 0;
+    /* モバイル: やや詰めた字間で画面に収まりやすく */
+    font-size: max(72px, 14vw);
+    letter-spacing: 0.06em;
+    padding-right: 0.4em;
+    @media (min-width: 768px) {
+      font-size: max(96px, 12.5vw);
+      letter-spacing: 0.12em;
+      padding-right: 0.5em;
+    }
+  }
+
+  @keyframes recruit-hero__en-scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+</style>

@@ -1,0 +1,122 @@
+---
+/**
+ * WLB・福利厚生セクション（Figma 320:6214 準拠）
+ * 既存の recruit-variables / Tailwind を活用
+ */
+import { recruitWLB } from "./recruit-data";
+---
+
+<section
+  id="workplace"
+  class="recruit-wlb bg-white py-12 md:py-16 px-[var(--recruit-container-px)] bg-recruit-grid bg-grid-24 text-center"
+  aria-labelledby="recruit-wlb-heading"
+>
+  <div class="recruit-container">
+    <!-- 上部: 英語ラベル・セクション見出し -->
+    <span
+      class="recruit-wlb__en-label block font-roboto text-lg text-center font-normal text-main-orange tracking-wider pb-2 mb-2 relative after:content-[''] after:block after:w-6 after:h-px after:bg-[#EA5903] after:mt-2 after:absolute after:left-[50%] after:translate-x-[-50%] after:bottom-0"
+    >
+      {recruitWLB.enLabel}
+    </span>
+    <h2
+      id="recruit-wlb-heading"
+      class="recruit-wlb__section-heading font-noto-sans text-xl text-center sm:text-2xl md:text-3xl font-bold text-main-orange leading-tight mb-8 md:mb-16 m-0"
+    >
+      {recruitWLB.sectionHeading}
+    </h2>
+
+    <!-- 残業ほぼゼロ -->
+    <div class="recruit-wlb__block text-left">
+      <h3 class="recruit-wlb__headline block w-fit px-4 bg-recruit-gradient-orange font-noto-sans text-4xl mx-auto md:mx-0 sm:text-[8.8vw] font-bold text-white leading-snug tracking-wide mb-3">
+        残業ほぼゼロ<span class="text-[6.6vw]">。</span>
+      </h3>
+      <p class="recruit-wlb__desc font-noto-sans text-base font-normal leading-relaxed text-text-black m-0 max-w-2xl whitespace-pre-line">
+        {recruitWLB.wlbDesc}
+      </p>
+    </div>
+
+    <!-- 中央の X マーク -->
+    <div class="recruit-wlb__x flex justify-left" aria-hidden="true">
+      <span class="bg-recruit-gradient-orange bg-clip-text text-transparent font-bold text-6xl md:text-[160px] mx-auto md:mx-0 leading-none select-none font-noto-sans mb-4 md:mb-0">×</span>
+    </div>
+
+    <!-- 充実の福利厚生 -->
+    <div class="recruit-wlb__block mb-16 text-left">
+      <h3 class="recruit-wlb__headline block w-fit px-4 bg-recruit-gradient-orange font-noto-sans text-4xl mx-auto md:mx-0 sm:text-[8.8vw] font-bold text-white leading-snug tracking-wide mb-3">
+        充実<span class="text-[6.6vw]">の</span>福利厚生<span class="text-[6.6vw]">。</span>
+      </h3>
+      <p class="recruit-wlb__desc font-noto-sans text-base font-normal leading-relaxed text-text-black m-0 max-w-2xl whitespace-pre-line">
+        {recruitWLB.benefitsDesc}
+      </p>
+    </div>
+  </div>
+
+  <!-- 下部: オレンジ背景・福利厚生グリッド -->
+    <div class="recruit-wlb__content-label inline-block pt-4 pb-2 px-6 bg-main-orange text-white font-noto-sans text-base md:text-xl rounded-t-lg text-center">
+        {recruitWLB.contentLabel}
+    </div>
+  <div class="recruit-wlb__grid-wrap relative py-12 md:py-16 px-[var(--recruit-container-px)] bg-main-orange rounded-2xl overflow-hidden">
+    <span
+      class="recruit-wlb__side-label absolute left-0 top-[300px] translate-x-[-45%] rotate-90 font-roboto text-[64px] font-medium text-white opacity-20 whitespace-nowrap pointer-events-none tracking-widest hidden md:block"
+      aria-hidden="true"
+    >
+      {recruitWLB.sideLabel}
+    </span>
+    <span
+      class="recruit-wlb__side-label absolute right-0 bottom-[300px] translate-x-[45%] rotate-90 font-roboto text-[64px] font-medium text-white opacity-20 whitespace-nowrap pointer-events-none tracking-widest hidden md:block"
+      aria-hidden="true"
+    >
+      {recruitWLB.sideLabel}
+    </span>
+
+    <div class="recruit-container relative z-10">
+      <h3 class="recruit-wlb__main-heading font-noto-sans text-xl sm:text-4xl font-bold text-white leading-snug mb-12 tracking-wide">
+        {recruitWLB.mainHeading}
+      </h3>
+
+      <div class="recruit-wlb__grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-[var(--recruit-max-width)] mx-auto xl:px-20">
+        {
+          recruitWLB.benefits.map((item, index) => {
+            const isLastAndOdd =
+              index === recruitWLB.benefits.length - 1 && recruitWLB.benefits.length % 2 === 1;
+            const card = (
+              <div
+                class:list={[
+                  "recruit-wlb-card flex flex-col p-6 rounded-lg w-full aspect-square items-center justify-center border border-white",
+                  isLastAndOdd && "md:max-w-[calc((100%-1.5rem)/2)] lg:max-w-none",
+                ]}
+              >
+                {item.icon ? (
+                  <img
+                    src={item.icon}
+                    alt=""
+                    width="40"
+                    height="40"
+                    class="recruit-wlb-card__icon w-16 h-16 md:w-20 md:h-20 mb-3 object-contain flex-shrink-0"
+                    aria-hidden="true"
+                  />
+                ) : (
+                  <span
+                    class="recruit-wlb-card__icon block w-10 h-10 mb-3 bg-main-orange rounded-lg opacity-90 flex-shrink-0"
+                    aria-hidden="true"
+                  ></span>
+                )}
+                <h4 class="recruit-wlb-card__title font-noto-sans text-xl md:text-2xl font-bold text-white mb-2">
+                  {item.title}
+                </h4>
+                <p class="recruit-wlb-card__desc font-noto-sans text-base font-normal leading-relaxed text-white">
+                  {item.desc}
+                </p>
+              </div>
+            );
+            return isLastAndOdd ? (
+              <div class="md:col-span-2 md:flex md:justify-center lg:col-span-1 lg:block">{card}</div>
+            ) : (
+              card
+            );
+          })
+        }
+      </div>
+    </div>
+  </div>
+</section>

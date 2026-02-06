@@ -1,0 +1,60 @@
+/**
+ * 採用ページ専用 CSS 変数
+ * 他ファイルの共通要素を使用せず、このページ内で完結するスタイル設計
+ *
+ * デザインデータ参照: Figma HP-Design node 320:6005
+ * get_variable_defs(320:6005) の値に準拠（mainOrange, textBlack, White, Gray/500 等）
+ */
+.recruit-page {
+  /* カラー - Figma variable defs (node 320:6005) 準拠 */
+  --recruit-main-orange: #ea5903;
+  --recruit-white: #ffffff;
+  --recruit-text-black: #1b1b1b;
+  --recruit-common-dark: #000000;
+  --recruit-gray-500: #6b7280;
+  --recruit-gray-100: #f3f4f6;
+  --recruit-cta-blue: #2563eb;
+  /* 仕事を知るセクション・メインコンテナ（Figma 320:6141） */
+  --recruit-dark-orange: #b84a02;
+  --recruit-grid-bg: #fff8f5;
+  --recruit-grid-line: rgba(234, 89, 3, 0.12);
+
+  /* グラデーション（オレンジ系） */
+  --recruit-gradient-orange: linear-gradient(
+    90deg,
+    var(--recruit-main-orange) 0%,
+    #ffbf1c 100%
+  );
+  --recruit-gradient-hero: linear-gradient(
+    180deg,
+    rgba(234, 89, 3, 0.95) 0%,
+    rgba(234, 89, 3, 0.85) 100%
+  );
+  /* ヘッダーCTA「募集要項」用（Figma 320:6111: 青→紫） */
+  --recruit-gradient-cta-blue: linear-gradient(90deg, #3625ef 0%, #35a1ff 100%);
+
+  /* タイポグラフィ - Noto Sans JP / Roboto */
+  --recruit-font-sans: "Noto Sans JP", sans-serif;
+  --recruit-font-en: "Roboto", sans-serif;
+
+  /* スペーシング */
+  --recruit-header-height: 4.5rem;
+  --recruit-section-gap: clamp(3rem, 6vw, 5rem);
+  --recruit-container-px: max(4.2vw, 1rem);
+  --recruit-max-width: 75rem;
+
+  /* ヒーロー英語キャッチのブレンド（Figma 320-6140 の Blend に合わせて変更可） */
+  --recruit-hero-en-blend: exclusion;
+}
+
+/* 採用ページ全体のベース（body に .recruit-page を付与して使用） */
+body.recruit-page {
+  font-family: var(--recruit-font-sans);
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--recruit-text-black);
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}

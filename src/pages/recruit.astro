@@ -1,0 +1,66 @@
+---
+/**
+ * 採用ページ（Figma 320:6005 / 320:7964 / 320:6141 準拠）
+ */
+import RecruitHeader from "../components/recruit/RecruitHeader.astro";
+import RecruitFooter from "../components/recruit/RecruitFooter.astro";
+import RecruitHero from "../components/recruit/RecruitHero.astro";
+import RecruitJobType from "../components/recruit/RecruitJobType.astro";
+import RecruitWLB from "../components/recruit/RecruitWLB.astro";
+import RecruitCulture from "../components/recruit/RecruitCulture.astro";
+import RecruitVoice from "../components/recruit/RecruitVoice.astro";
+import RecruitRequirements from "../components/recruit/RecruitRequirements.astro";
+import RecruitEntryBanner from "../components/recruit/RecruitEntryBanner.astro";
+import "../styles/recruit/recruit-variables.css";
+---
+
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="技術の伝承、継承者を求む。新晃の採用情報。誰でも成長できる環境が、ここにあります。" />
+    <title>採用情報 | shinko data</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Roboto:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="recruit-page">
+    <RecruitHeader />
+
+    <main class="recruit-main">
+      <RecruitHero />
+      <RecruitJobType />
+      <RecruitWLB />
+      <RecruitCulture />
+      <RecruitVoice />
+      <RecruitRequirements />
+      <RecruitEntryBanner />
+    </main>
+
+    <RecruitFooter />
+  </body>
+</html>
+
+<style is:global>
+  html {
+    scroll-behavior: smooth;
+  }
+
+  .recruit-main {
+    flex: 1;
+    padding-bottom: 0;
+  }
+
+  .recruit-container {
+    width: 100%;
+  }
+
+  .recruit-section {
+    padding-top: var(--recruit-section-gap);
+  }
+</style>

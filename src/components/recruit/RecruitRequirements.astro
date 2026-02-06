@@ -1,0 +1,130 @@
+---
+/**
+ * 募集要項（Figma 320:6374 準拠）
+ * Job Description・募集要項見出し・新卒/中途タブ切り替え＋key-valueリスト
+ */
+import { recruitReqTabItems } from "./recruit-data";
+import { recruitRequirementsSection } from "./recruit-requirements-data";
+---
+
+<section
+  id="requirements"
+  class="recruit-requirements py-12 md:py-16 px-[var(--recruit-container-px)] bg-recruit-grid bg-grid-24"
+  aria-labelledby="recruit-requirements-heading"
+>
+  <div class="recruit-container text-center">
+    <span class="recruit-requirements__en-label block font-roboto text-lg text-center font-normal text-main-orange tracking-wider pb-2 mb-2 relative after:content-[''] after:block after:w-6 after:h-px after:bg-[#EA5903] after:mt-2 after:absolute after:left-[50%] after:translate-x-[-50%] after:bottom-0">
+      {recruitRequirementsSection.enLabel}
+    </span>
+    <h2
+      id="recruit-requirements-heading"
+      class="recruit-requirements__heading font-noto-sans text-2xl sm:text-3xl font-bold text-main-orange mb-10 m-0"
+    >
+      {recruitRequirementsSection.heading}
+    </h2>
+  </div>
+
+  <!-- タブ＋パネル（1つだけ表示） -->
+  <div class="recruit-container max-w-4xl mx-auto mb-0 md:mb-10">
+    <div
+      class="recruit-requirements__tabs flex flex-nowrap gap-0 mb-6 overflow-x-auto bg-gray-100 rounded-xl w-[300px] md:w-[400px] py-1 px-1 mx-auto"
+      role="tablist"
+      aria-label="募集要項"
+    >
+      {
+        recruitReqTabItems.map((tab, index) => (
+          <button
+            type="button"
+            role="tab"
+            id={`recruit-req-tab-${tab.id}`}
+            aria-selected={index === 0}
+            aria-controls={`recruit-req-panel-${tab.id}`}
+            data-req-tab-index={index}
+            data-active={index === 0}
+            class="recruit-requirements__tab w-[150px] md:w-[200px] py-3.5 font-noto-sans text-base md:text-2xl font-bold rounded-xl cursor-pointer transition-colors duration-200 bg-gray-100 text-gray-600 data-[active=true]:bg-white data-[active=true]:text-main-orange data-[active=true]:relative data-[active=true]:z-10"
+          >
+            {tab.label}
+          </button>
+        ))
+      }
+    </div>
+
+    <!-- 新卒採用パネル -->
+    <div
+      role="tabpanel"
+      id="recruit-req-panel-shinsotsu"
+      aria-labelledby="recruit-req-tab-shinsotsu"
+      class="recruit-requirements__panel rounded-b-lg overflow-hidden bg-white p-8 md:p-12 bg-opacity-60"
+      data-req-panel="shinsotsu"
+    >
+      <dl class="recruit-requirements__list m-0">
+        {
+          recruitRequirementsSection.shinsotsu.items.map((row) => (
+            <div class="recruit-requirements__row flex flex-col sm:flex-row sm:gap-8 py-4 px-5 sm:px-6 border-b border-gray-100 last:border-b-0">
+              <dt class="recruit-requirements__key font-noto-sans text-sm font-bold text-text-black m-0 flex-shrink-0 sm:w-32">
+                {row.key}
+              </dt>
+              <dd class="recruit-requirements__value font-noto-sans text-sm font-normal leading-relaxed text-text-black m-0 whitespace-pre-line">
+                {row.value}
+              </dd>
+            </div>
+          ))
+        }
+      </dl>
+    </div>
+
+    <!-- 中途採用パネル -->
+    <div
+      role="tabpanel"
+      id="recruit-req-panel-chuto"
+      aria-labelledby="recruit-req-tab-chuto"
+      class="recruit-requirements__panel rounded-b-lg overflow-hidden bg-white p-8 md:p-12 bg-opacity-60"
+      data-req-panel="chuto"
+      hidden
+    >
+      <dl class="recruit-requirements__list m-0">
+        {
+          recruitRequirementsSection.chuto.items.map((row) => (
+            <div class="recruit-requirements__row flex flex-col sm:flex-row sm:gap-8 py-4 px-5 sm:px-6 border-b border-gray-100 last:border-b-0">
+              <dt class="recruit-requirements__key font-noto-sans text-sm font-bold text-text-black m-0 flex-shrink-0 sm:w-32">
+                {row.key}
+              </dt>
+              <dd class="recruit-requirements__value font-noto-sans text-sm font-normal leading-relaxed text-text-black m-0 whitespace-pre-line">
+                {row.value}
+              </dd>
+            </div>
+          ))
+        }
+      </dl>
+    </div>
+  </div>
+</section>
+
+<style>
+  .recruit-requirements__panel[hidden] {
+    display: none !important;
+  }
+</style>
+
+<script>
+  const section = document.querySelector(".recruit-requirements");
+  if (!section) throw new Error("recruit-requirements not found");
+
+  const triggers = section.querySelectorAll<HTMLButtonElement>('[role="tab"]');
+  const panels = section.querySelectorAll<HTMLElement>('[role="tabpanel"]');
+
+  function switchReqTab(activeIndex: number) {
+    triggers.forEach((t, i) => {
+      const selected = i === activeIndex;
+      t.setAttribute("aria-selected", String(selected));
+      t.setAttribute("data-active", String(selected));
+    });
+    panels.forEach((p, i) => {
+      (p as HTMLElement).hidden = i !== activeIndex;
+    });
+  }
+
+  triggers.forEach((trigger, index) => {
+    trigger.addEventListener("click", () => switchReqTab(index));
+  });
+</script>

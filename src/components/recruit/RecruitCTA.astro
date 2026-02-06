@@ -1,0 +1,51 @@
+---
+interface Props {
+  href: string;
+  label: string;
+  variant?: "primary" | "outline";
+}
+
+const { href, label, variant = "primary" } = Astro.props;
+---
+
+<a
+  href={href}
+  class:list={[
+    "recruit-cta",
+    variant === "outline" && "recruit-cta--outline",
+  ]}
+>
+  {label}
+</a>
+
+<style>
+  .recruit-cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 10rem;
+    padding: 0.75rem 1.5rem;
+    font-family: var(--recruit-font-sans);
+    font-size: clamp(0.875rem, 1.2vw, 1rem);
+    font-weight: 700;
+    color: var(--recruit-white);
+    background: var(--recruit-main-orange);
+    border: 2px solid var(--recruit-main-orange);
+    border-radius: 0.25rem;
+    text-decoration: none;
+    transition: opacity 0.2s, background 0.2s, color 0.2s;
+  }
+
+  .recruit-cta:hover {
+    opacity: 0.9;
+  }
+
+  .recruit-cta--outline {
+    color: var(--recruit-main-orange);
+    background: var(--recruit-white);
+  }
+
+  .recruit-cta--outline:hover {
+    background: var(--recruit-gray-100);
+  }
+</style>
