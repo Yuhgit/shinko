@@ -20,7 +20,7 @@ export interface NavLinkWithChildren {
 export type NavItem = NavLink | NavLinkWithChildren;
 
 export function isNavLinkWithChildren(
-  item: NavItem,
+  item: NavItem
 ): item is NavLinkWithChildren {
   return (
     "children" in item && Array.isArray((item as NavLinkWithChildren).children)
@@ -49,7 +49,7 @@ export const navLinks: NavItem[] = [
 
 /** ヘッダー・モバイルメニューのボタン（採用は会社概要へ、お問い合わせは専用ページへ） */
 export const navButtons: NavButton[] = [
-  { href: "/company", label: "採用情報", variant: "outline" },
+  { href: "/recruit", label: "採用情報", variant: "outline" },
   { href: "/contact", label: "お問い合わせ", variant: "primary" },
 ];
 
@@ -62,7 +62,7 @@ export const footerNavLinks = {
     { href: "/projects", label: "施工事例" },
   ],
   right: [
-    { href: "/company", label: "採用情報" },
+    { href: "/recruit", label: "採用情報" },
     { href: "/contact", label: "お問い合わせ" },
     { href: "/privacy", label: "プライバシーポリシー" },
   ],

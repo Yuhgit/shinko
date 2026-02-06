@@ -77,15 +77,15 @@ import { navLinks, navButtons, isNavLinkWithChildren } from '../config/navigatio
               );
             })}
           </div>
-          
           <!-- Buttons -->
           <div class="flex flex-col gap-6 items-center justify-center relative w-full">
             {navButtons.map((button) => (
-              <a 
-                href={button.href} 
+              <a
+                href={button.href}
+                {...(button.href === '/recruit' && { target: '_blank', rel: 'noopener noreferrer' })}
                 class={`flex items-center justify-center px-5 py-2 relative rounded-[50px] w-full ${
-                  button.variant === 'primary' 
-                    ? 'mobile-menu-button-primary' 
+                  button.variant === 'primary'
+                    ? 'mobile-menu-button-primary'
                     : 'mobile-menu-button'
                 }`}
               >
@@ -117,12 +117,17 @@ import { navLinks, navButtons, isNavLinkWithChildren } from '../config/navigatio
       return;
     }
 
+    const menu = mobileMenu;
+    const icon = menuIcon;
+    const close = closeIcon;
+    const toggle = menuToggle;
+
     function openMenu() {
       if (window.innerWidth >= 1024) return; // PC時は何もしない
-      mobileMenu.classList.remove('translate-x-full');
-      menuIcon.classList.add('opacity-0');
-      closeIcon.classList.remove('opacity-0');
-      menuToggle.setAttribute('aria-expanded', 'true');
+      menu.classList.remove('translate-x-full');
+      icon.classList.add('opacity-0');
+      close.classList.remove('opacity-0');
+      toggle.setAttribute('aria-expanded', 'true');
       body.style.overflow = 'hidden';
       // 技術紹介アコーディオンを閉じた状態にリセット
       const techTrigger = document.getElementById('mobile-menu-tech-trigger');
@@ -134,10 +139,10 @@ import { navLinks, navButtons, isNavLinkWithChildren } from '../config/navigatio
     }
 
     function closeMenu() {
-      mobileMenu.classList.add('translate-x-full');
-      menuIcon.classList.remove('opacity-0');
-      closeIcon.classList.add('opacity-0');
-      menuToggle.setAttribute('aria-expanded', 'false');
+      menu.classList.add('translate-x-full');
+      icon.classList.remove('opacity-0');
+      close.classList.add('opacity-0');
+      toggle.setAttribute('aria-expanded', 'false');
       body.style.overflow = '';
     }
 
@@ -146,8 +151,8 @@ import { navLinks, navButtons, isNavLinkWithChildren } from '../config/navigatio
       closeMenu();
     }
 
-    menuToggle.addEventListener('click', () => {
-      const isOpen = menuToggle.getAttribute('aria-expanded') === 'true';
+    toggle.addEventListener('click', () => {
+      const isOpen = toggle.getAttribute('aria-expanded') === 'true';
       if (isOpen) {
         closeMenu();
       } else {
@@ -178,7 +183,7 @@ import { navLinks, navButtons, isNavLinkWithChildren } from '../config/navigatio
 
     // Close menu on escape key
     document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && menuToggle.getAttribute('aria-expanded') === 'true') {
+      if (e.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') {
         closeMenu();
       }
     });

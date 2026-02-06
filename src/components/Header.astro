@@ -44,6 +44,7 @@ const { class: className = '' } = Astro.props;
         {navButtons.map((button) => (
           <a 
             href={button.href} 
+            {...(button.href === '/recruit' && { target: '_blank', rel: 'noopener noreferrer' })}
             class={`flex items-center justify-center px-6 py-1.5 rounded-full shadow-[0px_2px_4px_0px_rgba(0,0,0,0.25)] ${
               button.variant === 'primary' ? 'nav-button-primary' : 'nav-button'
             }`}
